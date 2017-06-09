@@ -1,0 +1,26 @@
+.glyphicon{
+    font-size: 15px;
+}
+
+#lateral{
+  background-color: #3B5699;
+  padding-right: 80px;
+  height:800px;
+  width: 200px;
+  display:inline-block;
+}
+#geral{
+
+}
+
+#busca{
+   height:10px;
+   width: 1200px;
+}
+
+#tabelaPesquisa{
+  height:5px;
+   width: 800px;
+  display: inline;
+}
+

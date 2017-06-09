@@ -1,0 +1,43 @@
+ python 3.5
+ 
+ #Gerenciador de pacotes do python
+ instalar pip3.5 [
+        Download do arquivo get-pip.py
+        execute => python3 get-pip.py
+ ]
+ 
+ #encapsula uma aplicação python em um determinado diretório
+ #não afeta a instalação global do python
+ instalar virtualenv [
+    execute => pip3.5 install virtualenv
+    #crie um novo virtualenv
+    virtualenv nome_virtual_env -p versao_do_python
+    #ative o virtualenv que você criou
+    /nome_virtual_env/bin
+    ./activate #ubuntu
+    #fedora
+    source activate
+ ]
+ 
+ instalar o django [
+    pip install django
+    ou
+    pip install django=versao_do_django
+ ]
+ 
+ configurar django[
+    django-admin.py startprojetct nome_projeto
+    #suba o servidor de desenvolvimento
+    python3 manage.py runserver
+   
+   #Criar aplicação
+   python3 manage.py startapp nome_aplicacao
+   #coloque o path em settings.py em INSTALLED_APPS o nome da aplicação criada
+ ]
+
+arquivos statis do django [
+	{% load static %} no inicio do html
+	 <link rel="stylesheet" href="{% static 'bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css/bootstrap.min.css' %}"> carrega html
+]
+ 
+ 
