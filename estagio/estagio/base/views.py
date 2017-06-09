@@ -104,7 +104,7 @@ def compacta_pesquisa(request):
     arquivos = []
     for r in request:
         arquivos.append(str(os.getcwd() + '/' + r))
-
+    print(arquivos)
     # zip_subdir = 'estagio'
     zf = zipfile.ZipFile('pesquisa.zip', "w")
     for fpath in request:

@@ -82,14 +82,15 @@
                                 <td>{{ tres }}</td>
                                 <td>{{ quatro }}</td>
                                 <td><a class="glyphicon glyphicon-download" href="{% url "home:download" dois %}"></a></td>
-                                <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" onclick="seleciona(this)" value="{{ dois }}"></td>
+                                <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ dois }}"></td>
                             </tr>
                         {%  endfor %}
                 </tbody>
             </table>
             </form>
-            <a class="glyphicon glyphicon-folder-open" style="cursor:pointer" data-dir="/arquivos" onclick="compactaPesquisa(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">Baixar Pesquisa</a>
-
+        <div id="idBaixarPesquisa">
+{#            <a class="glyphicon glyphicon-folder-open" style="cursor:pointer" data-dir="/arquivos" onclick="compactaPesquisa(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">Baixar Pesquisa</a>#}
+        </div>
         </div>
 
     </div>
