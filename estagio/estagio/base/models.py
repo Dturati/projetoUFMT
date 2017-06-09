@@ -53,7 +53,6 @@ class PesquisaArquivos:
 class Download:
     def getDownload(self, request, path):
         nome_arquivo = os.getcwd() + "/" + path
-        print(nome_arquivo)
         nome_download = os.getcwd() + "/" + path + ".csv"
         wrapper = FileWrapper(open(nome_arquivo))
         content_type = mimetypes.guess_type(nome_arquivo)[0]
@@ -71,18 +70,12 @@ class Compacta_aquivos():
         zf = zipfile.ZipFile('pesquisa.zip', "w")
 
         for fpath in arquivos:
-            # Calculate path for file in zip
             fdir, fname = os.path.split(fpath)
             zip_path = os.path.join(zip_subdir, fname)
-            # Add file, at correct path
             zf.write(fpath)
-        #
-        # # Must close zip for all contents to be written
         zf.close()
-        #
-        # # Grab ZIP file from in-memory, make response with correct MIME-type
+
         resp = HttpResponse(s.getvalue(), mimetype="application/x-zip-compressed")
-        # # ..and correct content-disposition
         resp['Content-Disposition'] = 'attachment; filename=%s' % zip_filename
 
         return resp
