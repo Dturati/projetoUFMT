@@ -8,12 +8,6 @@ import zipfile
 from io import StringIO
 # Create your models here.
 
-'''
-import os.path, time
-print "last modified: %s" % time.ctime(os.path.getmtime(file))
-print "created: %s" % time.ctime(os.path.getctime(file))
-
-'''
 class ListaArquivos:
     def list_files(startpath):
         detalheArquivosModificado = []
@@ -53,6 +47,7 @@ class PesquisaArquivos:
 class Download:
     def getDownload(self, request, path):
         nome_arquivo = os.getcwd() + "/" + path
+        print(nome_arquivo)
         nome_download = os.getcwd() + "/" + path + ".csv"
         wrapper = FileWrapper(open(nome_arquivo))
         content_type = mimetypes.guess_type(nome_arquivo)[0]
@@ -70,8 +65,10 @@ class Compacta_aquivos():
         zf = zipfile.ZipFile('pesquisa.zip', "w")
 
         for fpath in arquivos:
+            # Calculate path for file in zip
             fdir, fname = os.path.split(fpath)
             zip_path = os.path.join(zip_subdir, fname)
+            # Add file, at correct path
             zf.write(fpath)
         zf.close()
 
