@@ -66,7 +66,7 @@ var chamaArquivosAjax = function (elem)
                 success: function (data)
                 {
 
-                     for(var i = 0; i <data.diretorios.length; i++)
+                     for(i = 0; i <data.diretorios.length; i++)
                     {
                             html += '<tr>';
                             html += '<td>';
@@ -81,7 +81,7 @@ var chamaArquivosAjax = function (elem)
                             html += '</td>';
                             html += '</tr>';
 
-                    };
+                    }
                     menu += '<div class="glyphicon glyphicon-arrow-left"></div>';
                     menu += '<a ';
                     menu += 'onclick="chamaArquivosAjax(this)"' + '' + 'style="color:green;cursor:pointer"' + ' ' + 'data-dir=' + data.anterior + ' ' + '/' + ' ';

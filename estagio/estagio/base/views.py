@@ -8,14 +8,15 @@ import os,time
 from .form import Pesquisa
 import re
 from .models import Download,Compacta_aquivos
-from wsgiref.util import FileWrapper
-import mimetypes
 import zipfile
-from io import StringIO,BytesIO
-# Create your views here.
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.shortcuts import render
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+import pdb
 lista_arquivos = ListaArquivos
 
 def home(request):
+
     form = Pesquisa()
     resultadoPesquisa = []
     detalheArquivosCriados = []
@@ -27,14 +28,19 @@ def home(request):
             resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado = pesquisa(form.data)
         else:
             print("Invalido")
+
+    paginado = zip(resultadoPesquisa,diretorio,detalheArquivosModificado,detalheArquivosModificado)
+    # P = Paginator(paginado,1)
+    # print(P.count)
     contexto = {
         'form' : form,
         'resultadoPesquisa' : resultadoPesquisa,
         'diretorio' : diretorio,
         'iterar' : range(len(resultadoPesquisa)),
-        'teste' : zip(resultadoPesquisa,diretorio,detalheArquivosModificado,detalheArquivosModificado)
+        'teste' : paginado
 
     }
+
     return render(request,"home.html",contexto)
 
 def contatos(request):
@@ -121,6 +127,16 @@ def baixar_pesquisa(request):
     response = HttpResponse(open(nome_arquivo, 'rb').read(), content_type='x-zip-compressed')
     response['Content-Disposition'] = "attachment; filename=%s" % nome_download
     return response
+
+def exemplo(request):
+    valores = ['david','maria','jose','pedro']
+    P = Paginator(valores,1)
+    num = request.GET.get('page')
+    print(num)
+    context ={
+        'contacts':P.page(num)
+    }
+    return render(request,'exemplo.html',context)
 
 
 
