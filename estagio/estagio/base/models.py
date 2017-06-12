@@ -8,6 +8,12 @@ import zipfile
 from io import StringIO
 # Create your models here.
 
+'''
+import os.path, time
+print "last modified: %s" % time.ctime(os.path.getmtime(file))
+print "created: %s" % time.ctime(os.path.getctime(file))
+
+'''
 class ListaArquivos:
     def list_files(startpath):
         detalheArquivosModificado = []
@@ -28,16 +34,41 @@ class ListaArquivos:
 
 
 class PesquisaArquivos:
+    '''0000000030-35-seq-_13_0.4-1.csv'''
     def lista_aquivos(pesquisa):
+        # print(pesquisa)
         meuDir = '/arquivos'
         arquivos = []
         diretorio = []
         detalheArquivosModificado = []
         detalheArquivosCriados = []
         tempo =''
+
+        m_regex = "00000000"
+        numSequencialUm =int(pesquisa['numeroSequencialUm'])
+        numSequencialDois = int(pesquisa['numeroSequencialDois'])
+        tipoFalha = 'ale'
+        falha = 35
+        trataFalha = [r for r in str(falha)]
+        inicio = 30
+        fim = 35
+
+        vetorNumSequencial = []
+        vetorNumSequencial.append("(")
+        resultadoNumsequencial = ''
+        while(numSequencialUm <= numSequencialDois):
+            vetorNumSequencial.append(numSequencialUm)
+            if(numSequencialUm < numSequencialDois):
+                vetorNumSequencial.append("|")
+            numSequencialUm = numSequencialUm + 1
+        vetorNumSequencial.append(")")
+        for r in vetorNumSequencial:
+            m_regex = m_regex+str(r)
+        m_regex = m_regex+"-[1]-seq-_13_[0-9][.][0-4]-[0-9][.]csv"
+
         for root,dirs,files in os.walk('.',topdown=False):
             for f in files:
-                if(re.match(f,pesquisa)):
+                if(re.search(m_regex,f)):
                     detalheArquivosModificado.append(time.ctime(os.path.getmtime(root + '/' + f)))
                     detalheArquivosCriados.append(time.ctime(os.path.getctime(root + '/' + f)))
                     arquivos.append(f)
@@ -70,6 +101,7 @@ class Compacta_aquivos():
             zip_path = os.path.join(zip_subdir, fname)
             # Add file, at correct path
             zf.write(fpath)
+        #
         zf.close()
 
         resp = HttpResponse(s.getvalue(), mimetype="application/x-zip-compressed")

@@ -48,17 +48,17 @@ def contatos(request):
 
 def pesquisa(dados):
     pesquisa_arquivos = PesquisaArquivos
-    resultado = dados['numeroSequencial']
-    resultado += '-' + dados['porcentagem']
-    resultado += '-' + dados['tipoFalha']
-    resultado += '-' + '_'+'13'+'_'
-    resultado +=  dados['tipoFalhaConjunto']
-    resultado += '-' + dados['variavelFalhada']
-    resultado += '-' + dados['metodoUtilizado']
-    resultado += '.csv'
+    # resultado = dados['numeroSequencial']
+    # resultado += '-' + dados['porcentagem']
+    # resultado += '-' + dados['tipoFalha']
+    # resultado += '-' + '_'+'13'+'_'
+    # resultado +=  dados['tipoFalhaConjunto']
+    # resultado += '-' + dados['variavelFalhada']
+    # resultado += '-' + dados['metodoUtilizado']
+    # resultado += '.csv'
 
     meuDir = '/arquivos'
-    resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado = pesquisa_arquivos.lista_aquivos(resultado)
+    resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado = pesquisa_arquivos.lista_aquivos(dados)
     return resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado
 
 def lista_diretorios(request):
