@@ -46,17 +46,10 @@ def home(request):
 def contatos(request):
     return render(request,"contatos.html",{"teste":"teste"})
 
+
+#Faz pesquisa nos arquivos
 def pesquisa(dados):
     pesquisa_arquivos = PesquisaArquivos
-    # resultado = dados['numeroSequencial']
-    # resultado += '-' + dados['porcentagem']
-    # resultado += '-' + dados['tipoFalha']
-    # resultado += '-' + '_'+'13'+'_'
-    # resultado +=  dados['tipoFalhaConjunto']
-    # resultado += '-' + dados['variavelFalhada']
-    # resultado += '-' + dados['metodoUtilizado']
-    # resultado += '.csv'
-
     meuDir = '/arquivos'
     resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado = pesquisa_arquivos.lista_aquivos(dados)
     return resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado
@@ -85,7 +78,6 @@ def lista_diretorios(request):
     teste = teste[::-1]
     teste = ''.join(teste)
 
-
     data = {
         'anterior': teste,
         'arquivos' : arquivos,
@@ -105,6 +97,7 @@ def download(request,path):
     downloadModel = Download()
     return downloadModel.getDownload(request,path)
 
+#compact a pesquisa em um arquivo zip
 def compacta_pesquisa(request):
     request = request.GET.getlist('data[]')
     arquivos = []
@@ -121,12 +114,15 @@ def compacta_pesquisa(request):
     zf.close()
     return JsonResponse({'status':'ok'})
 
+#faz download da pesquisa compactada
 def baixar_pesquisa(request):
     nome_arquivo = os.getcwd() + "/" + "pesquisa.zip"
     nome_download = "pesquisa.zip"
     response = HttpResponse(open(nome_arquivo, 'rb').read(), content_type='x-zip-compressed')
     response['Content-Disposition'] = "attachment; filename=%s" % nome_download
     return response
+
+
 
 def exemplo(request):
     valores = ['david','maria','jose','pedro']

@@ -33,6 +33,7 @@ class ListaArquivos:
             return dirs,files,detalheArquivosModificado,detalheArquivosCriados,detalhePastaModificadas,detalhePastaCriadas
 
 
+#faz pesquisa nos arquivos
 class PesquisaArquivos:
     '''0000000030-35-seq-_13_0.4-1.csv'''
     def lista_aquivos(pesquisa):
@@ -48,7 +49,8 @@ class PesquisaArquivos:
         numSequencialDois = int(pesquisa['numeroSequencialDois'])
         porcentagemFalha = pesquisa['porcentagem']
         tipoFalha = pesquisa['tipoFalha']
-
+        metodo = pesquisa['metodoUtilizado']
+        print(metodo)
         vetorNumSequencial = []
         vetorNumSequencial.append("(")
         resultadoNumsequencial = ''
@@ -60,8 +62,10 @@ class PesquisaArquivos:
         vetorNumSequencial.append(")")
         for r in vetorNumSequencial:
             m_regex = m_regex+str(r)
-        m_regex = m_regex+"-"+porcentagemFalha+"-"+tipoFalha+"-_13_[0-9][.][0-4]-[0-9][.]csv"
-        print(m_regex)
+
+        #aplica expressão regular nos arquivos
+        m_regex = m_regex+"-"+porcentagemFalha+"-"+tipoFalha+"-_13_[0-9][.][0-4]-"+metodo+"[.]csv"
+
         for root,dirs,files in os.walk('.',topdown=False):
             for f in files:
                 if(re.search(m_regex,f)):
