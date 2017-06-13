@@ -14,4 +14,5 @@ class Pesquisa(forms.Form):
      tipoFalha                =  forms.ChoiceField (choices=FALHA,required=False, widget=None,label='Falha')
      tipoFalhaConjunto        = forms.IntegerField(label="Falha Conjunto", max_value=100,required=False,widget=forms.TextInput(attrs={'style':"width:100px",'value':'0'}))
      variavelFalhada          = forms.IntegerField(label="Varialvel Falhada",max_value=100,required=False,widget=forms.TextInput(attrs={'style':"width:100px",'value':'4'}))
-     metodoUtilizado          = forms.IntegerField(label="Metodo Utilizado",max_value=100,required=False,widget=forms.TextInput(attrs={'style':"width:100px",'value':'1'}))
+     metodoUtilizado                =  forms.ChoiceField (choices=METODOS,required=False, widget=None,label='Metodos')
+     # metodoUtilizado          = forms.IntegerField(label="Metodo Utilizado",max_value=100,required=False,widget=forms.TextInput(attrs={'style':"width:100px",'value':'1'}))
