@@ -13,6 +13,9 @@ $('#id_numeroSequencial').on('keyup', function ()
     }
 });
 
+var inicio = function () {
+  console.log('aqui');
+};
 
 var chamaAjax = function (elem)
 {
@@ -92,10 +95,10 @@ var chamaArquivosAjax = function (elem)
 
                     dadosHtml += "<br>";
 
-
                     for(var i = 0; i < data.arquivos.length; i = i+1)
                     {
-                        console.log(data.caminho);
+
+                        console.log(i);
                          dadosHtml += '<tr>';
                          dadosHtml += '<td>';
                          dadosHtml += '<div'+' ';
@@ -117,7 +120,20 @@ var chamaArquivosAjax = function (elem)
                          dadosHtml += ' >';
                          dadosHtml += '</a>';
                          dadosHtml += '</td>';
+                         dadosHtml += '<td>';
+                         dadosHtml += '<input ';
+                         dadosHtml += 'data-status="desativado" ';
+                         dadosHtml += 'type="checkbox"';
+                         dadosHtml += 'id='+parseInt(i+1);
+                         dadosHtml += ' onclick="seleciona(this)"';
+                         dadosHtml += ' value='+"."+data.caminho + '/'+data.arquivos[i];
+                         dadosHtml += ' >';
+                         dadosHtml += '';
+                         dadosHtml += '</input>';
+                         dadosHtml += '</td>';
                          dadosHtml += '</tr>';
+
+
                     }
                     $("#volta_dir").html(menu);
 
