@@ -42,16 +42,12 @@ class PesquisaArquivos:
         diretorio = []
         detalheArquivosModificado = []
         detalheArquivosCriados = []
-        tempo =''
 
         m_regex = "00000000"
         numSequencialUm =int(pesquisa['numeroSequencialUm'])
         numSequencialDois = int(pesquisa['numeroSequencialDois'])
-        tipoFalha = 'ale'
-        falha = 35
-        trataFalha = [r for r in str(falha)]
-        inicio = 30
-        fim = 35
+        porcentagemFalha = pesquisa['porcentagem']
+        tipoFalha = pesquisa['tipoFalha']
 
         vetorNumSequencial = []
         vetorNumSequencial.append("(")
@@ -64,8 +60,8 @@ class PesquisaArquivos:
         vetorNumSequencial.append(")")
         for r in vetorNumSequencial:
             m_regex = m_regex+str(r)
-        m_regex = m_regex+"-[1]-seq-_13_[0-9][.][0-4]-[0-9][.]csv"
-
+        m_regex = m_regex+"-"+porcentagemFalha+"-"+tipoFalha+"-_13_[0-9][.][0-4]-[0-9][.]csv"
+        print(m_regex)
         for root,dirs,files in os.walk('.',topdown=False):
             for f in files:
                 if(re.search(m_regex,f)):
