@@ -1,0 +1,25 @@
+
+upstream projeto_estagio {
+    server unix:/var/www/projeto_estagio/run/gunicorn.sock fail_timeout=0;
+}
+
+server {
+
+    listen   80;
+    server_name 52.37.64.244;
+
+    client_max_body_size 4G;
+
+    access_log /var/www/projeto_estagio/logs/nginx-access.log;
+    error_log /var/www/projeto_estagio/logs/nginx-error.log;
+
+    location /static/ {
+       alias   /var/www/projeto_estagio/estagio/estagio/base/static/;
+    }
+
+    location /media/ {
+        alias  /var/www/projeto_estagio/estagio/arquivos/;
+   }
+
+"/etc/nginx/sites-enabled/estagio" 43L, 1093C                                                            1,0-1         Top
+
