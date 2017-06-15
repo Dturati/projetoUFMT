@@ -13,9 +13,7 @@ $('#id_numeroSequencial').on('keyup', function ()
     }
 });
 
-var inicio = function () {
-  console.log('aqui');
-};
+
 
 var chamaAjax = function (elem)
 {
@@ -59,7 +57,7 @@ var chamaArquivosAjax = function (elem)
           var html = "";
           var dadosHtml = "";
           var menu = "";
-          console.log('aqui');
+
           $.ajax({
                 type: "GET",
                 url: '/ajax/lista_diretorios/',

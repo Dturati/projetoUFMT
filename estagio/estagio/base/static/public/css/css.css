@@ -1,14 +1,32 @@
-
 .container{
-    margin: 0 auto;
+    display: table;
+    margin: 0px 0px 0px 0px;
     width: 960px;
+    float: left;
+    margin-left: -15px;
+}
+
+.banner{
+    background-color: #f9f9f9;
+    height: 50px;
+    width: 800px;
+    margin-left: 152px;
+    margin-top: 1px;
+}
+
+.textoBanner{
+    text-align: center;
+}
+#lateral{
+    background-color: #3B5699;
+    height: 800px;
+    width: 180px;
+    float: left;
 }
 
 #tabelaPesquisa{
     background-color: transparent;
     border-color: transparent;
-    margin-bottom: 0px;
-    padding-top: 20px;
 }
 
 #tabelaCorpo tr{
@@ -16,18 +34,40 @@
 }
 
 .place{
-    margin-bottom: 0px;
-    padding-top: 10px;
-    border-top: solid 1px #9d9d9d;
+    margin-bottom: 1px;
+    padding-top: 1px;
+    border-top: solid 0px #9d9d9d;
 }
 
-#lateral{
-  background-color: #3B5699;
-  padding-right: 80px;
-}
-
-body{
+body
+{
     background-color: #f9f9f9;
 }
+
+input,text,select{
+   cursor:Pointer;
+}
+
+#pesquisa{
+    display: table;
+}
+#tabelaGeralPesquisa{
+    float: right;
+    margin-left: 50px;
+}
+
+.tudo{
+    float: left;
+    width: 400px;
+    margin-left: 5px;
+}
+
+.resultado{
+    width: 800px;
+
+}
+
+
+
 
 
