@@ -3,79 +3,84 @@
 {% block content %}
     <div class="container">
 
-        <div id="lateral">
+         <div id="lateral">
              <a href="{% url 'home:home' %}">
                 <img  height="90px" style="
-                       margin-left: auto;
-	                    margin-right: auto;
-	                    display: block;"
+                        margin-left: auto;
+                        margin-right: auto;
+                        display: block;"
                         width="90px"
                         src="{% static 'img/ufmt_logo.png' %}"/>
              </a>
          </div>
-        <div class="place">
-                <form  method="post">
-                    {% csrf_token %}
-                    <table  class="table" id="tabelaPesquisa">
-                    <thead>
-                    <tr>
-                        <th style="font-size: 10px;text-align: inherit;">Nº Intervalo</th>
-                        <th style="font-size: 10px;text-align: inherit;">Nº Intervalo</th>
-                        <th style="font-size: 10px;text-align: inherit;">Porcentagem Falhas</th>
-                        <th style="font-size: 10px;text-align: inherit;">Tipo de Falha</th>
-                        <th style="font-size: 10px;text-align: inherit;">Falha Conjunto</th>
-                        <th style="font-size: 10px;text-align: inherit;">Variavel Falhada</th>
-                        <th style="font-size: 10px;text-align: inherit;">Metodo</th>
-                        <th style="font-size: 10px;text-align: inherit;">Pesquisar</th>
-                    </tr>
-                    </thead>
-                        <tbody>
-                           <tr>
-                                {% for f in form %}
-                                    <td style="width: 10px">{{ f }}</td>
-                                {% endfor %}
-                            <td><button class="glyphicon glyphicon-search"  type="submit" value="Pesquisar"></button></td>
-                            </tr>
-                        </tbody>
-                      </table>
-                </form>
+        <div class="place banner">
+            <h4 class="textoBanner">Análize de Falhas</h4>
         </div>
-
-        <hr>
-
-        <div class="place">
-             <div>
-                <a class="glyphicon glyphicon-folder-open" style="cursor:pointer" data-dir="/arquivos" onclick="chamaArquivosAjax(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">/Arquivos</a>
-             </div>
-
-              <div id="volta_dir"></div>
-            <form method="get" id="baixarPesquisa">
-              {% csrf_token %}
-                <table class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Diretorio/arquivo</th>
-                            <th>Data Modificação</th>
-                            <th>Data Criação</th>
-                            <th>Baixar</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="tabela">
-                            {% for um,dois,tres,quatro in teste %}
+         <div class="tudo">
+                <div class="place" id="pesquisa">
+                    <div id="tabelaGeralPesquisa">
+                            <form  method="post">
+                                {% csrf_token %}
+                                <table  class="table" id="tabelaPesquisa">
+                                <thead>
                                 <tr>
-                                    <td>{{um}}</td>
-                                    <td>{{ tres }}</td>
-                                    <td>{{ quatro }}</td>
-                                    <td><a class="glyphicon glyphicon-download" href="{% url "home:download" dois %}"></a></td>
-                                    <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ dois }}"></td>
+                                    <th style="font-size: 10px;text-align: inherit;">Nº Intervalo</th>
+                                    <th style="font-size: 10px;text-align: inherit;">Nº Intervalo</th>
+                                    <th style="font-size: 10px;text-align: inherit;">Porcentagem Falhas</th>
+                                    <th style="font-size: 10px;text-align: inherit;">Tipo de Falha</th>
+                                    <th style="font-size: 10px;text-align: inherit;">Falha Conjunto</th>
+                                    <th style="font-size: 10px;text-align: inherit;">Variavel Falhada</th>
+                                    <th style="font-size: 10px;text-align: inherit;">Metodo</th>
+                                    <th style="font-size: 10px;text-align: inherit;">Pesquisar</th>
                                 </tr>
-                            {%  endfor %}
-                    </tbody>
-                </table>
-            </form>
-            <div id="idBaixarPesquisa" style="padding-left: 94%"></div>
+                                </thead>
+                                    <tbody>
+                                       <tr>
+                                            {% for f in form %}
+                                                <td style="width: 10px">{{ f }}</td>
+                                            {% endfor %}
+                                        <td><button class="glyphicon glyphicon-search"  type="submit" value="Pesquisar"></button></td>
+                                        </tr>
+                                    </tbody>
+                                  </table>
+                            </form>
+                    </div>
+                </div>
+
+                <div class="place resultado">
+                     <div>
+                        <a class="glyphicon glyphicon-folder-open" style="cursor:pointer" data-dir="/arquivos" onclick="chamaArquivosAjax(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">/Arquivos</a>
+                     </div>
+
+                    <div id="volta_dir"></div>
+                    <form method="get" id="baixarPesquisa">
+                      {% csrf_token %}
+                        <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Diretorio/arquivo</th>
+                                    <th>Data Modificação</th>
+                                    <th>Data Criação</th>
+                                    <th>Baixar</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tabela">
+                                    {% for um,dois,tres,quatro in teste %}
+                                        <tr>
+                                            <td>{{um}}</td>
+                                            <td>{{ tres }}</td>
+                                            <td>{{ quatro }}</td>
+                                            <td><a class="glyphicon glyphicon-download" href="{% url "home:download" dois %}"></a></td>
+                                            <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ dois }}"></td>
+                                        </tr>
+                                    {%  endfor %}
+                            </tbody>
+
+                        </table>
+                    </form>
+                    <div id="idBaixarPesquisa" style="padding-left: 94%"></div>
+                </div>
+            </div>
         </div>
-    </div>
 
 {%  endblock %}
