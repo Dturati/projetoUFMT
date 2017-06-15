@@ -1,26 +1,33 @@
-.glyphicon{
-    font-size: 15px;
+
+.container{
+    margin: 0 auto;
+    width: 960px;
+}
+
+#tabelaPesquisa{
+    background-color: transparent;
+    border-color: transparent;
+    margin-bottom: 0px;
+    padding-top: 20px;
+}
+
+#tabelaCorpo tr{
+  background-color: #00b3ee;
+}
+
+.place{
+    margin-bottom: 0px;
+    padding-top: 10px;
+    border-top: solid 1px #9d9d9d;
 }
 
 #lateral{
   background-color: #3B5699;
   padding-right: 80px;
-  height:800px;
-  width: 200px;
-  display:inline-block;
-}
-#geral{
-
 }
 
-#busca{
-   height:10px;
-   width: 1200px;
+body{
+    background-color: #f9f9f9;
 }
 
-#tabelaPesquisa{
-  height:5px;
-   width: 800px;
-  display: inline;
-}
 
