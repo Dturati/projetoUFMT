@@ -1,19 +1,12 @@
-from django.db import models
 from django.http import HttpResponse
-import os,time,re
-import os, tempfile, zipfile
+import time,re
+import os
 from wsgiref.util import FileWrapper
 import mimetypes
 import zipfile
 from io import StringIO
 # Create your models here.
 
-'''
-import os.path, time
-print "last modified: %s" % time.ctime(os.path.getmtime(file))
-print "created: %s" % time.ctime(os.path.getctime(file))
-
-'''
 class ListaArquivos:
     def list_files(startpath):
         detalheArquivosModificado = []
@@ -33,48 +26,42 @@ class ListaArquivos:
             return dirs,files,detalheArquivosModificado,detalheArquivosCriados,detalhePastaModificadas,detalhePastaCriadas
 
 
+
 class PesquisaArquivos:
     '''0000000030-35-seq-_13_0.4-1.csv'''
     def lista_aquivos(pesquisa):
-        # print(pesquisa)
         meuDir = '/arquivos'
         arquivos = []
-        diretorio = []
-        detalheArquivosModificado = []
-        detalheArquivosCriados = []
+        m_regex             = "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
+        regex_falha = ''
+        porcentagem_um      =   int(pesquisa['porcentagem_um'])
+        porcentagem_dois    = int(pesquisa['porcentagem_dois'])
 
-        m_regex = "00000000"
-        numSequencialUm =int(pesquisa['numeroSequencialUm'])
-        numSequencialDois = int(pesquisa['numeroSequencialDois'])
-        porcentagemFalha = pesquisa['porcentagem']
         tipoFalha = pesquisa['tipoFalha']
         metodo = pesquisa['metodoUtilizado']
-        vetorNumSequencial = []
-        vetorNumSequencial.append("(")
-        resultadoNumsequencial = ''
-        while(numSequencialUm <= numSequencialDois):
-            vetorNumSequencial.append(numSequencialUm)
-            if(numSequencialUm < numSequencialDois):
-                vetorNumSequencial.append("|")
-            numSequencialUm = numSequencialUm + 1
-        vetorNumSequencial.append(")")
-        for r in vetorNumSequencial:
-            m_regex = m_regex+str(r)
-        m_regex = m_regex+"-"+porcentagemFalha+"-"+tipoFalha+"-_13_[0-9][.][0-4]-"+metodo+"[.]csv"
-        print(m_regex)
+        vetorFalha = []
+        vetorFalha.append("(")
+        porcentagemFalha = porcentagem_um
+        while(porcentagemFalha <= porcentagem_dois):
+            vetorFalha.append(porcentagemFalha)
+            if(porcentagemFalha == porcentagem_dois):
+                vetorFalha.append(")")
+                break
+            porcentagemFalha = porcentagemFalha + 1
+            vetorFalha.append("|")
+        for r in vetorFalha:
+            regex_falha = regex_falha+str(r)
+        m_regex = m_regex+"-"+regex_falha+"-"+tipoFalha+"-_13_[0-9][.][0-4]-"+metodo+"[.]csv"
+
         for root,dirs,files in os.walk('.',topdown=False):
             for f in files:
                 if(re.search(m_regex,f)):
-                    detalheArquivosModificado.append(time.ctime(os.path.getmtime(root + '/' + f)))
-                    detalheArquivosCriados.append(time.ctime(os.path.getctime(root + '/' + f)))
-                    arquivos.append(f)
-                    diretorio.append(str(root)+"/"+f)
-        return arquivos,diretorio,detalheArquivosCriados,detalheArquivosModificado
+                    arquivos.append({'arquivo':f,'diretorio':str(root)+"/"+f,'criado':time.ctime(os.path.getctime(root + '/' + f)),'modificado':time.ctime(os.path.getmtime(root + '/' + f))})
+        return arquivos
 
 class Download:
     def getDownload(self, request, path):
         nome_arquivo = os.getcwd() + "/" + path
-        print(nome_arquivo)
         nome_download = os.getcwd() + "/" + path + ".csv"
         wrapper = FileWrapper(open(nome_arquivo))
         content_type = mimetypes.guess_type(nome_arquivo)[0]
@@ -95,9 +82,7 @@ class Compacta_aquivos():
             # Calculate path for file in zip
             fdir, fname = os.path.split(fpath)
             zip_path = os.path.join(zip_subdir, fname)
-            # Add file, at correct path
             zf.write(fpath)
-        #
         zf.close()
 
         resp = HttpResponse(s.getvalue(), mimetype="application/x-zip-compressed")

@@ -1,0 +1,5 @@
+{'criado': 'Tue Jun 13 00:57:35 2017', 'modificado': 'Sun Jun  4 02:53:00 2017', 'arquivo': '0000000030-4-ale-_13_0.4-1.csv', 'diretorio': './arquivos/testeDois/0000000030-4-ale-_13_0.4-1.csv'}
+{'criado': 'Sat Jun 10 21:56:39 2017', 'modificado': 'Sun Jun  4 02:53:00 2017', 'arquivo': '0000000030-35-ale-_13_0.4-1.csv', 'diretorio': './arquivos/subdir/dir/0000000030-35-ale-_13_0.4-1.csv'}
+{'criado': 'Sun Jun  4 02:53:01 2017', 'modificado': 'Sun Jun  4 02:53:00 2017', 'arquivo': '0000000030-1-ale-_13_0.4-1.csv', 'diretorio': './arquivos/subdir/dir/0000000030-1-ale-_13_0.4-1.csv'}
+{'criado': 'Sat Jun  3 20:49:36 2017', 'modificado': 'Sat Jun  3 02:32:58 2017', 'arquivo': '0000000030-1-ale-_13_0.4-1.csv', 'diretorio': './arquivos/testeTres/0000000030-1-ale-_13_0.4-1.csv'}
+{'criado': 'Sun Jun  4 02:53:10 2017', 'modificado': 'Sun Jun  4 02:53:10 2017', 'arquivo': '0000000030-1-ale-_13_0.4-1.csv', 'diretorio': './arquivos/teste/subteste/0000000030-1-ale-_13_0.4-1.csv'}
