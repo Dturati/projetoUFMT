@@ -1,44 +1,48 @@
-from builtins import type
 from django.http import JsonResponse
-from django.shortcuts import render
 from .models import ListaArquivos,PesquisaArquivos
-from django.conf import settings
 from django.http import HttpResponse
-import os,time
+import os
 from .form import Pesquisa
-import re
 from .models import Download,Compacta_aquivos
 import zipfile
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-import pdb
+import ast
 lista_arquivos = ListaArquivos
+resutadopesquisaPaginado = []
 
 def home(request):
-
     form = Pesquisa()
     resultadoPesquisa = []
-    detalheArquivosCriados = []
-    detalheArquivosModificado = []
     diretorio = []
-    if request.method == 'POST':
+    num = int(request.GET.get('page'))
+
+    if request.method == 'POST' and num == 1:
+        arquivosPesquisa = open('arquivosPesquisa.txt','w')
         form = Pesquisa(request.POST)
         if form.is_valid():
-            resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado = pesquisa(form.data)
+            resultadoPesquisa = pesquisa(form.data)
         else:
             print("Invalido")
-
-    paginado = zip(resultadoPesquisa,diretorio,detalheArquivosModificado,detalheArquivosModificado)
-    # P = Paginator(paginado,1)
-    # print(P.count)
+        for r in resultadoPesquisa:
+            arquivosPesquisa.write(str(r)+"\n")
+        arquivosPesquisa.close()
+        resutadopesquisaPaginado = resultadoPesquisa
+    else:
+        resutadopesquisaPaginado = []
+        arquivosPesquisa = open('arquivosPesquisa.txt','r')
+        resultado =arquivosPesquisa.readlines()
+        for r in resultado:
+            resutadopesquisaPaginado.append(ast.literal_eval(r))
+        arquivosPesquisa.close()
+    P = Paginator(resutadopesquisaPaginado,10)
+    for r in resutadopesquisaPaginado:
+        print(r)
     contexto = {
         'form' : form,
         'resultadoPesquisa' : resultadoPesquisa,
         'diretorio' : diretorio,
-        'iterar' : range(len(resultadoPesquisa)),
-        'teste' : paginado
-
+        'paginado':P.page(num)
     }
 
     return render(request,"home.html",contexto)
@@ -49,8 +53,8 @@ def contatos(request):
 def pesquisa(dados):
     pesquisa_arquivos = PesquisaArquivos
     meuDir = '/arquivos'
-    resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado = pesquisa_arquivos.lista_aquivos(dados)
-    return resultadoPesquisa,diretorio,detalheArquivosCriados,detalheArquivosModificado
+    resultadoPesquisa  = pesquisa_arquivos.lista_aquivos(dados)
+    return resultadoPesquisa
 
 def lista_diretorios(request):
     caminho = request.GET.get('caminho', None)
@@ -76,7 +80,6 @@ def lista_diretorios(request):
     teste = teste[::-1]
     teste = ''.join(teste)
 
-
     data = {
         'anterior': teste,
         'arquivos' : arquivos,
@@ -88,7 +91,6 @@ def lista_diretorios(request):
         'detalhePastaCriadas' : detalhePastaCriadas
     }
     arquivosJson = JsonResponse(data)
-
     return arquivosJson
 
 #Faz download de um arquivo
@@ -99,10 +101,10 @@ def download(request,path):
 def compacta_pesquisa(request):
     request = request.GET.getlist('data[]')
     arquivos = []
+
     for r in request:
         arquivos.append(str(os.getcwd() + '/' + r))
-    print(arquivos)
-    # zip_subdir = 'estagio'
+
     zf = zipfile.ZipFile('pesquisa.zip', "w")
     for fpath in request:
         fdir, fname = os.path.split(fpath)
@@ -110,8 +112,10 @@ def compacta_pesquisa(request):
         zip_path = os.path.join(zip_subdir, fname)
         zf.write(fpath, zip_path)
     zf.close()
+
     return JsonResponse({'status':'ok'})
 
+#Baixa os arquivos compactados
 def baixar_pesquisa(request):
     nome_arquivo = os.getcwd() + "/" + "pesquisa.zip"
     nome_download = "pesquisa.zip"
@@ -120,10 +124,10 @@ def baixar_pesquisa(request):
     return response
 
 def exemplo(request):
-    valores = ['david','maria','jose','pedro']
-    P = Paginator(valores,1)
-    num = request.GET.get('page')
-    print(num)
+    valores = ['david','maria','jose','pedro','dois','tres','quatro']
+
+    P = Paginator(valores,2)
+    num = (request.GET.get('page'))
     context ={
         'contacts':P.page(num)
     }
