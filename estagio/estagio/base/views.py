@@ -15,7 +15,12 @@ def home(request):
     form = Pesquisa()
     resultadoPesquisa = []
     diretorio = []
-    num = int(request.GET.get('page'))
+
+    #Verifica se é uma paginação ou submição de formulario
+    if(request.POST):
+        num=1
+    else:
+        num = int(request.GET.get('page', 1))
 
     if request.method == 'POST' and num == 1:
         arquivosPesquisa = open('arquivosPesquisa.txt','w')
@@ -35,9 +40,7 @@ def home(request):
         for r in resultado:
             resutadopesquisaPaginado.append(ast.literal_eval(r))
         arquivosPesquisa.close()
-    P = Paginator(resutadopesquisaPaginado,10)
-    for r in resutadopesquisaPaginado:
-        print(r)
+    P = Paginator(resutadopesquisaPaginado,2)
     contexto = {
         'form' : form,
         'resultadoPesquisa' : resultadoPesquisa,
