@@ -25,8 +25,6 @@ class ListaArquivos:
 
             return dirs,files,detalheArquivosModificado,detalheArquivosCriados,detalhePastaModificadas,detalhePastaCriadas
 
-
-
 class PesquisaArquivos:
     '''0000000030-35-seq-_13_0.4-1.csv'''
     def lista_aquivos(pesquisa):
