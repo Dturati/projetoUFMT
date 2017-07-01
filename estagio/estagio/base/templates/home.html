@@ -30,6 +30,7 @@
                                     <th style="font-size: 10px;text-align: inherit;">Falha Conjunto</th>
                                     <th style="font-size: 10px;text-align: inherit;">Variavel Falhada</th>
                                     <th style="font-size: 10px;text-align: inherit;">Metodo</th>
+                                    <th style="font-size: 10px;text-align: inherit;">Todos</th>
                                     <th style="font-size: 10px;text-align: inherit;">Pesquisar</th>
                                 </tr>
                                 </thead>
@@ -38,10 +39,12 @@
                                             {% for f in form %}
                                                 <td style="width: 10px">{{ f }}</td>
                                             {% endfor %}
+                                       <td><input name="todosOsArquivos" id="todosOsArquivos" type="checkbox" data-status="desativado"  onclick="pesquiarTodosOsArquivos(this)" value="desativado"></td>
                                         <td><button class="glyphicon glyphicon-search"  name="pesquisa" type="submit" value="Pesquisar"></button></td>
-                                        </tr>
+                                       </tr>
                                     </tbody>
                                   </table>
+
                             </form>
                     </div>
                 </div>
@@ -76,21 +79,23 @@
                             </tbody>
 
                         </table>
-                      <div class="pagination">
-                        <span class="step-links">
-                            {% if paginado.has_previous %}
-                                <a href="?page={{ paginado.previous_page_number }}">Anterior</a>
-                            {% endif %}
+                      <div id="paginacao" class="pagination">
+                            <span class="step-links">
+                                {% if paginado.has_previous %}
+                                    <a href="?page={{ paginado.previous_page_number }}">Anterior</a>
+                                {% endif %}
 
-                            <span class="current">
-                                Paginas {{ paginado.number }} de {{ paginado.paginator.num_pages }}.
+                                <span class="current">
+                                    Paginas {{ paginado.number }} de {{ paginado.paginator.num_pages }}.
+                                </span>
+
+                                {% if paginado.has_next %}
+                                    <a href="?page={{ paginado.next_page_number}}">Próxima</a>
+                                {% endif %}
+                            <p>Total arquivos encontrados</p>
+                                {{ quantidade }}
                             </span>
-
-                            {% if paginado.has_next %}
-                                <a href="?page={{ paginado.next_page_number}}">Próxima</a>
-                            {% endif %}
-                        </span>
-                    </div>
+                      </div>
                     </form>
                     <div id="idBaixarPesquisa" style="padding-left: 94%"></div>
                 </div>

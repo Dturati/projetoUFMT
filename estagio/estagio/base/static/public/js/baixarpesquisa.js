@@ -78,3 +78,29 @@ var compactaPesquisa = function (elem)
 var baixaPesquisa = function () {
   window.open('ajax/baixar_pesquisa/');
 };
+
+var pesquiarTodosOsArquivos = function ()
+{
+    console.log('click');
+    var todosOsArquivos = document.getElementById("todosOsArquivos");
+    todosOsArquivos.setAttribute('data-status','ativado');
+    if(todosOsArquivos.value == 'desativado') {
+        todosOsArquivos.value = 'ativado';
+        document.getElementById("id_porcentagem_um").setAttribute("disabled","disabled");
+        document.getElementById("id_porcentagem_dois").setAttribute("disabled","disabled");
+        document.getElementById("id_tipoFalha").setAttribute("disabled","disabled");
+        document.getElementById("id_tipoFalhaConjunto").setAttribute("disabled","disabled");
+        document.getElementById("id_variavelFalhada").setAttribute("disabled","disabled");
+        document.getElementById("id_metodoUtilizado").setAttribute("disabled","disabled");
+    }else{
+        todosOsArquivos.value = 'desativado';
+        document.getElementById("id_porcentagem_um").removeAttribute("disabled");
+        document.getElementById("id_porcentagem_dois").removeAttribute("disabled");
+        document.getElementById("id_tipoFalha").removeAttribute("disabled");
+        document.getElementById("id_tipoFalhaConjunto").removeAttribute("disabled");
+        document.getElementById("id_variavelFalhada").removeAttribute("disabled");
+        document.getElementById("id_metodoUtilizado").removeAttribute("disabled");
+    }
+    // todosOsArquivos.value = "TODOS_OS_ARQUIVOS";
+
+};

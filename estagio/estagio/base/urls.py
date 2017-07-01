@@ -1,5 +1,6 @@
 from django.conf.urls import url,include
 from estagio.base.views import home,contatos,lista_diretorios,download,compacta_pesquisa,baixar_pesquisa,exemplo
+
 urlpatterns = [
     url(r'^home/$',home, name='home'), #Caminho da view home
     url(r'^ajax/lista_diretorios/$',lista_diretorios, name='lista_diretorios'), #Caminho da view home
