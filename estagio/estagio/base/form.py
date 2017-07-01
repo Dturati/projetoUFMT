@@ -7,6 +7,7 @@ class Pesquisa(forms.Form):
      FALHA = (("ale", "Aleatorio"), ("seq", "Sequencial"))
      METODOS = (('1','SLR'),('2','MLR'),('3','Media'),('4','SVM'))
 
+
      porcentagem_um              = forms.ChoiceField(choices=PORCENTAGEM_FALHA_UM, required=False, widget=None, label='Porcentagem Falha')
      porcentagem_dois              = forms.ChoiceField(choices=PORCENTAGEM_FALHA_DOIS, required=False, widget=None, label='Porcentagem Falha')
      tipoFalha                =  forms.ChoiceField (choices=FALHA,required=False, widget=None,label='Falha')

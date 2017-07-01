@@ -18,7 +18,7 @@ def home(request):
 
     #Verifica se é uma paginação ou submição de formulario
     if(request.POST):
-        num=1
+        num = 1
     else:
         num = int(request.GET.get('page', 1))
 
@@ -40,11 +40,11 @@ def home(request):
         for r in resultado:
             resutadopesquisaPaginado.append(ast.literal_eval(r))
         arquivosPesquisa.close()
-    P = Paginator(resutadopesquisaPaginado,2)
+    P = Paginator(resutadopesquisaPaginado,6)
     contexto = {
         'form' : form,
         'resultadoPesquisa' : resultadoPesquisa,
-        'diretorio' : diretorio,
+        'quantidade' : len(resutadopesquisaPaginado),
         'paginado':P.page(num)
     }
 

@@ -17,7 +17,6 @@ $('#id_numeroSequencial').on('keyup', function ()
 
 var chamaAjax = function (elem)
 {
-
           var caminho =  $(elem).data("dir");
           var html = "";
           var dadosHtml = "";
@@ -53,6 +52,8 @@ var chamaAjax = function (elem)
 
 var chamaArquivosAjax = function (elem)
 {
+
+            $("#paginacao").fadeOut();
           var caminho =  $(elem).data("dir");
           var html = "";
           var dadosHtml = "";
