@@ -78,8 +78,10 @@
                                     </tr>
                                  {% endfor %}
                             </tbody>
-
                         </table>
+                      <div>
+                                    <a class="" onclick="compactaTodaPesquisa(this)" href="#">Baxar toda pesquisa</a>
+                      </div>
                       <div id="paginacao" class="pagination">
                             <span class="step-links">
                                 {% if paginado.has_previous %}
@@ -98,6 +100,7 @@
                             </span>
                       </div>
                     </form>
+
                     <div id="idBaixarPesquisa" style="padding-left: 94%"></div>
                 </div>
             </div>
