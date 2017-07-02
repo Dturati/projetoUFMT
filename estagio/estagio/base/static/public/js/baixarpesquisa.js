@@ -104,3 +104,25 @@ var pesquiarTodosOsArquivos = function ()
     // todosOsArquivos.value = "TODOS_OS_ARQUIVOS";
 
 };
+
+var compactaTodaPesquisa = function (elem)
+{
+        console.log('aqui');
+
+          $.ajax({
+                type: "GET",
+                url: '/ajax/compacta_toda_pesquisa/',
+                data : {
+                    'data':''
+                },
+                success: function (data)
+                {
+                    baixaPesquisa();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+          });
+
+};

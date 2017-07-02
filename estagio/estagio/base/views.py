@@ -108,6 +108,23 @@ def compacta_pesquisa(request):
 
     return JsonResponse({'status':'ok'})
 
+def compacta_toda_pesquisa(request):
+    request = request.session['resultado']
+    arquivos = []
+    print(request)
+    for r in request:
+        arquivos.append(str(r['diretorio']))
+    zf = zipfile.ZipFile('pesquisa.zip', "w")
+
+    for fpath in arquivos:
+        fdir, fname = os.path.split(fpath)
+        zip_subdir = str(fdir)
+        zip_path = os.path.join(zip_subdir, fname)
+        zf.write(fpath, zip_path)
+    zf.close()
+
+    return JsonResponse({'status': 'ok'})
+
 #Baixa os arquivos compactados
 def baixar_pesquisa(request):
     nome_arquivo = os.getcwd() + "/" + "pesquisa.zip"
