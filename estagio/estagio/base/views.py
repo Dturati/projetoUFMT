@@ -1,12 +1,12 @@
 from django.http import JsonResponse
-from .models import ListaArquivos,PesquisaArquivos
+from .processa import ListaArquivos,PesquisaArquivos
 from django.http import HttpResponse
 import os
 from .form import Pesquisa
-from .models import Download,Compacta_aquivos
+from .processa import Download
 import zipfile
 from django.shortcuts import render
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.paginator import Paginator
 import ast
 lista_arquivos = ListaArquivos
 resutadopesquisaPaginado = []
@@ -16,35 +16,25 @@ def home(request):
     resultadoPesquisa = []
     diretorio = []
 
+    if(not(request.session.get('resultado'))):
+        request.session['resultado'] = ''
     #Verifica se é uma paginação ou submição de formulario
     if(request.POST):
         num = 1
     else:
         num = int(request.GET.get('page', 1))
-
     if request.method == 'POST' and num == 1:
-        arquivosPesquisa = open('arquivosPesquisa.txt','w')
         form = Pesquisa(request.POST)
         if form.is_valid():
             resultadoPesquisa = pesquisa(form.data)
+            request.session['resultado'] = resultadoPesquisa
         else:
             print("Invalido")
-        for r in resultadoPesquisa:
-            arquivosPesquisa.write(str(r)+"\n")
-        arquivosPesquisa.close()
-        resutadopesquisaPaginado = resultadoPesquisa
-    else:
-        resutadopesquisaPaginado = []
-        arquivosPesquisa = open('arquivosPesquisa.txt','r')
-        resultado =arquivosPesquisa.readlines()
-        for r in resultado:
-            resutadopesquisaPaginado.append(ast.literal_eval(r))
-        arquivosPesquisa.close()
-    P = Paginator(resutadopesquisaPaginado,6)
+    P = Paginator(request.session['resultado'],6)
     contexto = {
         'form' : form,
         'resultadoPesquisa' : resultadoPesquisa,
-        'quantidade' : len(resutadopesquisaPaginado),
+        'quantidade' : len(request.session['resultado']),
         'paginado':P.page(num)
     }
 
