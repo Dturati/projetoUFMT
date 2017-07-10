@@ -1,0 +1,2 @@
+# dnf install mongodb mongodb-server
+# service mongod start
