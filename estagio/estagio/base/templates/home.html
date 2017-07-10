@@ -44,8 +44,6 @@
                                        </tr>
                                     </tbody>
                                   </table>
-
-
                             </form>
                     </div>
                 </div>
@@ -58,9 +56,11 @@
                     <div id="volta_dir"></div>
                     <form method="get" id="baixarPesquisa">
                       {% csrf_token %}
+                    <div id="idBaixarPesquisa" style="padding-left: 94%"></div>
                         <table class="table table-striped">
                                 <thead>
                                 <tr>
+                                    <th>#</th>
                                     <th>Diretorio/arquivo</th>
                                     <th>Data Modificação</th>
                                     <th>Data Criação</th>
@@ -68,8 +68,10 @@
                                 </tr>
                             </thead>
                             <tbody id="tabela">
+
                                 {% for arquivos in paginado %}
                                     <tr>
+                                        <td>{{forloop.counter }}</td>
                                         <td>{{arquivos.arquivo}}</td>
                                         <td>{{ arquivos.modificado }}</td>
                                         <td>{{ arquivos.criado }}</td>
@@ -80,28 +82,18 @@
                             </tbody>
                         </table>
                       <div>
-                                    <a class="" onclick="compactaTodaPesquisa(this)" href="#">Baxar toda pesquisa</a>
+                          <a class="" onclick="compactaTodaPesquisa(this)" href="#">Baxar toda pesquisa</a>
                       </div>
                       <div id="paginacao" class="pagination">
-                            <span class="step-links">
-                                {% if paginado.has_previous %}
-                                    <a href="?page={{ paginado.previous_page_number }}">Anterior</a>
-                                {% endif %}
-
-                                <span class="current">
-                                    Paginas {{ paginado.number }} de {{ paginado.paginator.num_pages }}.
-                                </span>
-
-                                {% if paginado.has_next %}
-                                    <a href="?page={{ paginado.next_page_number}}">Próxima</a>
-                                {% endif %}
-                            <p>Total arquivos encontrados</p>
-                                {{ quantidade }}
-                            </span>
+                          <nav>
+                              <ul class="pager">
+                                  <li><a href="?page={{ 1 }}&act=A">Primero</a></li>
+                                    <li><a href="?page={{ anterior }}&act=S">Anterior</a></li>
+                                    <li><a href="?page={{ proximo }}&act=A">Próximo</a></li>
+                              </ul>
+                          </nav>
                       </div>
                     </form>
-
-                    <div id="idBaixarPesquisa" style="padding-left: 94%"></div>
                 </div>
             </div>
         </div>

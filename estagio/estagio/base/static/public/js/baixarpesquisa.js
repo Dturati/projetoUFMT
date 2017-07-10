@@ -81,7 +81,6 @@ var baixaPesquisa = function () {
 
 var pesquiarTodosOsArquivos = function ()
 {
-    console.log('click');
     var todosOsArquivos = document.getElementById("todosOsArquivos");
     todosOsArquivos.setAttribute('data-status','ativado');
     if(todosOsArquivos.value == 'desativado') {

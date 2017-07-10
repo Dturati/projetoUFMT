@@ -5,6 +5,7 @@ from wsgiref.util import FileWrapper
 import mimetypes
 import zipfile
 from io import StringIO
+from pymongo import MongoClient
 # Create your models here.
 
 class ListaArquivos:
@@ -24,6 +25,49 @@ class ListaArquivos:
                 detalhePastaCriadas.append(time.ctime(os.path.getctime(root+'/'+ r)))
 
             return dirs,files,detalheArquivosModificado,detalheArquivosCriados,detalhePastaModificadas,detalhePastaCriadas
+#
+# class PesquisaArquivos:
+#     '''0000000030-35-seq-_13_0.4-1.csv'''
+#     def lista_aquivos(pesquisa):
+#         try:
+#             todosOsArquivos = pesquisa['todosOsArquivos']
+#         except:
+#             todosOsArquivos = ""
+#
+#         m_regex = "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
+#         arquivos = []
+#         if(todosOsArquivos == ""):
+#             meuDir = '/arquivos'
+#             arquivos = []
+#             m_regex             = "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
+#             regex_falha = ''
+#             porcentagem_um      =   int(pesquisa['porcentagem_um'])
+#             porcentagem_dois    =   int(pesquisa['porcentagem_dois'])
+#
+#             tipoFalha = pesquisa['tipoFalha']
+#             metodo = pesquisa['metodoUtilizado']
+#             vetorFalha = []
+#             vetorFalha.append("(")
+#             porcentagemFalha = porcentagem_um
+#             while(porcentagemFalha <= porcentagem_dois):
+#                 vetorFalha.append(porcentagemFalha)
+#                 if(porcentagemFalha == porcentagem_dois):
+#                     vetorFalha.append(")")
+#                     break
+#                 porcentagemFalha = porcentagemFalha + 1
+#                 vetorFalha.append("|")
+#             for r in vetorFalha:
+#                 regex_falha = regex_falha+str(r)
+#             m_regex = m_regex+"-"+regex_falha+"-"+tipoFalha+"-_13_[0-9][.][0-4]-"+metodo+"[.]csv"
+#
+#         for root,dirs,files in os.walk('./arquivos',topdown=False):
+#             for f in files:
+#                 if(todosOsArquivos == 'ativado'):
+#                     arquivos.append({'arquivo':f,'diretorio':str(root)+"/"+f,'criado':time.ctime(os.path.getctime(root + '/' + f)),'modificado':time.ctime(os.path.getmtime(root + '/' + f))})
+#                 else:
+#                     if(re.search(m_regex,f)):
+#                         arquivos.append({'arquivo':f,'diretorio':str(root)+"/"+f,'criado':time.ctime(os.path.getctime(root + '/' + f)),'modificado':time.ctime(os.path.getmtime(root + '/' + f))})
+#         return arquivos
 
 class PesquisaArquivos:
     '''0000000030-35-seq-_13_0.4-1.csv'''
@@ -59,13 +103,13 @@ class PesquisaArquivos:
                 regex_falha = regex_falha+str(r)
             m_regex = m_regex+"-"+regex_falha+"-"+tipoFalha+"-_13_[0-9][.][0-4]-"+metodo+"[.]csv"
 
-        for root,dirs,files in os.walk('./arquivos',topdown=False):
-            for f in files:
-                if(todosOsArquivos == 'ativado'):
-                    arquivos.append({'arquivo':f,'diretorio':str(root)+"/"+f,'criado':time.ctime(os.path.getctime(root + '/' + f)),'modificado':time.ctime(os.path.getmtime(root + '/' + f))})
-                else:
-                    if(re.search(m_regex,f)):
-                        arquivos.append({'arquivo':f,'diretorio':str(root)+"/"+f,'criado':time.ctime(os.path.getctime(root + '/' + f)),'modificado':time.ctime(os.path.getmtime(root + '/' + f))})
+        cliente = MongoClient('localhost', 27017)
+        banco = cliente.test_database
+        dados_db = banco.teste
+        resultado = dados_db.find()
+        for f in resultado:
+            if(re.search(m_regex,f['arquivo'])):
+                arquivos.append({'arquivo':f['arquivo'],'diretorio':f['diretorio']})
         return arquivos
 
 class Download:
@@ -88,7 +132,6 @@ class Compacta_aquivos():
         zf = zipfile.ZipFile('pesquisa.zip', "w")
 
         for fpath in arquivos:
-            # Calculate path for file in zip
             fdir, fname = os.path.split(fpath)
             zip_path = os.path.join(zip_subdir, fname)
             zf.write(fpath)
