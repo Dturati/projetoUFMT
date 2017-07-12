@@ -140,6 +140,7 @@ def view_compacta_pesquisa_selecionada(request):
     return JsonResponse({'status':'ok'})
 
 #compacta toda pesquisas
+#aqui devo fazer uma fila de requisições
 def view_compacta_toda_pesquisa(request):
     compacta_toda_pesquisa(request)
     return JsonResponse({'status': 'ok'})
@@ -178,6 +179,9 @@ def exemplo(request):
         'contacts':'teste'
     }
     return render(request,'exemplo.html',context)
+
+def exemplo_assinc(request):
+    return render(request,"websocket.html",{})
 
 
 
