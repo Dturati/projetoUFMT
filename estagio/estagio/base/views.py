@@ -1,24 +1,21 @@
+from django.core.serializers import json
 from django.http import JsonResponse
 from .processa import ListaArquivos,PesquisaArquivos
 from django.http import HttpResponse
-import os
+import os,time
 from .form import Pesquisa
 from .processa import Download
-import zipfile
 from django.shortcuts import render
 from django.core.paginator import Paginator
-from pymongo import MongoClient
 from estagio.base.lista_arvore.lista_arvore import lista_arvore
 from estagio.base.compacta_pesquisa.compacta_pesquisa import compacta_toda_pesquisa,compacta_pesquisa_selecionada
+import json
 lista_arquivos = ListaArquivos
 resutadopesquisaPaginado = []
 
 def home(request):
     form = Pesquisa(request.POST)
-    num = int(request.GET.get('page', 1))
-    act = str(request.GET.get('act'))
-    anterior = 1
-    proximo = 2
+    request.session['tipo_requisicao'] = 'todos_os_arquivos'
     if(request.POST):
         try:
             form.data['todosOsArquivos']
@@ -26,93 +23,35 @@ def home(request):
         except:
             request.session['tipo_requisicao'] = 'pesquisa_individual'
 
-    if(request.session.get('tipo_requisicao') == 'todos_os_arquivos'):
-        request.session['resultado'] = ''
-        #Paginacao
-        if (num > 2 and act == 'S'):
-            num = num - 1
-            anterior = num
-            proximo = num + 1
-
-        resultadoPesquisa = []
-        #Verifica se é uma paginação ou submição de formulario
+    num = int(request.GET.get('page', 1))
+    resultadoPesquisa = []
+    if( request.session['tipo_requisicao'] == 'todos_os_arquivos' or not request.session['tipo_requisicao']):
+        # Verifica se é uma paginação ou submição de formulario
+        from pymongo import MongoClient
         cliente = MongoClient('localhost', 27017)
         banco = cliente.test_database
         dados_db = banco.teste
-        consulta = dados_db.find().skip(10*(num-1)).limit(10)
-        P = Paginator(list(consulta),10)
-
-        if (act == 'A' and P.count > 1 and num > 1):
-            proximo = num + 1
-            anterior = num - 1
-            num = num + 1
-
-        if(P.count == 0):
-            proximo = num - 1
-            anterior = num - 2
-            num = num - 1
-            consulta = dados_db.find().skip(10 * (num - 1)).limit(10)
-            P = Paginator(list(consulta), 10)
-
-        contexto = {
-            'form' : form,
-            'resultadoPesquisa' : resultadoPesquisa,
-            'quantidade' : 6,
-            'paginado':P.page(1),
-            'anterior':anterior,
-            'proximo':proximo
-        }
-        return render(request,"home.html",contexto)
-
-    if (request.session.get('tipo_requisicao') == 'pesquisa_individual'):
-        # Paginacao
-        if(request.POST):
-            resultadoPesquisa = pesquisa(form.data)
-            request.session['resultado'] = resultadoPesquisa
-        # print(request.session['resultado'])
-        if (num > 2 and act == 'S'):
-            num = num - 1
-            anterior = num
-            proximo = num + 1
-
-        resultadoPesquisa = []
-        P = Paginator(request.session['resultado'], 10)
-
-        if (act == 'A' and P.count > 1 and num > 1):
-            proximo = num + 1
-            anterior = num - 1
-            num = num + 1
-
-        if (P.count == 0):
-            proximo = num - 1
-            anterior = num - 2
-            num = num - 1
-            P = Paginator(request.session['resultado'], 10)
-
-        #Ultima página
-        try:
-            P.page(num)
-        except:
-            if(P.count == 0):
-                num = 2
-            contexto = {
-                'form': form,
-                'resultadoPesquisa': resultadoPesquisa,
-                'quantidade': 6,
-                'paginado': P.page(num-1),
-                'anterior': anterior,
-                'proximo': proximo - 1
-            }
-            return render(request, "home.html", contexto)
-
+        consulta = dados_db.find()
+        P = Paginator(list(consulta), 10)
         contexto = {
             'form': form,
             'resultadoPesquisa': resultadoPesquisa,
             'quantidade': 6,
-            'paginado': P.page(1),
-            'anterior': anterior,
-            'proximo': proximo
+            'paginado': P.page(num),
         }
+        return render(request, "home.html", contexto)
+
+    if (request.session['tipo_requisicao'] == 'pesquisa_individual'):
+        if(request.POST):
+            resultadoPesquisa = pesquisa(form.data)
+            request.session['resultado'] = resultadoPesquisa
+        P = Paginator(request.session['resultado'], 10)
+        contexto = {
+                        'form': form,
+                        'resultadoPesquisa': resultadoPesquisa,
+                        'quantidade': 6,
+                        'paginado': P.page(num),
+                    }
         return render(request, "home.html", contexto)
 
 def contatos(request):
@@ -136,13 +75,21 @@ def download(request,path):
 
 #compacta pesquisa selecionada
 def view_compacta_pesquisa_selecionada(request):
-    compacta_pesquisa_selecionada(request)
+    dados = request.GET.getlist('data[]')
+    teste = json.dumps(dados)
+    compacta_pesquisa_selecionada.delay(teste)
     return JsonResponse({'status':'ok'})
 
 #compacta toda pesquisas
 #aqui devo fazer uma fila de requisições
 def view_compacta_toda_pesquisa(request):
-    compacta_toda_pesquisa(request)
+    try:
+        dados = json.dumps(request.session['resultado'])
+    except:
+        dados = {}
+    # dados = json.dumps(request)
+    compacta_toda_pesquisa.delay(dados)
+    # compacta_toda_pesquisa(dados)
     return JsonResponse({'status': 'ok'})
 
 #Baixa os arquivos compactados
@@ -154,20 +101,31 @@ def baixar_pesquisa(request):
     return response
 
 def exemplo(request):
+    arquivos = []
+    for root, dirs, files in os.walk("./arquivos"):
+        for f in files:
+            # detalheArquivosModificado.append(time.ctime(os.path.getmtime(root + '/' + r)))
+            # detalheArquivosCriados.append(time.ctime(os.path.getctime(root + '/' + r)))
+            arquivos.append({'diretorio': root, 'arquivo':f,'modificado':time.ctime(os.path.getmtime(root + '/' + f)),
+                             'criado':time.ctime(os.path.getctime(root + '/' + f))})
+    # print(arquivos)
     from pymongo import MongoClient
     cliente = MongoClient('localhost',27017)
     banco = cliente.test_database
     dados_db = banco.teste
-    dados= []
-    dados = {'todosOsArquivos':"ativado"}
-    todos_os_arquivos = pesquisa(dados)
+    # dados= []
+    # dados = {'todosOsArquivos':"ativado"}
+    # todos_os_arquivos = pesquisa(dados)
+    # print(todos_os_arquivos)
     cont = 1
-    for value in todos_os_arquivos:
+    dados_db.drop()
+    for value in arquivos:
+        # print(value)
         value['_id'] = cont
         dados = dados_db.insert_one(value).inserted_id
         cont = cont + 1
     #
-    consulta  = dados_db.find()
+    # consulta  = dados_db.find()
     # consulta  = dados_db.drop()
     # cont = 1
     # for r in consulta:
@@ -178,12 +136,28 @@ def exemplo(request):
     context ={
         'contacts':'teste'
     }
+
     return render(request,'exemplo.html',context)
 
+from estagio.base.task import add
 def exemplo_assinc(request):
-    return render(request,"websocket.html",{})
+    dados = request.GET
+    dados = dados['valor']
+    resultado = add.delay(dados)
+    redis ={
+        'id':resultado.id,
+        'status':resultado.status
+    }
+    return render(request,"websocket.html",redis)
 
-
+def get_resultado(request):
+    dados = request.GET
+    res = add.AsyncResult(dados['status'])
+    print(res.id)
+    print(res.status)
+    print(res.get())
+    resultado = str("id: " + res.id + " status: " + res.status)
+    return HttpResponse(resultado)
 
 
 

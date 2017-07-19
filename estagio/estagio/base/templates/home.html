@@ -75,8 +75,8 @@
                                         <td>{{arquivos.arquivo}}</td>
                                         <td>{{ arquivos.modificado }}</td>
                                         <td>{{ arquivos.criado }}</td>
-                                        <td><a class="glyphicon glyphicon-download" href="{% url "home:download" arquivos.diretorio %}"></a></td>
-                                        <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ arquivos.diretorio }}"></td>
+                                        <td><a class="glyphicon glyphicon-download" href="{% url "home:download"  arquivos.diretorio|add:"/"|add:arquivos.arquivo %}"></a></td>
+                                        <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ arquivos.diretorio|add:"/"|add:arquivos.arquivo }}"></td>
                                     </tr>
                                  {% endfor %}
                             </tbody>
@@ -84,14 +84,30 @@
                       <div>
                           <a class="" onclick="compactaTodaPesquisa(this)" href="#">Baxar toda pesquisa</a>
                       </div>
-                      <div id="paginacao" class="pagination">
-                          <nav>
-                              <ul class="pager">
-                                  <li><a href="?page={{ 1 }}&act=A">Primero</a></li>
-                                    <li><a href="?page={{ anterior }}&act=S">Anterior</a></li>
-                                    <li><a href="?page={{ proximo }}&act=A">Próximo</a></li>
-                              </ul>
-                          </nav>
+{#                      <div id="paginacao" class="pagination">#}
+{#                          <nav>#}
+{#                              <ul class="pager">#}
+{#                                  <li><a href="?page={{ 1 }}&act=A">Primero</a></li>#}
+{#                                    <li><a href="?page={{ anterior }}&act=S">Anterior</a></li>#}
+{#                                    <li><a href="?page={{ proximo }}&act=A">Próximo</a></li>#}
+{#                              </ul>#}
+{#                          </nav>#}
+{#                      </div>#}
+                       <div id="paginacao" class="pagination">
+                            <span class="step-links">
+                                {% if paginado.has_previous %}
+                                    <a href="?page={{ paginado.previous_page_number }}">Anterior</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Paginas {{ paginado.number }} de {{ paginado.paginator.num_pages }}.
+                                </span>
+
+                                {% if paginado.has_next %}
+                                    <a href="?page={{ paginado.next_page_number}}">Próxima</a>
+                                {% endif %}
+                            <p>Total arquivos encontrados</p>
+                            </span>
                       </div>
                     </form>
                 </div>

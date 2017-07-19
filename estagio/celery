@@ -1,0 +1,7 @@
+sudo celery -A teste  worker -l info -c 1
+mostrar eventos celery -A estagio events
+habilitar eventos sudo celery -A estagio control enable_events
+
+modo grafico
+pip install flower
+celery flower -A estagio --address=127.0.0.1 --port=5555

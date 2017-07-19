@@ -26,7 +26,7 @@ var criaBotaoDownload = function ()
 
 var seleciona = function (elem)
 {
-
+    console.log(elem);
     if($(elem).data("status") === 'ativado')
     {
         $(elem).data("status",'desativado');

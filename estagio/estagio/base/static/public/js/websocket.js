@@ -1,18 +1,19 @@
-/**
- * Created by david on 12/07/17.
- */
+    /**
+     * Created by david on 12/07/17.
+     */
 
-var socket = new WebSocket("ws://localhost:8080/123");
+var ws = new WebSocket("ws://localhost:8080");
 
-socket.onopen = function () {
-  console.log('Conexão aberta');
-  socket.send('ping');
+ws.onopen = function () {
+console.log('Conexão aberta');
+ws.send('ping');
 };
 
-socket.onmessage = function (message) {
-    console.log('New message:' + message.data);
-    if(message.data == 'ping')
-    {
-      socket.send('pong');
-    }
+ws.onmessage = function (message) {
+console.log('New message:' + message.data);
+if(message.data == 'ping')
+{
+  ws.send('pong');
+}
 };
+

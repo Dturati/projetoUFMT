@@ -11,10 +11,9 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
+# BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -27,9 +26,26 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+# BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_BROKER_URL = 'amqp://guest:gue st@localhost//'
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_RESULT_BACKEND = 'django-cache'
+# CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
+# Application definition
+# BROKER_URL = 'amqp://david:<password>@localhost:5672/localhost'
+# CELERY_TIMEZONE = TIME_ZONE
+# CELERY_RESULT_BACKEND = 'amqp'
+
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+ # CELERY_TIMEZONE = TIME_ZONE
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -38,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'estagio.base',
+    'django_celery_beat',
+    'django_celery_results',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +135,7 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-
+#
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'estagio','arquivos')
 MEDIA_URL = '/arquivos/'
@@ -125,3 +143,24 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     'base/static/',
 ]
+# WATERCOOLER_SERVER = os.environ.get('WATERCOOLER_SERVER','localhost:8080')
+# WATERCOOLER_SECURE = bool(os.environ.get('WATERCOOLER_SECURE',''))
+# DJANGO_SETTINGS_MODULE=testsite.settings testsite/tornado_main.py
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}

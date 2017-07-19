@@ -9,6 +9,7 @@ from tornado.websocket import WebSocketHandler, WebSocketError, WebSocketClosedE
 from tornado.options import define,parse_command_line,options
 from tornado.httpserver import HTTPServer
 from collections import defaultdict
+
 define('debug',default=True,type=bool,help='Run in debug mode')
 define('port',default=8080,type=int,help='Server port')
 define('allowed_hosts',default="localhost:8080",multiple=True,help='Allowed hosts for cross domain connections')
@@ -22,12 +23,7 @@ class ScrumAplication(Application):
         else:
             peers = self.get_subscribers(channel)
             for peer in peers:
-                for i in range(1,100000000):
-                    if(i == 10000000-1):
-                        print("fim")
-                    # print(i)
-                    pass
-                if peer != sender:
+                if peer == sender:
                     try:
                         peer.write_message(message)
                     except WebSocketClosedError:
@@ -35,7 +31,7 @@ class ScrumAplication(Application):
 
     def __init__(self,**kwargs):
         routes =[
-            (r'/(?P<sprint>[0-9]+)', SprintHandler),
+            (r'/(?P<sprint>[0-9]|[a-z]+)', SprintHandler),
         ]
         super().__init__(routes,**kwargs)
         self.subscriptions = defaultdict(list)
@@ -81,7 +77,6 @@ class SprintHandler(WebSocketHandler):
 if __name__ == "__main__":
     parse_command_line()
     application = ScrumAplication(debug=options.debug)
-    # application.listen(8080)
     server = HTTPServer(application)
     server.listen(options.port)
     signal.signal(signal.SIGINT,lambda sig,frame:shutdown(server))
