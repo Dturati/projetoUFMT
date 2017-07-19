@@ -98,3 +98,6 @@ class Compacta_aquivos():
 
         return resp
 
+class sincroniza():
+    pass
+

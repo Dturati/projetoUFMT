@@ -1,7 +1,7 @@
 from django.conf.urls import url,include
 from estagio.base.views import home,contatos,lista_em_arvore,\
     download,view_compacta_pesquisa_selecionada,\
-    baixar_pesquisa,exemplo,view_compacta_toda_pesquisa,exemplo_assinc
+    baixar_pesquisa,exemplo,view_compacta_toda_pesquisa,exemplo_assinc,get_resultado
 urlpatterns = [
     url(r'^home/$',home, name='home'), #Caminho da view home
     url(r'^ajax/lista_diretorios/$',lista_em_arvore, name='lista_diretorios'), #Caminho da view home
@@ -12,4 +12,5 @@ urlpatterns = [
     url(r'^home/ajax/baixar_pesquisa/$',baixar_pesquisa, name='baixar_pesquisa'), #Caminho da view home
     url(r'^exemplo/$',exemplo, name='exemplo'), #Caminho da view home
     url(r'^websocket/$',exemplo_assinc, name='websocket'), #Caminho da view home
+    url(r'^resultado/$',get_resultado, name='resultado'), #Caminho da view home
 ]

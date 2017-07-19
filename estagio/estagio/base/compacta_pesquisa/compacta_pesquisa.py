@@ -1,26 +1,32 @@
+from __future__ import absolute_import
 import zipfile
 from django.http import JsonResponse
 import os
 from pymongo import MongoClient
-def compacta_toda_pesquisa(request):
-    #se a pesquisa for especifica
-    if(request.session['resultado']):
-        request = request.session['resultado']
-        arquivos = []
-        for r in request:
-            arquivos.append(str(r['diretorio']))
-        zf = zipfile.ZipFile('pesquisa.zip', "w")
+from celery import shared_task
+from celery import task
+from estagio.celery import app
+import json
 
-        for fpath in arquivos:
-            fdir, fname = os.path.split(fpath)
+@shared_task
+def compacta_toda_pesquisa(request):
+    # #se a pesquisa for especifica
+    if(request):
+        arquivos = []
+        request = json.loads(request)
+        for value in request:
+            arquivos.append(str(os.getcwd() + '/'+value['diretorio']))
+        zf = zipfile.ZipFile('pesquisa.zip', "w")
+        for value in request:
+            fdir, fname = os.path.split(value['diretorio'])
             zip_subdir = str(fdir)
             zip_path = os.path.join(zip_subdir, fname)
-            zf.write(fpath, zip_path)
+            zf.write(value['diretorio'], zip_path)
         zf.close()
+        request = json.dumps(request)
+        return request
 
-        return JsonResponse({'status': 'ok'})
-
-    #se forem todos os arquivos do sistema
+    # #se forem todos os arquivos do sistema
     cliente = MongoClient('localhost', 27017)
     banco = cliente.test_database
     dados_db = banco.teste
@@ -35,19 +41,21 @@ def compacta_toda_pesquisa(request):
         zip_path = os.path.join(zip_subdir, fname)
         zf.write(fpath, zip_path)
     zf.close()
-
+    request = json.dumps(request)
+    return request
+@shared_task
 def compacta_pesquisa_selecionada(request):
-    request = request.GET.getlist('data[]')
     arquivos = []
-
-    for r in request:
-        arquivos.append(str(os.getcwd() + '/' + r))
-
+    request = json.loads(request)
+    for value in request:
+        arquivos.append(str(os.getcwd() + '/' + value))
     zf = zipfile.ZipFile('pesquisa.zip', "w")
-    for fpath in request:
-        fdir, fname = os.path.split(fpath)
+    for value in request:
+        fdir, fname = os.path.split(value)
         zip_subdir = str(fdir)
         zip_path = os.path.join(zip_subdir, fname)
-        zf.write(fpath, zip_path)
+        zf.write(value, zip_path)
     zf.close()
+    request = json.dumps(request)
+    return request
 
