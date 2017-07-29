@@ -1,0 +1,34 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>-- Sua requicisão foi enviada - aguarde</title>
+        <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/css.css' %}">
+    <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'bootstrap/dist/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'node_modules/normalize.css/normalize.css' %}">
+</head>
+<body id="tudo">
+    <h4 style="padding-right: 50%">Andamento de sua requisição</h4>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Solicitação Número</th>
+            <th>Status</th>
+            <th>Ação</th>
+        </tr>
+        <tr>
+            <td id="id_task">Não Iniciado</td>
+            <td id="status_task">Não iniciado</td>
+            <td><button class="btn btn-danger" onclick="cancelar_requisicao(this)"  id="idCancelar" name="btnCancelar" value="">Cancelar</button>
+            <button id="btnIniciar" class="btn btn-info" onclick="compactaTodaPesquisa(this)">Inciciar</button>
+            <a href="{% url "home:home" %}" id="btnVoltar" class="btn btn-info" >Voltar</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+  <script src="{% static 'public/js/requisicao_enviada.js' %}"></script>

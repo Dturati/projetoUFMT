@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import tornado.web
+import tornado_websockets
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -26,16 +28,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-# BROKER_URL = 'redis://localhost:6379/0'
-# CELERY_BROKER_URL = 'amqp://guest:gue st@localhost//'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASK_SERIALIZER = 'json'
-# CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_RESULT_BACKEND = 'django-cache'
-# CELERY_RESULT_BACKEND = 'db+sqlite:///results.sqlite'
-# Application definition
-# BROKER_URL = 'amqp://david:<password>@localhost:5672/localhost'
-# CELERY_TIMEZONE = TIME_ZONE
 # CELERY_RESULT_BACKEND = 'amqp'
 
 CELERY_BROKER_URL = 'redis://localhost:6379'
@@ -43,7 +35,8 @@ CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
- # CELERY_TIMEZONE = TIME_ZONE
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
 
 # Application definition
 INSTALLED_APPS = [
@@ -56,6 +49,7 @@ INSTALLED_APPS = [
     'estagio.base',
     'django_celery_beat',
     'django_celery_results',
+    'tornado_websockets',
 ]
 
 MIDDLEWARE = [
@@ -139,13 +133,37 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'estagio','arquivos')
 MEDIA_URL = '/arquivos/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     'base/static/',
 ]
+# STATIC_URL = '/static/'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # WATERCOOLER_SERVER = os.environ.get('WATERCOOLER_SERVER','localhost:8080')
 # WATERCOOLER_SECURE = bool(os.environ.get('WATERCOOLER_SECURE',''))
-# DJANGO_SETTINGS_MODULE=testsite.settings testsite/tornado_main.py
+
+TORNADO = {
+    'port': 8080,
+    'handlers': [
+        (r'%s(.*)' % STATIC_URL, tornado.web.StaticFileHandler, {'path': STATICFILES_DIRS}),
+        tornado_websockets.django_app()
+    ],
+    'settings': {
+        'autoreload': True,
+        'debug': True
+    }
+}
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'davidturat@gmail.com'
+EMAIL_USE_TLS   =   True
+EMAIL_HOST  =   'smtp.gmail.com'
+EMAIL_HOST_USER =   'davidturati'
+EMAIL_HOST_PASSWORD =   'pythondeveloper'
+EMAIL_PORT  =   587
+
+CONTACT_EMAIL = ''
 
 LOGGING = {
     'version': 1,

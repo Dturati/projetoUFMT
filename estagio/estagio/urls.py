@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
-
 #namespace não deixa dar conflito com outras urls de outros modulos
 urlpatterns = [
     url(r'^', include("estagio.base.urls",namespace='home')),

@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Status da Sua Requisição</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
+    <script src="{% static "public/js/cancelar_requisicao.js" %}"></script>
+    <script src="{% static "jquery/dist/jquery.js" %}"></script>
+</head>
+<body>
+<div>
+    <table class="table table-bordered">
+        <tr>
+            <th>Solicitação Número</th>
+            <th>Status</th>
+            <th>Ação</th>
+        </tr>
+        <tr>
+            <td>{{ id }}</td>
+        {% if tasks.state == 'PENDDING' %}
+            <td>
+                Aguarde... Sua requisição está na fila de processamento
+            </td>
+        {% endif %}
+         {% if tasks.state == 'STARTED' %}
+            <td>
+                Aguarde... Sua requisição está sendo processada
+            </td>
+         {% endif %}
+        {% if tasks.state == 'SUCCESS' %}
+
+            <td>
+                Sua requisição terminou, em instantes seus aquivos serão baixados
+            </td>
+        {% endif %}
+         {% if tasks.state == 'REVOKED' %}
+
+            <td>
+               Sua requisição foi cancelada
+            </td>
+        {% endif %}
+            <td><button class="btn btn-danger" onclick="cancelar_requisicao(this)"  id="bntCancelar" name="btnCancelar" value="{{ id }}">Cancelar</button></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

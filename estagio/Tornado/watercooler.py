@@ -21,6 +21,8 @@ class ScrumAplication(Application):
             for c in self.subscriptions.keys():
                 self.broadcast(message,channel=c,sender=sender)
         else:
+            while(True):
+                pass
             peers = self.get_subscribers(channel)
             for peer in peers:
                 if peer == sender:
@@ -31,7 +33,7 @@ class ScrumAplication(Application):
 
     def __init__(self,**kwargs):
         routes =[
-            (r'/(?P<sprint>[0-9]|[a-z]+)', SprintHandler),
+            (r'/()', SprintHandler),
         ]
         super().__init__(routes,**kwargs)
         self.subscriptions = defaultdict(list)

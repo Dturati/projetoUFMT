@@ -7,7 +7,7 @@ lista_arquivos = ListaArquivos
 def lista_arvore(request):
     caminho = request.GET.get('caminho', None)
     if(caminho == '/'):
-        caminho = '/arquivos'
+        caminho = '../arquivos'
     meuDir = caminho
     diretorio, arquivos,detalheArquivosModificado,detalheArquivosCriados,detalhePastaModificadas,detalhePastaCriadas = lista_arquivos.list_files(os.getcwd() + meuDir)
 
