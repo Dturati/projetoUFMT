@@ -1,5 +1,6 @@
-sudo celery -A teste  worker -l info -c 1
-mostrar eventos celery -A estagio events
+sudo celery -A estagio  worker -l info -c 1
+sudo redis-server
+mostrar eventos sudo celery -A estagio events
 habilitar eventos sudo celery -A estagio control enable_events
 
 modo grafico

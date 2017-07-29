@@ -1,40 +1,68 @@
-#!/usr/bin/env python
-
-# Run this with
-# PYTHONPATH=. DJANGO_SETTINGS_MODULE=testsite.settings testsite/tornado_main.py
-# Serves by default at
-# http://localhost:8080/hello-tornado and
-# http://localhost:8080/hello-django
-
-from tornado.options import options, define, parse_command_line
-import django.core.handlers.wsgi
 import tornado.httpserver
+import tornado.websocket
 import tornado.ioloop
 import tornado.web
-import tornado.wsgi
+import socket
 
-if django.VERSION[1] > 5:
-    django.setup()
+from tornado import gen
+from tornado.ioloop import IOLoop
+from tornado.locks import Semaphore
 
-define('port', type=int, default=8080)
+sem = Semaphore(2)
 
-class HelloHandler(tornado.web.RequestHandler):
-  def get(self):
-    self.write('Hello from tornado')
+def teste():
+    for r in range(1,10000):
+        pass
 
-def main():
-  parse_command_line()
-  wsgi_app = tornado.wsgi.WSGIContainer(
-    django.core.handlers.wsgi.WSGIHandler()
-  )
-  tornado_app = tornado.web.Application(
-    [
-      ('/hello-tornado', HelloHandler),
-      ('.*', tornado.web.FallbackHandler, dict(fallback=wsgi_app)),
-      ])
-  server = tornado.httpserver.HTTPServer(tornado_app)
-  server.listen(options.port)
-  tornado.ioloop.IOLoop.instance().start()
+@gen.coroutine
+def worker(worker_id):
+    yield sem.acquire()
+    try:
+        print("Worker %d is working" % worker_id)
+        yield teste()
+    finally:
+        print("Worker %d is done" % worker_id)
+        sem.release()
 
-if __name__ == '__main__':
-  main()
+@gen.coroutine
+def runner():
+    # Join all workers.
+    yield [worker(i) for i in range(3)]
+
+
+
+class WSHandler(tornado.websocket.WebSocketHandler):
+    def open(self):
+        print ('new connection')
+        # IOLoop.current().run_sync(runner)
+        for r in range(1,100000000):
+            pass
+
+    # IOLoop.current().run_sync(open())
+
+    # @gen.coroutine
+    def on_message(self, message):
+        print ('message received:  %s' % message)
+        # Reverse Message and send it back
+        print ('sending back message: %s' % message[::-1])
+        self.write_message(message[::-1])
+
+    def on_close(self):
+        print ('connection closed')
+
+    def check_origin(self, origin):
+        return True
+
+
+application = tornado.web.Application([
+    (r'/ws', WSHandler),
+])
+
+
+if __name__ == "__main__":
+    http_server = tornado.httpserver.HTTPServer(application)
+    http_server.listen(8888)
+    myIP = socket.gethostbyname(socket.gethostname())
+    print ('*** Websocket Server Started at %s***' % myIP)
+    main_loop = tornado.ioloop.IOLoop.instance()
+    main_loop.start()

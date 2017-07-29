@@ -65,12 +65,17 @@ var chamaArquivosAjax = function (elem)
                 data :  {
                   'caminho' : caminho
                 },
+
                 success: function (data)
                 {
-
+                    var cont  = 1;
                      for(i = 0; i <data.diretorios.length; i++)
                     {
+
                             html += '<tr>';
+                            html += '<td>';
+                            html += cont;
+                            html += '</td>';
                             html += '<td>';
                             html += '<a'+' ';
                             html += 'class="glyphicon glyphicon-folder-open"' +'style="cursor:Pointer"' + '' + 'onclick="chamaArquivosAjax(this)"'  + 'data-dir='+ data.caminho + '/' + data.diretorios[i]  + '>' +' '+data.diretorios[i]+'</a>';
@@ -82,6 +87,7 @@ var chamaArquivosAjax = function (elem)
                             html += data.detalhePastaCriadas[i];
                             html += '</td>';
                             html += '</tr>';
+                            cont++;
 
                     }
                     menu += '<div class="glyphicon glyphicon-arrow-left"></div>';
@@ -96,9 +102,10 @@ var chamaArquivosAjax = function (elem)
 
                     for(var i = 0; i < data.arquivos.length; i = i+1)
                     {
-
-                        console.log(i);
                          dadosHtml += '<tr>';
+                         dadosHtml += '<td>';
+                         dadosHtml += cont;
+                         dadosHtml += '</td>';
                          dadosHtml += '<td>';
                          dadosHtml += '<div'+' ';
                          dadosHtml += 'class="glyphicon glyphicon-file"' + 'style="color:orange;cursor:Pointer"' +' + data-caminho='+data.caminho + '/' +data.arquivos[i]+'>' + '&nbsp;&nbsp' + data.arquivos[i] +"&nbsp;";
@@ -110,15 +117,15 @@ var chamaArquivosAjax = function (elem)
                          dadosHtml += '<td>';
                          dadosHtml += data.detalheArquivosCriados[i];
                          dadosHtml += '</td>';
-                         dadosHtml += '<td>';
-                         dadosHtml += '<a class = "glyphicon glyphicon-download" ';
-                         dadosHtml += ' '+'href=';
-                         dadosHtml += "'";
-                         dadosHtml += "/home/download/"+"."+data.caminho + '/'+data.arquivos[i];
-                         dadosHtml += "'";
-                         dadosHtml += ' >';
-                         dadosHtml += '</a>';
-                         dadosHtml += '</td>';
+                         // dadosHtml += '<td>';
+                         // dadosHtml += '<a class = "glyphicon glyphicon-download" ';
+                         // dadosHtml += ' '+'href=';
+                         // dadosHtml += "'";
+                         // dadosHtml += "/home/download/"+"."+data.caminho + '/'+data.arquivos[i];
+                         // dadosHtml += "'";
+                         // dadosHtml += ' >';
+                         // dadosHtml += '</a>';
+                         // dadosHtml += '</td>';
                          dadosHtml += '<td>';
                          dadosHtml += '<input ';
                          dadosHtml += 'data-status="desativado" ';
@@ -132,7 +139,7 @@ var chamaArquivosAjax = function (elem)
                          dadosHtml += '</td>';
                          dadosHtml += '</tr>';
 
-
+                        cont++;
                     }
                     $("#volta_dir").html(menu);
 

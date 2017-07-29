@@ -50,7 +50,7 @@
 
                 <div class="place resultado">
                      <div>
-                        <a class="glyphicon glyphicon-folder-open" style="cursor:pointer" data-dir="/arquivos" onclick="chamaArquivosAjax(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">/Arquivos</a>
+                        <a class="glyphicon glyphicon-folder-open" style="cursor:pointer" data-dir="/../arquivos" onclick="chamaArquivosAjax(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">/Arquivos</a>
                      </div>
 
                     <div id="volta_dir"></div>
@@ -75,24 +75,16 @@
                                         <td>{{arquivos.arquivo}}</td>
                                         <td>{{ arquivos.modificado }}</td>
                                         <td>{{ arquivos.criado }}</td>
-                                        <td><a class="glyphicon glyphicon-download" href="{% url "home:download"  arquivos.diretorio|add:"/"|add:arquivos.arquivo %}"></a></td>
+{#                                        <td><a class="glyphicon glyphicon-download" href="{% url "home:download"  arquivos.diretorio|add:"/"|add:arquivos.arquivo %}"></a></td>#}
                                         <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ arquivos.diretorio|add:"/"|add:arquivos.arquivo }}"></td>
                                     </tr>
                                  {% endfor %}
                             </tbody>
                         </table>
                       <div>
-                          <a class="" onclick="compactaTodaPesquisa(this)" href="#">Baxar toda pesquisa</a>
+{#                          <a class="" onclick="compactaTodaPesquisa(this)" href="#">Baxar toda pesquisa</a>#}
+                          <button type="button" class="btn btn-info btn-group-sm" data-toggle="modal" data-target="#myModal">Baixar Pesquisa</button>
                       </div>
-{#                      <div id="paginacao" class="pagination">#}
-{#                          <nav>#}
-{#                              <ul class="pager">#}
-{#                                  <li><a href="?page={{ 1 }}&act=A">Primero</a></li>#}
-{#                                    <li><a href="?page={{ anterior }}&act=S">Anterior</a></li>#}
-{#                                    <li><a href="?page={{ proximo }}&act=A">Próximo</a></li>#}
-{#                              </ul>#}
-{#                          </nav>#}
-{#                      </div>#}
                        <div id="paginacao" class="pagination">
                             <span class="step-links">
                                 {% if paginado.has_previous %}
@@ -113,5 +105,36 @@
                 </div>
             </div>
         </div>
+
+    <!-- Trigger the modal with a button -->
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Baixar pesquisa</h4>
+      </div>
+      <div class="modal-body">
+        <p style="color: red">Ao inserir seu email você será avisado quando o download estiver pronto.</p>
+        <p>Os arquivos serão compactados em formato zip, dependendo da quantidade de arquivos solicitados
+            o processo pode demorar minutos ou taé horas para ser concluído.</p>
+          <div style="padding-left:20%">
+              <label>Email</label>
+              <input name="email" id="email" type="email">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" href="{% url "home:requisicao_enviada" %}" >Enviar</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 {%  endblock %}
 
