@@ -5,30 +5,53 @@
     <meta charset="UTF-8">
     <title>-- Sua requicisão foi enviada - aguarde</title>
         <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'public/css/css.css' %}">
     <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+    <script src="{% static 'jcookie/jquery.cookie.js' %}"></script>
     <script src="{% static 'bootstrap/dist/js/bootstrap.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'node_modules/normalize.css/normalize.css' %}">
+{#    <link rel="stylesheet" href="{% static 'node_modules/normalize.css/normalize.css' %}">#}
+    <script src="{% static 'public/js/requisicao_enviada.js' %}"></script>
+    <script>
+       var ws = init();
+    </script>
 </head>
 <body id="tudo">
-    <h4 style="padding-right: 50%">Andamento de sua requisição</h4>
-<div>
-    <table class="table table-bordered">
-        <tr>
-            <th>Solicitação Número</th>
-            <th>Status</th>
-            <th>Ação</th>
-        </tr>
-        <tr>
-            <td id="id_task">Não Iniciado</td>
-            <td id="status_task">Não iniciado</td>
-            <td><button class="btn btn-danger" onclick="cancelar_requisicao(this)"  id="idCancelar" name="btnCancelar" value="">Cancelar</button>
-            <button id="btnIniciar" class="btn btn-info" onclick="compactaTodaPesquisa(this)">Inciciar</button>
-            <a href="{% url "home:home" %}" id="btnVoltar" class="btn btn-info" >Voltar</a>
-            </td>
-        </tr>
-    </table>
+
+<div align="center">
+    <div style="width: 60%;">
+        <h4>Andamento de sua requisição</h4>
+        <table class="table table-bordered">
+            <tr>
+                <th>Solicitação Número</th>
+                <th>Status</th>
+                <th>Ação</th>
+            </tr>
+            <tr>
+                <td id="id_task">-</td>
+                <td id="status_task">-</td>
+                <td><button class="btn btn-xs   btn-danger" onclick="cancelar_requisicao(this)"  id="idCancelar" name="btnCancelar" value="">Cancelar</button>
+                <button id="btnIniciar" class="btn btn-xs  btn-info"  onclick="compactaTodaPesquisa(this,ws)">Inciciar</button>
+                <a href="{% url "home:home" %}" id="btnVoltar" class="btn btn-xs   btn-info" >Voltar</a>
+{#                <button id="btnIniciar" class="btn btn-xs  btn-info"  onclick="status_celery_task(this)">Atualizar</button>#}
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="width: 60%;">
+        <h4>Fila de requisições</h4>
+        <table class="table table-bordered" style="background-color: lightgrey">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Número</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody id="fila">
+
+            </tbody>
+        </table>
+        <button class="btn btn-xs btn-info" onclick="fila()">Atualizar</button>
+    </div>
 </div>
 </body>
 </html>
-  <script src="{% static 'public/js/requisicao_enviada.js' %}"></script>

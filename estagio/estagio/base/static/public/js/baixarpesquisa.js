@@ -29,6 +29,19 @@ if(getCookie("btnPesquisa") === "todos_os_arquivos")
     document.getElementById("id_metodoUtilizado").setAttribute("disabled","disabled");
 }
 
+if(getCookie("btnPesquisa") === "" || getCookie("btnPesquisa") == undefined)
+{
+    $("#todosOsArquivos").attr('checked', true);
+    todosOsArquivos.value = 'ativado';
+    document.getElementById("id_porcentagem_um").setAttribute("disabled","disabled");
+    document.getElementById("id_porcentagem_dois").setAttribute("disabled","disabled");
+    document.getElementById("id_tipoFalha").setAttribute("disabled","disabled");
+    document.getElementById("id_tipoFalhaConjunto").setAttribute("disabled","disabled");
+    document.getElementById("id_variavelFalhada").setAttribute("disabled","disabled");
+    document.getElementById("id_metodoUtilizado").setAttribute("disabled","disabled");
+}
+
+
 if(getCookie("btnPesquisa") === "individual")
 {
     $("#todosOsArquivos").attr('checked', true);
@@ -52,7 +65,7 @@ var criaBotaoDownload = function ()
      {
          $("#idBaixarPesquisa").css('display','block');
         var html = '' +
-            '<button class=" btn btn-info" style="cursor:pointer" data-dir="/arquivos" onclick="compactaPesquisa(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">Baixar</button>';
+            '<a class=" btn btn-info" style="cursor:pointer" data-dir="/arquivos" onclick="compactaPesquisa(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">Baixar</a>';
         $("#idBaixarPesquisa").html(html);
 
      }
@@ -167,6 +180,7 @@ var compactaPesquisa = function (elem,chave)
             success: function (data)
             {
                 verifica_arquivo_individual(data['id'],data['chave'])
+                 // baixaPesquisa(data['id'],chave['chave']);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);

@@ -1,6 +1,9 @@
 /**
  * Created by david on 24/05/17.
  */
+
+
+// console.log($.cookie("task_id","123"));
 $('#id_numeroSequencial').on('keyup', function ()
 {
     var tam = $("#id_numeroSequencial").val();
@@ -61,7 +64,7 @@ var chamaArquivosAjax = function (elem)
 
           $.ajax({
                 type: "GET",
-                url: '/ajax/lista_diretorios/',
+                url: '/ajax/lista_diretorios/$.cookie("task_id","vazio");',
                 data :  {
                   'caminho' : caminho
                 },
@@ -109,7 +112,7 @@ var chamaArquivosAjax = function (elem)
                          dadosHtml += '<td>';
                          dadosHtml += '<div'+' ';
                          dadosHtml += 'class="glyphicon glyphicon-file"' + 'style="color:orange;cursor:Pointer"' +' + data-caminho='+data.caminho + '/' +data.arquivos[i]+'>' + '&nbsp;&nbsp' + data.arquivos[i] +"&nbsp;";
-                         dadosHtml += '</div>'
+                         dadosHtml += '</div>';
                          dadosHtml += '</td>';
                          dadosHtml += '<td>';
                          dadosHtml += data.detalheArquivosModificado[i];
