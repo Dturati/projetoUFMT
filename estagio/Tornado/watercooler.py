@@ -14,29 +14,30 @@ define('debug',default=True,type=bool,help='Run in debug mode')
 define('port',default=8080,type=int,help='Server port')
 define('allowed_hosts',default="localhost:8080",multiple=True,help='Allowed hosts for cross domain connections')
 
-
 class ScrumAplication(Application):
+    def __init__(self, **kwargs):
+        routes = [
+            (r'/()', SprintHandler),
+        ]
+        super().__init__(routes, **kwargs)
+        self.subscriptions = defaultdict(list)
+
     def broadcast(self,message,channel=None,sender=None):
         if channel is None:
             for c in self.subscriptions.keys():
                 self.broadcast(message,channel=c,sender=sender)
         else:
-            while(True):
-                pass
             peers = self.get_subscribers(channel)
             for peer in peers:
                 if peer == sender:
                     try:
+                        for r in range(1,100):
+                            pass
                         peer.write_message(message)
+                        pass
                     except WebSocketClosedError:
                         self.remove_subscriber(channel,peer)
 
-    def __init__(self,**kwargs):
-        routes =[
-            (r'/()', SprintHandler),
-        ]
-        super().__init__(routes,**kwargs)
-        self.subscriptions = defaultdict(list)
 
     def add_subscriber(self,channel,subscriber):
         self.subscriptions[channel].append(subscriber)

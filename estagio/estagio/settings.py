@@ -29,7 +29,7 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # CELERY_RESULT_BACKEND = 'amqp'
-
+#
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
@@ -49,7 +49,7 @@ INSTALLED_APPS = [
     'estagio.base',
     'django_celery_beat',
     'django_celery_results',
-    'tornado_websockets',
+    # 'tornado_websockets',
 ]
 
 MIDDLEWARE = [

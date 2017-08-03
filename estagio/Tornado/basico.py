@@ -1,68 +1,56 @@
-import tornado.httpserver
-import tornado.websocket
+#def divide(self, num):
+# url = "http://localhost:5555/api/tasks"
+# resposta = requests.get(url)
+# resultadoJson = json.loads(resposta.content)
+# while(resultadoJson[num]['state'] != "SUCCESS" and resultadoJson[num]['state'] != "REVOKED"):
+#     url = "http://localhost:5555/api/tasks"
+#     resposta = requests.get(url)
+#     resultadoJson = json.loads(resposta.content)
+# return resultadoJson[num]['state']
+
+
+
 import tornado.ioloop
 import tornado.web
-import socket
-
+from tornado import websocket,ioloop
+import asyncio
 from tornado import gen
-from tornado.ioloop import IOLoop
-from tornado.locks import Semaphore
-
-sem = Semaphore(2)
-
-def teste():
-    for r in range(1,10000):
-        pass
-
-@gen.coroutine
-def worker(worker_id):
-    yield sem.acquire()
-    try:
-        print("Worker %d is working" % worker_id)
-        yield teste()
-    finally:
-        print("Worker %d is done" % worker_id)
-        sem.release()
-
-@gen.coroutine
-def runner():
-    # Join all workers.
-    yield [worker(i) for i in range(3)]
-
-
-
-class WSHandler(tornado.websocket.WebSocketHandler):
+import json
+import requests
+import tornado.httpserver
+from pymongo import MongoClient
+class EchoWebSocket(websocket.WebSocketHandler):
     def open(self):
-        print ('new connection')
-        # IOLoop.current().run_sync(runner)
-        for r in range(1,100000000):
-            pass
+        print("WebSocket opened")
 
-    # IOLoop.current().run_sync(open())
+    def divide(self, num):
+        cliente = MongoClient('localhost', 27017)
+        banco = cliente.fila_download
+        dados_db = banco.fila
+        resultado = dados_db.find({'_id': str(num)})
+        res = [r for r in resultado]
+        while(res[0]['status'] == "compactando"):
+            resultado = dados_db.find({'_id': str(num)})
+            res = [r for r in resultado]
 
-    # @gen.coroutine
     def on_message(self, message):
-        print ('message received:  %s' % message)
-        # Reverse Message and send it back
-        print ('sending back message: %s' % message[::-1])
-        self.write_message(message[::-1])
+        print(message)
+        self.divide(message)
+        self.write_message('SUCCESS')
 
     def on_close(self):
-        print ('connection closed')
-
+        print("WebSocket closed")
+    def close(self, code=None, reason=None):
+        print("close")
     def check_origin(self, origin):
         return True
 
-
-application = tornado.web.Application([
-    (r'/ws', WSHandler),
+app = tornado.web.Application([
+    (r'/echo', EchoWebSocket),
 ])
 
-
-if __name__ == "__main__":
-    http_server = tornado.httpserver.HTTPServer(application)
-    http_server.listen(8888)
-    myIP = socket.gethostbyname(socket.gethostname())
-    print ('*** Websocket Server Started at %s***' % myIP)
-    main_loop = tornado.ioloop.IOLoop.instance()
-    main_loop.start()
+if __name__ == '__main__':
+    server = tornado.httpserver.HTTPServer(app)
+    server.bind(8080)
+    server.start(0)  # autodetect number of cores and fork a process for each
+    tornado.ioloop.IOLoop.instance().start()
