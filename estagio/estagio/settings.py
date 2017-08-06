@@ -28,15 +28,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-# CELERY_RESULT_BACKEND = 'amqp'
-#
+
 CELERY_BROKER_URL = 'redis://localhost:6379'
 CELERY_RESULT_BACKEND = 'redis://localhost:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-# CELERY_ACCEPT_CONTENT = ['json']
-# CELERY_TASK_SERIALIZER = 'json'
+
 
 # Application definition
 INSTALLED_APPS = [
@@ -133,15 +131,11 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'estagio','arquivos')
 MEDIA_URL = '/arquivos/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     'base/static/',
 ]
-# STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# WATERCOOLER_SERVER = os.environ.get('WATERCOOLER_SERVER','localhost:8080')
-# WATERCOOLER_SECURE = bool(os.environ.get('WATERCOOLER_SECURE',''))
+
 
 TORNADO = {
     'port': 8080,

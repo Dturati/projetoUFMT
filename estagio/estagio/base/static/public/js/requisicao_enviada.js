@@ -2,16 +2,49 @@
 $("#id_task").text = "-";
 $("#status_task").text = "-";
 
+var atualizaClientes = function () {
+ $.ajax({
+                type: "GET",
+                url: 'http://localhost:8081/update',
+                dataType : 'html',
+                crossDomain: true,
+                success: function (data)
+                {
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+          });
+};
+
 var init = function () {
     var ws = new WebSocket('ws://localhost:8080/echo');
+    var wsd = new WebSocket('ws://localhost:8081/ws');
+    // var wsd = new WebSocket('ws://localhost:8081/update');
     ws.onopen = function () {
         console.log('Conexão aberta');
-    }
+    };
+
+    wsd.onopen = function () {
+        console.log('Conexão aberta');
+    };
+     wsd.onmessage = function () {
+         setTimeout(function () {
+             fila();
+         },500);
+
+        console.log('Todo Mundo');
+    };
+
+
     return ws;
 };
 
 var compactaTodaPesquisa = function (objeto,ws)
 {
+    atualizaClientes();
 
     $("#btnIniciar").attr("disabled","disabled");
     $("#idCancelar").removeAttr("disabled");    
@@ -19,7 +52,7 @@ var compactaTodaPesquisa = function (objeto,ws)
             type: "GET",
             url: '/ajax/compacta_toda_pesquisa/',
             data : {
-                'email':''
+
             },
             success: function (data)
             {
@@ -28,10 +61,10 @@ var compactaTodaPesquisa = function (objeto,ws)
                 console.log(data.id);
                 $.cookie("id_task",data.id);
                 $.cookie("chave",data.chave);
-                console.log(data.chave);
+                console.log(data);
                 setTimeout(function () {
-                     ws.send(data.chave);
-                },10000);
+                     ws.send(JSON.stringify({chave:data.chave,id:data.id}));
+                },500);
 
                 ws.onmessage = function (message) {
                 console.log('New message:' + message.data);
@@ -40,13 +73,14 @@ var compactaTodaPesquisa = function (objeto,ws)
                     console.log('aqui');
                     setTimeout(function () {
                             baixaPesquisa(data.chave);
-                    },2000);
+                    },1000);
 
                     status_celery_task(data);
                 }
                 ws.onclose = function ()
                 {
-
+                    ws.close();
+                    console.log('close');
                 }
                 };
 
@@ -68,6 +102,7 @@ var baixaPesquisa = function (chave) {
 
 var cancelar_requisicao = function (objeto)
 {
+
     $("#btnIniciar").attr("disabled","disabled");
     $("#idCancelar").attr("disabled","disabled");
 
@@ -81,7 +116,8 @@ var cancelar_requisicao = function (objeto)
                 success: function (data)
                 {
                     dados = {
-                        'id' : objeto.value
+                        'id' : objeto.value,
+                        'chave' : $.cookie("chave")
                     };
                     status_celery_task(dados);
                 },
@@ -90,6 +126,8 @@ var cancelar_requisicao = function (objeto)
                     console.log(thrownError);
                 }
           });
+
+      atualizaClientes();
       $.cookie("id_task","");
       $.cookie("chave","");
 };

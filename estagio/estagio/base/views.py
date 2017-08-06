@@ -15,9 +15,11 @@ from random import choice
 from .task import add,report_progress
 from .Email.email import send_email
 import requests
+import random
 from pymongo import MongoClient
 lista_arquivos = ListaArquivos
 resutadopesquisaPaginado = []
+from .MongoDB.MongoCennect import MongoConnect
 def home(request):
     form = Pesquisa(request.POST)
     try:
@@ -30,11 +32,11 @@ def home(request):
     resultadoPesquisa = []
     if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
         # Verifica se é uma paginação ou submição de formulario
-        from pymongo import MongoClient
-        cliente = MongoClient('localhost', 27017)
-        banco = cliente.test_database
+        con = MongoConnect()
+        banco = con.connect("test_database")
         dados_db = banco.teste
         consulta = dados_db.find()
+
         try:
             P = Paginator(list(consulta),8)
             pagina = P.page(num)
@@ -89,7 +91,8 @@ def download(request,path):
 def view_compacta_pesquisa_selecionada(request):
     dados = request.GET.getlist('data[]')
     teste = json.dumps(dados)
-    chave = hashlib.md5(str(choice([1, 1, 2, 3, 4, 5, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'i', 'j', 'k', 'l', 'm', 'n'])).encode('utf-8')).hexdigest()
+    # chave = hashlib.sha3_512(str(choice([1, 1, 2, 3, 4, 5, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'i', 'j', 'k', 'l', 'm', 'n'])).encode('utf-8')).hexdigest()
+    chave = str(random.getrandbits(128))
     chaveJ = {'chave': chave}
     res = compacta_pesquisa_selecionada(teste,chaveJ)
     return JsonResponse({'status':'ok','id':'','chave':chave})
@@ -98,12 +101,15 @@ def view_compacta_pesquisa_selecionada(request):
 def view_compacta_toda_pesquisa(request):
     dados = {}
     # request.session['email'] = request.GET['email']
-    chave = hashlib.md5(str(choice([1,1,2,3,4,5,7,8,9,'a','b','c','d','e','f','i','j','k','l','m','n'])).encode('utf-8')).hexdigest()
+    # chave = hashlib.sha3_512(str(choice([1,1,2,3,4,5,7,8,9,'a','b','c','d','e','f','i','j','k','l','m','n'])).encode('utf-8')).hexdigest()
+    # res = chave
+    chave = str(random.getrandbits(128))
     if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
         chaveJ = {'chave': chave}
-        cliente = MongoClient('localhost', 27017)
-        banco = cliente.fila_download
+        con = MongoConnect()
+        banco = con.connect("fila_download")
         dados_db_fila = banco.fila
+
         value = {
             "_id": chave,
             "status": "compactando"
@@ -113,13 +119,12 @@ def view_compacta_toda_pesquisa(request):
         # fila_de_dowload.delay(chaveJ)
 
 
-
     if (request.session['tipo_requisicao'] == 'pesquisa_individual'):
         dadosRequest = json.dumps(request.session['resultado'])
+        chave = str(random.getrandbits(128))
         chaveJ = {'chave':chave}
-
-        cliente = MongoClient('localhost', 27017)
-        banco = cliente.fila_download
+        con = MongoConnect()
+        banco = con.connect("fila_download")
         dados_db_fila = banco.fila
         value = {
             "_id": str(chave),
@@ -136,9 +141,13 @@ def baixar_pesquisa(request):
     dados = request.GET
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     nome_download = str(dados['chave'])+".zip"
-    response = HttpResponse(open(nome_arquivo,'rb').read(), content_type='x-zip-compressed')
-    response['Content-Disposition'] = "attachment; filename=%s" % nome_download
-    os.remove(nome_arquivo)
+    try:
+        response = HttpResponse(open(nome_arquivo,'rb').read(), content_type='x-zip-compressed')
+        response['Content-Disposition'] = "attachment; filename=%s" % nome_download
+        os.remove(nome_arquivo)
+    except:
+        # return render(request,"home.html",{})
+        pass
     try:
         send_email(request.session['email'])
     except:
@@ -158,6 +167,25 @@ def define_sessao(request):
 def requisicao_enviada(request):
     return render(request,"requisicao_enviada.html",{})
 
+from django.shortcuts import render
+from django.conf import settings
+from django.core.files.storage import FileSystemStorage
+def upload(request):
+    if(request.method == 'POST'):
+        try:
+            request.FILES['myfile']
+        except:
+            return render(request, "upload.html",{"resposta":"Escolha Um Arquivo"})
+
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        return render(request, 'upload.html', {
+            'uploaded_file_url': uploaded_file_url
+        })
+    return render(request,"upload.html")
 def exemplo(request):
     # pass
     # arquivos = []
@@ -191,10 +219,12 @@ def exemplo(request):
     # resultado = dados_db.find({'_id': "6f8f57715090da2632453988d9a1501b"})
     # res = [r for r in resultado]
     # print(res[0]['status'])
-    from random import choice
-    chave = hashlib.md5(str(choice([1,1,2,3,4,5,7,8,9,'a','b','c','d','e','f','i','j','k','l','m','n'])).encode('utf-8')).hexdigest()
-    print(range())
-    return HttpResponse("")
+    import random
+    chave = str(random.getrandbits(128))
+    # chave = hashlib.md5(choice(choice(lista)).encode('utf-8')).hexdigest()
+    # print(str(lista))
+    print(chave)
+    return HttpResponse(chave)
 def exemplo_assinc(request):
    return render(request,"websocket.html")
 
@@ -220,8 +250,13 @@ def cancelar_requisicao(request):
     dadosRequest = request.GET
     url = "http://localhost:5555/api/task/revoke/"+str(dadosRequest['id'])+"?terminate=true"
     resposta = requests.post(url)
+    con = MongoConnect()
+    banco = con.connect("fila_download")
+    dados_db_fila = banco.fila
+    dado = dados_db_fila.update({'_id': str(dadosRequest['chave'])}, {"status": "cancelado"}, upsert=False)
     try:
         os.remove(dadosRequest['chave']+".zip")
+        pass
     except:
         pass
     return JsonResponse({'status':'REVOKED'})

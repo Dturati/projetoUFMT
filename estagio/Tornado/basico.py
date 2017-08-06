@@ -17,13 +17,21 @@ import asyncio
 from tornado import gen
 import json
 import requests
+import os
 import tornado.httpserver
 from pymongo import MongoClient
+import requests
+import tornado.options
+
 class EchoWebSocket(websocket.WebSocketHandler):
+    chave    = ""
+    id       = ""
     def open(self):
         print("WebSocket opened")
 
+    @gen.coroutine
     def divide(self, num):
+        self.chave = num
         cliente = MongoClient('localhost', 27017)
         banco = cliente.fila_download
         dados_db = banco.fila
@@ -32,21 +40,32 @@ class EchoWebSocket(websocket.WebSocketHandler):
         while(res[0]['status'] == "compactando"):
             resultado = dados_db.find({'_id': str(num)})
             res = [r for r in resultado]
+        if(res[0]['status'] == 'cancelado'):
+            return 'CANCELADO'
+        else:
+            return 'SUCCESS'
 
+    @gen.coroutine
     def on_message(self, message):
-        print(message)
-        self.divide(message)
-        self.write_message('SUCCESS')
+        message = json.loads(message)
+        self.chave = message["chave"]
+        self.id    = message["id"]
+        res = yield self.divide(message["chave"])
+        self.write_message(res)
 
     def on_close(self):
+        print(self.id)
         print("WebSocket closed")
+
     def close(self, code=None, reason=None):
         print("close")
+
+
     def check_origin(self, origin):
         return True
 
 app = tornado.web.Application([
-    (r'/echo', EchoWebSocket),
+    (r'/echo', EchoWebSocket)
 ])
 
 if __name__ == '__main__':
@@ -54,3 +73,5 @@ if __name__ == '__main__':
     server.bind(8080)
     server.start(0)  # autodetect number of cores and fork a process for each
     tornado.ioloop.IOLoop.instance().start()
+
+

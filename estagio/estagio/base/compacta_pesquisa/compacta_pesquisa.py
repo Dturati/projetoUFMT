@@ -75,7 +75,7 @@ def compacta_toda_pesquisa_completa(request,chave):
             print("arquivo ainda existe")
     except:
         print("aquivo deletado")
-        dados_db_fila.drop({"_id":str(chave['chave'])})
+        # dados_db_fila.drop({"_id":str(chave['chave'])})
 
     return request
 
