@@ -192,11 +192,27 @@ var fila = function () {
                     var objeto = data['total_tasks'];
                     var html = "";
                     var cont = 1;
-
+                    var status = "";
                     for(var key in objeto)
                     {
                         if((objeto[key].state != "REVOKED") && (objeto[key].state != "FAILURE") && (objeto[key].state != "SUCCESS"))
                         {
+                            if(objeto[key].state == "REVOKED")
+                            {
+                                status = "Cancelado";
+                            }
+                            if(objeto[key].state == "SUCCESS")
+                            {
+                                status = "Sucesso";
+                            }
+                            if(objeto[key].state == "STARTED")
+                            {
+                                status = "Iniciado";
+                            }
+                             if(objeto[key].state == "RECEIVED")
+                            {
+                                status = "Na fila";
+                            }
                             html += "<tr>";
                             html += '<td>' + cont;
                             html += '</td>';
@@ -205,7 +221,7 @@ var fila = function () {
                             } else {
                                 html += "<td " + "style="+"'color:blue'" + ">" + key + "</td>";
                             }
-                            html += "<td>" + objeto[key].state + "</td>";
+                            html += "<td>" + status+ "</td>";
                             html += "</tr>";
                             cont++;
                         }

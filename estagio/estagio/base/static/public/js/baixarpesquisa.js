@@ -179,8 +179,9 @@ var compactaPesquisa = function (elem,chave)
             },
             success: function (data)
             {
-                verifica_arquivo_individual(data['id'],data['chave'])
-                 // baixaPesquisa(data['id'],chave['chave']);
+                // console.log(data);
+                // verifica_arquivo_individual(data['id'],data['chave']);
+                 baixaPesquisa(data['id'],data['chave']);
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 console.log(xhr.status);

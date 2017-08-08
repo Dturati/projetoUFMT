@@ -1,5 +1,7 @@
 {% extends "base.html" %}
+
 {% load static %}
+
 {% block content %}
     <div class="container">
 
@@ -57,32 +59,38 @@
                     <form method="get" id="baixarPesquisa">
                       {% csrf_token %}
                     <div id="idBaixarPesquisa" style="padding-left: 94%"></div>
-                        <table class="table table-striped">
-                                <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Diretorio/arquivo</th>
-                                    <th>Data Modificação</th>
-                                    <th>Data Criação</th>
-                                    <th>Baixar</th>
-                                </tr>
-                            </thead>
-                            <tbody id="tabela">
-
-                                {% for arquivos in paginado %}
+                        <div>
+                            <table class="table table-striped" style="width: 100%">
+                                <thead style="display: block">
                                     <tr>
-                                        <td>{{forloop.counter }}</td>
-                                        <td>{{arquivos.arquivo}}</td>
-                                        <td>{{ arquivos.modificado }}</td>
-                                        <td>{{ arquivos.criado }}</td>
-{#                                        <td><a class="glyphicon glyphicon-download" href="{% url "home:download"  arquivos.diretorio|add:"/"|add:arquivos.arquivo %}"></a></td>#}
-                                        <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ arquivos.diretorio|add:"/"|add:arquivos.arquivo }}"></td>
+                                        <th>#</th>
+                                        <th style="padding-left: 10px">Diretorio/arquivo</th>
+                                        <th style="padding-left: 90px">Data Modificação</th>
+                                        <th style="padding-left: 50px">Data Criação</th>
+                                        <th style="padding-left: 230px">Baixar</th>
                                     </tr>
-                                 {% endfor %}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody id="tabela" style="
+                                            height:500px;
+                                            width: 800px;
+                                            overflow-y: auto;
+                                            display: block;
+                                ">
+                                    {% for arquivos in paginado %}
+                                        <tr>
+                                            <td>{{forloop.counter }}</td>
+                                            <td>{{arquivos.arquivo}}</td>
+                                            <td>{{ arquivos.modificado }}</td>
+                                            <td>{{ arquivos.criado }}</td>
+                                            <td style="padding-left: 200px" ><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ arquivos.diretorio|add:"/"|add:arquivos.arquivo }}"></td>
+                                        </tr>
+                                     {% endfor %}
+                                </tbody>
+
+                            </table>
+
+                        </div>
                       <div>
-{#                          <a class="" onclick="compactaTodaPesquisa(this)" href="#">Baxar toda pesquisa</a>#}
                           <a type="button" class="btn btn-info btn-group-sm" data-toggle="modal" data-target="#myModal">Baixar Pesquisa</a>
                           <a type="button" class="btn btn-info btn-group-sm" href="{% url "home:upload" %}">Upload</a>
                       </div>
@@ -100,16 +108,16 @@
                                     <a href="?page={{ paginado.next_page_number}}">Próxima</a>
                                 {% endif %}
                             <p>Total arquivos encontrados</p>
+
+                            {% load mathfilters %}
+                            <p>Arquivos Encontrados: {{ paginado.paginator.num_pages |mul:8 }}</p>
                             </span>
+
                       </div>
                     </form>
                 </div>
             </div>
         </div>
-
-    <!-- Trigger the modal with a button -->
-
-
 <!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">

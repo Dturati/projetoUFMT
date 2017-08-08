@@ -16,10 +16,12 @@ from .task import add,report_progress
 from .Email.email import send_email
 import requests
 import random
+from django.core.files.storage import FileSystemStorage
 from pymongo import MongoClient
 lista_arquivos = ListaArquivos
 resutadopesquisaPaginado = []
 from .MongoDB.MongoCennect import MongoConnect
+
 def home(request):
     form = Pesquisa(request.POST)
     try:
@@ -79,6 +81,7 @@ def pesquisa(dados):
 from django.http import HttpResponse
 #lista arquivos em forma de arvores
 def lista_em_arvore(request):
+    print("aqui")
     arquivosJson = JsonResponse(lista_arvore(request))
     return arquivosJson
 
@@ -149,7 +152,9 @@ def baixar_pesquisa(request):
         # return render(request,"home.html",{})
         pass
     try:
-        send_email(request.session['email'])
+        if(request.session['email'] != ""):
+            # send_email(request.session['email'])
+            pass
     except:
         pass
     return response
@@ -167,10 +172,10 @@ def define_sessao(request):
 def requisicao_enviada(request):
     return render(request,"requisicao_enviada.html",{})
 
-from django.shortcuts import render
-from django.conf import settings
-from django.core.files.storage import FileSystemStorage
+import zipfile
+from .verifica_upload.VerificaUpload import VerificaUpload
 def upload(request):
+    verifica = VerificaUpload()
     if(request.method == 'POST'):
         try:
             request.FILES['myfile']
@@ -182,10 +187,15 @@ def upload(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
+        zip_ref = zipfile.ZipFile(str(os.getcwd())+"/estagio/arquivos/"+str(myfile.name), 'r')
+        zip_ref.extractall(str(os.getcwd())+"/estagio/arquivos/upload/"+str(myfile.name))
+        zip_ref.close()
+        os.remove(str(os.getcwd()) + "/estagio/arquivos/" + str(myfile.name))
         return render(request, 'upload.html', {
             'uploaded_file_url': uploaded_file_url
         })
     return render(request,"upload.html")
+
 def exemplo(request):
     # pass
     # arquivos = []
@@ -225,6 +235,7 @@ def exemplo(request):
     # print(str(lista))
     print(chave)
     return HttpResponse(chave)
+
 def exemplo_assinc(request):
    return render(request,"websocket.html")
 
