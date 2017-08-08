@@ -5,22 +5,40 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'public/css/center.css' %}">
 </head>
 <body>
 
-{{ resposta }}
+
 {% block content %}
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="myfile">
-    <button type="submit" class="btn-info">Upload</button>
-  </form>
+    <br>
+    <div class="center">
+        <p style="color: red">{{ resposta }}</p>
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+          <table>
+              <tr>
+                  <th>
+                      <input type="file" name="myfile">
+                  </th>
+{#                  <th style="padding-left: 90%;padding-top: 10px">#}
+{#                      <p><a type="button" class="btn btn-info btn-group-sm" href="{% url 'home:home' %}">Voltar</a></p>#}
+{#                  </th>#}
+              </tr>
+              <tr>
+                  <th>
+                      <br>
+                      <button type="submit" class="btn btn-info btn-group-sm">Upload</button>
+                      <a type="button" class="btn btn-info btn-group-sm" href="{% url 'home:home' %}">Voltar</a>
+                  </th>
+              </tr>
+          </table>
+      </form>
+          {% if uploaded_file_url %}
+                <p>Arquivo enviado: <a href="{{ upload }}">{{ uploaded_file_url }}</a></p>
+          {% endif %}
+    </div>
 
-  {% if uploaded_file_url %}
-    <p>File uploaded at: <a href="{{ upload }}">{{ uploaded_file_url }}</a></p>
-  {% endif %}
-
-  <p><a href="{% url 'home:home' %}">Voltar</a></p>
 {% endblock %}
 </body>
 </html>

@@ -61,16 +61,16 @@ var chamaArquivosAjax = function (elem)
           var html = "";
           var dadosHtml = "";
           var menu = "";
-
           $.ajax({
                 type: "GET",
-                url: '/ajax/lista_diretorios/$.cookie("task_id","vazio");',
+                url: '/ajax/lista_diretorios/',
                 data :  {
                   'caminho' : caminho
                 },
 
                 success: function (data)
                 {
+
                     var cont  = 1;
                      for(i = 0; i <data.diretorios.length; i++)
                     {
@@ -129,7 +129,7 @@ var chamaArquivosAjax = function (elem)
                          // dadosHtml += ' >';
                          // dadosHtml += '</a>';
                          // dadosHtml += '</td>';
-                         dadosHtml += '<td>';
+                         dadosHtml += '<td style="padding-left: 200px" >';
                          dadosHtml += '<input ';
                          dadosHtml += 'data-status="desativado" ';
                          dadosHtml += 'type="checkbox"';
@@ -144,6 +144,7 @@ var chamaArquivosAjax = function (elem)
 
                         cont++;
                     }
+
                     $("#volta_dir").html(menu);
 
                     $("#tabela").html(html + dadosHtml);

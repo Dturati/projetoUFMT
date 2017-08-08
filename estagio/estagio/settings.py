@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'estagio.base',
     'django_celery_beat',
     'django_celery_results',
+    'mathfilters',
     # 'tornado_websockets',
 ]
 
