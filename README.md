@@ -1,2 +1,2 @@
 # projetoUFMT
-syntax=python
+vim: syntax=python
