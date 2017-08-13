@@ -1,0 +1,2 @@
+# projetoUFMT
+syntax=python
