@@ -1,4 +1,4 @@
-#def divide(self, num):
+    #def divide(self, num):
 # url = "http://localhost:5555/api/tasks"
 # resposta = requests.get(url)
 # resultadoJson = json.loads(resposta.content)

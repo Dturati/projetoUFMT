@@ -3,9 +3,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Upload</title>
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'public/css/center.css' %}">
+    <script src="{% static 'public/js/upload.js' %}"></script>
+     <script src="{% static 'jquery/dist/jquery.js' %}"></script>
 </head>
 <body>
 
@@ -30,6 +32,7 @@
                       <br>
                       <button type="submit" class="btn btn-info btn-group-sm">Upload</button>
                       <a type="button" class="btn btn-info btn-group-sm" href="{% url 'home:home' %}">Voltar</a>
+{#                      <button onclick="sendWebSocket()" type="submit" class="btn btn-info btn-group-sm">Puta Merda</button>#}
                   </th>
               </tr>
           </table>
@@ -37,8 +40,17 @@
           {% if uploaded_file_url %}
                 <p>Arquivo enviado: <a href="{{ upload }}">{{ uploaded_file_url }}</a></p>
           {% endif %}
+    <div>
+         {% if status == "OK" %}
+             <button type="submit" class="btn btn-info btn-group-sm">Download</button>
+             <a type="submit" target="_blank" href="{% url "home:gerar_grafico" %}" class="btn btn-info btn-group-sm">Grafico</a>
+{#             <a type="submit" onclick="fazerUpload(this)" class="btn btn-info btn-group-sm">Grafico</a>#}
+        {% endif %}
     </div>
-
+    </div>
+    <div style="text-align: center" >
+        <img id="grafico"></img>
+    </div>
 {% endblock %}
 </body>
 </html>

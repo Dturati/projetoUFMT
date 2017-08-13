@@ -12,7 +12,8 @@ from estagio.base.compacta_pesquisa.compacta_pesquisa import compacta_toda_pesqu
 import json
 import hashlib
 from random import choice
-from .task import add,report_progress
+# from .task import add,report_progress
+from estagio.celery import app
 from .Email.email import send_email
 import requests
 import random
@@ -149,12 +150,9 @@ def baixar_pesquisa(request):
         response['Content-Disposition'] = "attachment; filename=%s" % nome_download
         os.remove(nome_arquivo)
     except:
-        # return render(request,"home.html",{})
-        pass
+        return render(request,"home.html",{})
     try:
-        if(request.session['email'] != ""):
-            # send_email(request.session['email'])
-            pass
+        send_email(request.session['email'])
     except:
         pass
     return response
@@ -170,12 +168,17 @@ def define_sessao(request):
 
 
 def requisicao_enviada(request):
+    request.session['email'] = request.GET['email']
+    print(request.session['email'])
     return render(request,"requisicao_enviada.html",{})
 
-import zipfile
-from .verifica_upload.VerificaUpload import VerificaUpload
+#sistema de upload
+# from .verifica_upload.VerificaUpload import VerificaUpload
+from .upload.upload import Upload
 def upload(request):
-    verifica = VerificaUpload()
+    # verifica = VerificaUpload()
+    instUpload =  Upload()
+
     if(request.method == 'POST'):
         try:
             request.FILES['myfile']
@@ -184,18 +187,23 @@ def upload(request):
 
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        zip_ref = zipfile.ZipFile(str(os.getcwd())+"/estagio/arquivos/"+str(myfile.name), 'r')
-        zip_ref.extractall(str(os.getcwd())+"/estagio/arquivos/upload/"+str(myfile.name))
-        zip_ref.close()
-        os.remove(str(os.getcwd()) + "/estagio/arquivos/" + str(myfile.name))
-        return render(request, 'upload.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
-    return render(request,"upload.html")
+        sucess,uploaded_file_url = instUpload.upload(myfile)
 
+        if(sucess):
+            context = {
+                    'uploaded_file_url': uploaded_file_url,
+                    'status' : 'OK'
+            }
+            return render(request, 'upload.html',context)
+    return render(request,"upload.html",{'status':'erro'})
+
+#Gerar exibe grafico gerado pelo R
+def gerarGrafico(request):
+    with open("plot.jpg", "rb") as plot:
+        imagem = plot.read()
+    response = HttpResponse(imagem,content_type="image/jpg")
+    return response
+    # return JsonResponse({'teste':'teste'})
 def exemplo(request):
     # pass
     # arquivos = []
@@ -236,14 +244,18 @@ def exemplo(request):
     print(chave)
     return HttpResponse(chave)
 
+from .Teste.teste import teste
 def exemplo_assinc(request):
-   return render(request,"websocket.html")
+    valor = request.GET['valor']
+    teste.delay(int(valor))
+    return render(request,"websocket.html")
 
 def get_resultado(request):
     dados = request.GET
-    res = add.AsyncResult(dados['id'])
+    res = app.AsyncResult(dados['id'])
     return JsonResponse({'status':res.status})
 
+#Retorna o status do id na fila
 def status_stak_celery(request):
     dados = request.GET
     url = "http://localhost:5555/api/tasks"
@@ -251,6 +263,7 @@ def status_stak_celery(request):
     resultadoJson = json.loads(resposta.content)
     return JsonResponse({'id':dados['id'],'tasks':resultadoJson[dados['id']],'total_tasks':resultadoJson})
 
+#retorna o status completo da fila
 def fila_celery(request):
     url = "http://localhost:5555/api/tasks"
     resposta = requests.get(url)

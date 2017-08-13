@@ -39,5 +39,14 @@ arquivos statis do django [
 	{% load static %} no inicio do html
 	 <link rel="stylesheet" href="{% static 'bootstrap/bootstrap-3.3.7-dist/css/bootstrap.css/bootstrap.min.css' %}"> carrega html
 ]
+
+bibliotecas usadas(redis,celery,mathfilters,flower)
+	 pip install celery
+	 pip install redis
+	 pip install django-celery-beat
+	 pip install django-celery-results
+	 pip install mathfilters(de template do django)
+	 pip install flower(api pra celery)
+
  
  

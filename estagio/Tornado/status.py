@@ -3,13 +3,15 @@ import logging
 import tornado.httpserver
 import tornado.ioloop
 from  tornado import web,websocket
-
+import json
 clients = []
 class WSHandler(tornado.websocket.WebSocketHandler):
 
     def check_origin(self, origin):
         return True
 
+    def verificaDownload(self,attr):
+        pass
     def open(self):
         clients.append(self)
         print('connection opened')
@@ -19,8 +21,15 @@ class WSHandler(tornado.websocket.WebSocketHandler):
         print('connection closed')
 
     def on_message(self, message):
-        self.write_message("Echo: " + message)
-        print('received:', message)
+        try:
+            message = json.loads(message)
+            if(message['upload'] == "iniciou"):
+                self.write_message("Echo: " + 'Terminou')
+        except:
+            pass
+        # self.write_message("Echo: " + message)
+        self.write_message("Echo: " + 'Sucesso')
+        # print('received:', message)
 
 
 class MainHandler(tornado.web.RequestHandler):

@@ -65,7 +65,6 @@ class PesquisaArquivos:
         dados_db = banco.teste
         resultado = dados_db.find()
         for f in resultado:
-            print(f)
             if(re.search(m_regex,f['arquivo'])):
                 arquivos.append({'arquivo':f['arquivo'],'criado':f['criado'],'modificado':f['modificado'],'diretorio':f['diretorio']})
         return arquivos
