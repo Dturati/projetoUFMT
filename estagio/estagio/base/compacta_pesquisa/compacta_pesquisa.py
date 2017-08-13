@@ -52,7 +52,6 @@ def compacta_toda_pesquisa_completa(request,chave):
     banco = cliente.fila_download
     dados_db_fila = banco.fila
 
-
     arquivos = []
     for value in resultado:
         arquivos.append(str("../arquivos"  + '/' + value['diretorio'] + '/' +value['arquivo']))
@@ -63,6 +62,8 @@ def compacta_toda_pesquisa_completa(request,chave):
         zip_path = os.path.join(zip_subdir, value)
         zf.write(value, zip_path)
     zf.close()
+
+    #manter flag no banco indicando o arquivo foi posto para Download
     dados_db_fila.update({'_id': str(chave['chave'])}, {"status": "download"}, upsert=False)
     resultado = dados_db_fila.find({'_id': str(chave['chave'])})
     res = [r for r in resultado]
@@ -70,13 +71,12 @@ def compacta_toda_pesquisa_completa(request,chave):
     try:
         arq = os.getcwd() + "/" + str(chave['chave']) + ".zip"
         file = open(arq, 'r')
+        #Manter usuário na fila enquanto o Download não terminar e o arquivo não for apagado
         while (file):
             file = open(arq, 'r')
             print("arquivo ainda existe")
     except:
         print("aquivo deletado")
-        # dados_db_fila.drop({"_id":str(chave['chave'])})
-
     return request
 
 # @shared_task

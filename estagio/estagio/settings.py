@@ -155,7 +155,7 @@ DEFAULT_FROM_EMAIL = 'davidturat@gmail.com'
 EMAIL_USE_TLS   =   True
 EMAIL_HOST  =   'smtp.gmail.com'
 EMAIL_HOST_USER =   'davidturati'
-EMAIL_HOST_PASSWORD =   'pythondeveloper'
+EMAIL_HOST_PASSWORD =   'xbox3602010'
 EMAIL_PORT  =   587
 
 CONTACT_EMAIL = ''
