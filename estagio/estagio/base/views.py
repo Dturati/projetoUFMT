@@ -76,13 +76,12 @@ def contatos(request):
 
 def pesquisa(dados):
     pesquisa_arquivos = PesquisaArquivos
-    meuDir = '/arquivos'
+    meuDir = '/run/media/david/Dados3/projeto_estagio'
     resultadoPesquisa  = pesquisa_arquivos.lista_aquivos(dados)
     return resultadoPesquisa
 from django.http import HttpResponse
 #lista arquivos em forma de arvores
 def lista_em_arvore(request):
-    print("aqui")
     arquivosJson = JsonResponse(lista_arvore(request))
     return arquivosJson
 
@@ -104,9 +103,6 @@ def view_compacta_pesquisa_selecionada(request):
 #compacta toda pesquisas
 def view_compacta_toda_pesquisa(request):
     dados = {}
-    # request.session['email'] = request.GET['email']
-    # chave = hashlib.sha3_512(str(choice([1,1,2,3,4,5,7,8,9,'a','b','c','d','e','f','i','j','k','l','m','n'])).encode('utf-8')).hexdigest()
-    # res = chave
     chave = str(random.getrandbits(128))
     if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
         chaveJ = {'chave': chave}
@@ -142,6 +138,7 @@ def view_compacta_toda_pesquisa(request):
 
 #Baixa os arquivos compactados
 def baixar_pesquisa(request):
+    print("aquiii")
     dados = request.GET
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     nome_download = str(dados['chave'])+".zip"
@@ -257,6 +254,7 @@ def get_resultado(request):
 
 #Retorna o status do id na fila
 def status_stak_celery(request):
+    print("aquiii")
     dados = request.GET
     url = "http://localhost:5555/api/tasks"
     resposta = requests.get(url)
@@ -285,4 +283,9 @@ def cancelar_requisicao(request):
         pass
     return JsonResponse({'status':'REVOKED'})
 
+from .sincroniza.sincroniza import Sincroniza
+def sincroniza_dados(request):
+    sinc = Sincroniza()
+    sinc.inicia()
+    return HttpResponse("Pronto")
 

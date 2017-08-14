@@ -70,6 +70,7 @@ var chamaArquivosAjax = function (elem)
 
                 success: function (data)
                 {
+                    console.log(data);
 
                     var cont  = 1;
                      for(i = 0; i <data.diretorios.length; i++)
@@ -120,22 +121,13 @@ var chamaArquivosAjax = function (elem)
                          dadosHtml += '<td>';
                          dadosHtml += data.detalheArquivosCriados[i];
                          dadosHtml += '</td>';
-                         // dadosHtml += '<td>';
-                         // dadosHtml += '<a class = "glyphicon glyphicon-download" ';
-                         // dadosHtml += ' '+'href=';
-                         // dadosHtml += "'";
-                         // dadosHtml += "/home/download/"+"."+data.caminho + '/'+data.arquivos[i];
-                         // dadosHtml += "'";
-                         // dadosHtml += ' >';
-                         // dadosHtml += '</a>';
-                         // dadosHtml += '</td>';
                          dadosHtml += '<td style="padding-left: 200px" >';
                          dadosHtml += '<input ';
                          dadosHtml += 'data-status="desativado" ';
                          dadosHtml += 'type="checkbox"';
                          dadosHtml += 'id='+parseInt(i+1);
                          dadosHtml += ' onclick="seleciona(this)"';
-                         dadosHtml += ' value='+"."+data.caminho + '/'+data.arquivos[i];
+                         dadosHtml += ' value='+"/run/media/david/Dados3/projeto_estagio/"+data.caminho + '/'+data.arquivos[i];
                          dadosHtml += ' >';
                          dadosHtml += '';
                          dadosHtml += '</input>';

@@ -17,8 +17,9 @@ def compacta_toda_pesquisa_individual(request,chave):
     dados_db_fila = banco.fila
 
     for value in request:
-        arquivos.append(str("../arquivos"  + '/' + value['diretorio'] + '/' +value['arquivo']))
+        arquivos.append(str(value['diretorio'] + '/' +value['arquivo']))
     zf = zipfile.ZipFile(str(chave['chave'])+".zip", "w")
+
     for value in arquivos:
         fdir, fname = os.path.split(value)
         zip_subdir = str(fdir)
@@ -54,7 +55,7 @@ def compacta_toda_pesquisa_completa(request,chave):
 
     arquivos = []
     for value in resultado:
-        arquivos.append(str("../arquivos"  + '/' + value['diretorio'] + '/' +value['arquivo']))
+        arquivos.append(str(value['diretorio'] + '/' +value['arquivo']))
     zf = zipfile.ZipFile(str(chave['chave'])+".zip", "w")
     for value in arquivos:
         fdir, fname = os.path.split(value)
@@ -84,9 +85,9 @@ def compacta_pesquisa_selecionada(request,chave):
     arquivos = []
     request = json.loads(request)
     for value in request:
-        arquivos.append(str("../arquivos" + '/' + value))
+        arquivos.append(value)
     zf = zipfile.ZipFile(chave['chave']+".zip", "w")
-    for value in request:
+    for value in arquivos:
         fdir, fname = os.path.split(value)
         zip_subdir = str(fdir)
         zip_path = os.path.join(zip_subdir, fname)

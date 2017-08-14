@@ -7,9 +7,11 @@ lista_arquivos = ListaArquivos
 def lista_arvore(request):
     caminho = request.GET.get('caminho', None)
     if(caminho == '/'):
-        caminho = '../arquivos'
+        caminho = "/run/media/david/Dados3/projeto_estagio"
     meuDir = caminho
-    diretorio, arquivos,detalheArquivosModificado,detalheArquivosCriados,detalhePastaModificadas,detalhePastaCriadas = lista_arquivos.list_files(os.getcwd() + meuDir)
+    diretorio, arquivos,detalheArquivosModificado,\
+    detalheArquivosCriados,detalhePastaModificadas,\
+    detalhePastaCriadas = lista_arquivos.list_files("/run/media/david/Dados3/projeto_estagio" + meuDir)
 
     #Remove / duplicado em caminhos de diretorios
     teste = list(caminho[::-1].split()[0])

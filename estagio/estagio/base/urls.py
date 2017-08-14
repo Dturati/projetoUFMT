@@ -2,7 +2,7 @@ from django.conf.urls import url,include
 from estagio.base.views import home,contatos,lista_em_arvore,\
     download,view_compacta_pesquisa_selecionada,\
     baixar_pesquisa,exemplo,view_compacta_toda_pesquisa,exemplo_assinc,get_resultado,define_sessao,requisicao_enviada,\
-    status_stak_celery,cancelar_requisicao,fila_celery,upload,gerarGrafico
+    status_stak_celery,cancelar_requisicao,fila_celery,upload,gerarGrafico,sincroniza_dados
 
 urlpatterns = [
     url(r'^home/$',home, name='home'), #Caminho da view home
@@ -23,4 +23,6 @@ urlpatterns = [
     url(r'^ajax/cancelar_requisicao',cancelar_requisicao,name='cancelar_requisicao'),
     url(r'^upload/$',upload,name='upload'),
     url(r'^ajax/gerar_grafico/$',gerarGrafico,name='gerar_grafico'),
+    url(r'^sincroniza_dados/$',sincroniza_dados,name='sincroniza_dados'),
+
 ]
