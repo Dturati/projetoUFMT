@@ -170,6 +170,7 @@ var compactaPesquisa = function (elem,chave)
          {
             vetorDados.push(item);
          });
+         console.log(vetorDados);
 
         $.ajax({
             type: "GET",
