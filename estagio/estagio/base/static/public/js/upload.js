@@ -1,24 +1,53 @@
 /**
  * Created by david on 08/08/17.
  */
-ws = new WebSocket("ws://localhost:8081/ws");
-var upload = function (ws)
+// ws = new WebSocket("ws://localhost:8081/ws");
+// var upload = function (ws)
+// {
+//
+//     ws.onopen = function () {
+//         console.log("Abriu uma conexão");
+//     }
+// };
+// upload(ws);
+//
+// var sendWebSocket = function () {
+//     console.log("Teste");
+//     ws.send(JSON.stringify({"upload":"iniciou"}));
+//
+//     ws.onmessage = function (message) {
+//         console.log(message.data);
+//     }
+// };
+
+var  cancelaRequisicaoUploadRefresh = function()
 {
 
-    ws.onopen = function () {
-        console.log("Abriu uma conexão");
-    }
-};
-upload(ws);
+          console.log('cancela');
+          $.ajax({
+                type: "GET",
+                url: '/ajax/cancela_requisicao_upload/',
+                data : {
+                    'id' : $("#id_task_upload").text()
+                },
+                success: function (data) {
+                        fila_de_requisicoes_upload();
+                },
 
-var sendWebSocket = function () {
-    console.log("Teste");
-    ws.send(JSON.stringify({"upload":"iniciou"}));
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+            });
 
-    ws.onmessage = function (message) {
-        console.log(message.data);
-    }
 };
+
+
+
+$(window).ready(function () {
+    // cancelaRequisicaoUploadRefresh();
+});
+
 
 var fazerUpload = function (e) {
 
@@ -35,3 +64,114 @@ var fazerUpload = function (e) {
         }
     });
 };
+
+var  cancelaRequisicaoUpload = function(objeto)
+{
+      $.ajax({
+        type: "GET",
+        url: '/ajax/cancela_requisicao_upload/',
+        data : {
+            'id' : objeto.value
+        },
+        success: function (data) {
+                fila_de_requisicoes_upload();
+        },
+
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+        }
+    });
+};
+
+var  status_requisicao_upload = function(objeto)
+{
+       if($("#id_task_upload").text() == undefined || $("#id_task_upload").text() == "")
+      {
+          return;
+      }
+
+      $.ajax({
+        type: "GET",
+        url: '/ajax/status_requisicao_upload/',
+        data : {
+            'id' : $("#id_task_upload").text()
+        },
+        success: function (data) {
+            console.log(data);
+            if(data.statusTask.state == 'PENDING')
+            {
+                $("#status_upload").text("Processando");
+            }
+
+            if(data.statusTask.state == 'SUCCESS')
+            {
+                $("#status_upload").text("Pronto");
+            }
+
+        },
+
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log(xhr.status);
+            console.log(thrownError);
+        }
+    });
+};
+
+var fila_de_requisicoes_upload = function () {
+ $.ajax({
+                type: "GET",
+                url: 'ajax/fila_celery',
+                data : {},
+                success: function (data)
+                {
+                    var objeto = data['total_tasks'];
+                    var html = "";
+                    var cont = 1;
+                    var status = "";
+                    for(var key in objeto)
+                    {
+                        if((objeto[key].state != "REVOKED") && (objeto[key].state != "FAILURE") && (objeto[key].state != "SUCCESS"))
+                        {
+                            if(objeto[key].state == "REVOKED")
+                            {
+                                status = "Cancelado";
+                            }
+                            if(objeto[key].state == "SUCCESS")
+                            {
+                                status = "Sucesso";
+                            }
+                            if(objeto[key].state == "STARTED")
+                            {
+                                status = "Iniciado";
+                            }
+                             if(objeto[key].state == "RECEIVED")
+                            {
+                                status = "Na fila";
+                            }
+                            html += "<tr>";
+                            html += '<td>' + cont;
+                            html += '</td>';
+                            if (key === $("#id_task").text()) {
+                                html += "<td " + "style=" + "'color:red'" + ">" + key + "</td>";
+                            } else {
+                                html += "<td " + "style="+"'color:blue'" + ">" + key + "</td>";
+                            }
+                            html += "<td>" + status+ "</td>";
+                            html += "</tr>";
+                            cont++;
+                        }
+
+                        cont++;
+
+                    }
+                    $("#fila_de_rquisicoes_upload").html(html);
+
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    console.log(xhr.status);
+                    console.log(thrownError);
+                }
+          });
+};
+

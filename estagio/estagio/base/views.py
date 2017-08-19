@@ -49,7 +49,7 @@ def home(request):
         contexto = {
             'form': form,
             'resultadoPesquisa': resultadoPesquisa,
-            'quantidade': 6,
+            'quantidade': pagina.paginator.num_pages * 8,
             'paginado': pagina,
         }
         return render(request, "home.html", contexto)
@@ -66,7 +66,7 @@ def home(request):
         contexto = {
                         'form': form,
                         'resultadoPesquisa': resultadoPesquisa,
-                        'quantidade': 6,
+                        'quantidade': pagina.paginator.num_pages * 8,
                         'paginado': pagina,
                     }
         return render(request, "home.html", contexto)
@@ -85,7 +85,7 @@ def lista_em_arvore(request):
     arquivosJson = JsonResponse(lista_arvore(request))
     return arquivosJson
 
-#Faz download de um arquivo
+#Faz download de um único  arquivo
 def download(request,path):
     downloadModel = Download()
     return downloadModel.getDownload(request,path)
@@ -94,7 +94,6 @@ def download(request,path):
 def view_compacta_pesquisa_selecionada(request):
     dados = request.GET.getlist('data[]')
     teste = json.dumps(dados)
-    # chave = hashlib.sha3_512(str(choice([1, 1, 2, 3, 4, 5, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f', 'i', 'j', 'k', 'l', 'm', 'n'])).encode('utf-8')).hexdigest()
     chave = str(random.getrandbits(128))
     chaveJ = {'chave': chave}
     res = compacta_pesquisa_selecionada(teste,chaveJ)
@@ -138,8 +137,9 @@ def view_compacta_toda_pesquisa(request):
 
 #Baixa os arquivos compactados
 def baixar_pesquisa(request):
-    print("aquiii")
     dados = request.GET
+    os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
+    print(os.getcwd())
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     nome_download = str(dados['chave'])+".zip"
     try:
@@ -165,9 +165,12 @@ def define_sessao(request):
 
 
 def requisicao_enviada(request):
-    request.session['email'] = request.GET['email']
-    print(request.session['email'])
-    return render(request,"requisicao_enviada.html",{})
+    quantidade_arquivos = request.GET['quantidade']
+    try:
+        request.session['email'] = request.GET['email']
+    except:
+        pass
+    return render(request,"requisicao_enviada.html",{"qtdArquivos":quantidade_arquivos})
 
 #sistema de upload
 # from .verifica_upload.VerificaUpload import VerificaUpload
@@ -175,7 +178,7 @@ from .upload.upload import Upload
 def upload(request):
     # verifica = VerificaUpload()
     instUpload =  Upload()
-
+    constrole_upload = 0
     if(request.method == 'POST'):
         try:
             request.FILES['myfile']
@@ -184,15 +187,39 @@ def upload(request):
 
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
-        sucess,uploaded_file_url = instUpload.upload(myfile)
+        rashZip, sucess, uploaded_file_url, idTask = instUpload.upload(myfile)
 
         if(sucess):
             context = {
                     'uploaded_file_url': uploaded_file_url,
-                    'status' : 'OK'
+                    'status' : 'OK',
+                    'file':myfile,
+                    'rashZip': rashZip,
+                    'idTask' :idTask,
             }
             return render(request, 'upload.html',context)
+    print("atualizacao")
     return render(request,"upload.html",{'status':'erro'})
+
+from .upload.upload import Upload
+from django.http import HttpResponseRedirect
+def DownloadUpload(request,file):
+    if(file==""):
+        print("aquii")
+        return HttpResponseRedirect("/home/")
+    dados = request.GET
+    os.chdir("/")
+    nome_arquivo = "arquivos/uploads/"+str(file)+".zip"
+    nome_download = str(file)+".zip"
+    try:
+        response = HttpResponse(open(nome_arquivo, 'rb').read(), content_type='x-zip-compressed')
+        response['Content-Disposition'] = "attachment; filename=%s" % nome_download
+        os.remove(nome_arquivo)
+    except:
+        return HttpResponseRedirect("/home/")
+    return response
+
+
 
 #Gerar exibe grafico gerado pelo R
 def gerarGrafico(request):
@@ -202,45 +229,9 @@ def gerarGrafico(request):
     return response
     # return JsonResponse({'teste':'teste'})
 def exemplo(request):
-    # pass
-    # arquivos = []
-    # for root, dirs, files in os.walk("../arquivos"):
-    #     for f in files:
-    #         arquivos.append({'diretorio': root, 'arquivo':f,'modificado':time.ctime(os.path.getmtime(root + '/' + f)),
-    #                          'criado':time.ctime(os.path.getctime(root + '/' + f))})
-    #
-    from pymongo import MongoClient
-    # cliente = MongoClient('localhost',27017)
-    # banco = cliente.test_database
-    # dados_db = banco.teste
-    # cont = 1
-    # dados_db.drop()
-    # for value in arquivos:
-    #     value['_id'] = cont
-    #     dados = dados_db.insert_one(value).inserted_id
-    #     cont = cont + 1
-    # context ={
-    #     'contacts':'teste'
-    # }
-    #
-    # return render(request,'exemplo.html',context)
-    # cliente = MongoClient('localhost', 27017)
-    # banco = cliente.fila_download
-    # dados_db = banco.fila
-    # resultado = dados_db.find({'_id':"6f8f57715090da2632453988d9a1501b"})
-    # res = [r for r in resultado]
-    # print(res[0]['status'])
-    # dados_db.update({'_id': "6f8f57715090da2632453988d9a1501b"}, {"status": "download"}, upsert=False)
-    # resultado = dados_db.find({'_id': "6f8f57715090da2632453988d9a1501b"})
-    # res = [r for r in resultado]
-    # print(res[0]['status'])
-    import random
-    chave = str(random.getrandbits(128))
-    # chave = hashlib.md5(choice(choice(lista)).encode('utf-8')).hexdigest()
-    # print(str(lista))
-    print(chave)
-    return HttpResponse(chave)
+    pass
 
+#Um teste usando o Celery
 from .Teste.teste import teste
 def exemplo_assinc(request):
     valor = request.GET['valor']
@@ -254,7 +245,6 @@ def get_resultado(request):
 
 #Retorna o status do id na fila
 def status_stak_celery(request):
-    print("aquiii")
     dados = request.GET
     url = "http://localhost:5555/api/tasks"
     resposta = requests.get(url)
@@ -289,3 +279,16 @@ def sincroniza_dados(request):
     sinc.inicia()
     return HttpResponse("Pronto")
 
+def cancela_requisicao_upload(request):
+    idTask = request.GET['id']
+    url = "http://localhost:5555/api/task/revoke/" + str(idTask) + "?terminate=true"
+    resposta = requests.post(url)
+    return JsonResponse({"ok":"ok"})
+
+def status_requisicao_upload(request):
+    idTask = request.GET['id']
+    url = "http://localhost:5555/api/task/result/" + str(idTask)
+    resposta = requests.get(url)
+    resultadoJson = json.loads(resposta.content)
+    print(resultadoJson)
+    return JsonResponse({"status": "ok",'statusTask':resultadoJson})

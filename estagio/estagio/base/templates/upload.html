@@ -6,51 +6,106 @@
     <title>Upload</title>
     <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'public/css/center.css' %}">
+      <script src="{% static 'jquery/dist/jquery.js' %}"></script>
     <script src="{% static 'public/js/upload.js' %}"></script>
-     <script src="{% static 'jquery/dist/jquery.js' %}"></script>
+
 </head>
 <body>
 
-
+<div align="center">
 {% block content %}
     <br>
-    <div class="center">
+        <h4 style="text-align: center">Upload de Arquivos</h4>
         <p style="color: red">{{ resposta }}</p>
-      <form method="post" enctype="multipart/form-data">
+      <form method="post" id="formulario" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="controle_refresh" id="controle_refresh" value="{{ status }}">
         {% csrf_token %}
-          <table>
-              <tr>
-                  <th>
-                      <input type="file" name="myfile">
-                  </th>
-{#                  <th style="padding-left: 90%;padding-top: 10px">#}
-{#                      <p><a type="button" class="btn btn-info btn-group-sm" href="{% url 'home:home' %}">Voltar</a></p>#}
-{#                  </th>#}
-              </tr>
-              <tr>
-                  <th>
-                      <br>
-                      <button type="submit" class="btn btn-info btn-group-sm">Upload</button>
-                      <a type="button" class="btn btn-info btn-group-sm" href="{% url 'home:home' %}">Voltar</a>
-{#                      <button onclick="sendWebSocket()" type="submit" class="btn btn-info btn-group-sm">Puta Merda</button>#}
-                  </th>
-              </tr>
+          <table style="width: 30%" class="table table-bordered">
+              <tbody></tbody>
+              <thead>
+                  <tr>
+                        <td><input type="file" name="myfile"></td>
+                        <td>
+{#                            <button type="submit" class="btn btn-info btn-group-sm">Upload</button>#}
+                            <button id="enviar" type="submit" class="btn btn-info btn-group-sm">Upload</button>
+                        </td>
+                        <td>
+                          <a type="button" class="btn btn-info btn-group-sm" href="{% url 'home:home' %}">Voltar</a>
+                        </td>
+                  </tr>
+              </thead>
           </table>
       </form>
-          {% if uploaded_file_url %}
-                <p>Arquivo enviado: <a href="{{ upload }}">{{ uploaded_file_url }}</a></p>
-          {% endif %}
-    <div>
-         {% if status == "OK" %}
-             <button type="submit" class="btn btn-info btn-group-sm">Download</button>
-             <a type="submit" target="_blank" href="{% url "home:gerar_grafico" %}" class="btn btn-info btn-group-sm">Grafico</a>
-{#             <a type="submit" onclick="fazerUpload(this)" class="btn btn-info btn-group-sm">Grafico</a>#}
+        {% if uploaded_file_url %}
+            <p>Arquivo enviado: <a href="{{ upload }}">{{ uploaded_file_url }}</a></p>
         {% endif %}
+    <div>
+    <br>
+        <table style="width: 20%;" class="table table-bordered">
+
+            <tbody>
+                <tr>
+                </tr>
+            </tbody>
+            <thead>
+{#               {% if status == "OK" %}#}
+                   <script>fila_de_requisicoes_upload();
+                   status_requisicao_upload();
+                   </script>
+                <tr>
+                    <td>
+
+                    <a type="submit" href="{% url "home:download_upload" rashZip  %}"  class="btn btn-info btn-group-sm">Download</a>
+                    </td>
+                    <td>
+                        <a type="submit" target="_blank" href="{% url "home:gerar_grafico" %}" class="btn btn-info btn-group-sm">Grafico</a>
+                    </td>
+                </tr>
+{#                {% endif %}#}
+            </thead>
+        </table>
+
     </div>
+    <div>
+        <br>
+        <table style="width: 60%" class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Número requisicao</th>
+                    <th>Status</th>
+                    <th>Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td id="id_task_upload">{{ idTask }}</td>
+                    <td id="status_upload"></td>
+                    <td><button class="btn btn-danger btn-xs" id="{{ idTask }}" value="{{ idTask }}" onclick="cancelaRequisicaoUpload(this)">Cancelar</button>
+                    <button onclick="status_requisicao_upload()" class="btn btn-warning btn-xs">atualizar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
-    <div style="text-align: center" >
-        <img id="grafico"></img>
+    <div style="width: 60%;">
+        <h4>Fila de requisições</h4>
+        <table class="table table-bordered" style="background-color: lightgrey">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Número</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+            <tbody id="fila_de_rquisicoes_upload">
+
+            </tbody>
+        </table>
+        <button class="btn btn-xs btn-info" onclick="fila_de_requisicoes_upload()">Atualizar</button>
     </div>
+</div>
 {% endblock %}
 </body>
+     <script src="{% static 'jquery/dist/jquery.js' %}"></script>
 </html>

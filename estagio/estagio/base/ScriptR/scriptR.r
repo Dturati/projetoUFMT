@@ -7,7 +7,7 @@ grafico = function()
     plot(cars, type="o", col="blue")
 
     # Create a title with a red, bold/italic font
-    title(main="Autos", col.main="red", font.main=4)
+    title(main="", col.main="red", font.main=4)
     dev.copy(jpeg,filename="plot.jpg");
         dev.off ();
 }

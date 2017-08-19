@@ -1,20 +1,38 @@
 import zipfile
 import os
-from django.core.files.storage import FileSystemStorage
-from ..ScriptR.scriptR import ScritpR
+from ..ScriptR.scriptR import executaScript
+import shutil
+import random
+
+
 class Upload:
-    def __init__(self):
-        self.instScriptR = ScritpR()
-
     def upload(self,myfile):
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        zip_ref = zipfile.ZipFile(str(os.getcwd()) + "/estagio/arquivos/" + str(myfile.name), 'r')
-        zip_ref.extractall(str(os.getcwd()) + "/estagio/arquivos/upload/" + str(myfile.name))
-        zip_ref.close()
-        os.remove(str(os.getcwd()) + "/estagio/arquivos/" + str(myfile.name))
-        self.instScriptR.executaScript()
+        rashZip = str(random.getrandbits(32))
+        os.chdir("/")
+        with(open("arquivos/uploads/fila.txt",'w')) as fila:
+            fila.write(str(rashZip+"\n"))
 
-        return True,uploaded_file_url
+        with open('/arquivos/uploads/'+myfile.name, 'wb+') as destination:
+            for chunk in myfile.chunks():
+                destination.write(chunk)
+        try:
+            os.chdir("/")
+            path = str(os.getcwd())+"arquivos/uploads/"
+            zip_ref = zipfile.ZipFile(str(os.getcwd()) + "arquivos/uploads/" + str(myfile.name), 'r')
+            zip_ref.extractall(str(os.getcwd()) + "arquivos/uploads/"+str(rashZip))
+            zip_ref.close()
+        except:
+            print("erro")
+
+        os.remove(str(os.getcwd()) + "arquivos/uploads/" + str(myfile.name))
+        res = executaScript.delay(rashZip)
+
+        return rashZip,True,"Arquivos enviados",str(res.id)
+        # return rashZip,True,"Arquivos enviados","123"
+
+    def download(self,myfile):
+
+        raiz = os.getcwd()
+        shutil.rmtree(raiz + "/estagio/arquivos/upload/" + myfile)
+        return True
 

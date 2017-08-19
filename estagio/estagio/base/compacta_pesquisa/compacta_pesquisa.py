@@ -9,6 +9,7 @@ from pymongo import MongoClient
 
 @shared_task
 def compacta_toda_pesquisa_individual(request,chave):
+    os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
     # #se a pesquisa for especifica
     arquivos = []
     request = json.loads(request)
@@ -44,6 +45,7 @@ def compacta_toda_pesquisa_individual(request,chave):
 
 @shared_task
 def compacta_toda_pesquisa_completa(request,chave):
+    os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
     # #se forem todos os arquivos do sistema
     cliente = MongoClient('localhost', 27017)
     banco = cliente.test_database
@@ -82,6 +84,7 @@ def compacta_toda_pesquisa_completa(request,chave):
 
 # @shared_task
 def compacta_pesquisa_selecionada(request,chave):
+    os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
     arquivos = []
     request = json.loads(request)
     for value in request:

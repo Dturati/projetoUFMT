@@ -127,7 +127,7 @@ var chamaArquivosAjax = function (elem)
                          dadosHtml += 'type="checkbox"';
                          dadosHtml += 'id='+parseInt(i+1);
                          dadosHtml += ' onclick="seleciona(this)"';
-                         dadosHtml += ' value='+"/run/media/david/Dados3/projeto_estagio/"+data.caminho + '/'+data.arquivos[i];
+                         dadosHtml += ' value='+""+data.caminho + '/'+data.arquivos[i];
                          dadosHtml += ' >';
                          dadosHtml += '';
                          dadosHtml += '</input>';
