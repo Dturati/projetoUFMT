@@ -3,7 +3,8 @@ class Sincroniza():
 
     def inicia(self):
         arquivos = []
-        for root, dirs, files in os.walk("/run/media/david/Dados3/projeto_estagio/arquivos"):
+        cont = 1
+        for root, dirs, files in os.walk("/arquivos"):
             for f in files:
                 arquivos.append({'diretorio': root, 'arquivo':f,'modificado':time.ctime(os.path.getmtime(root + '/' + f)),
                                  'criado':time.ctime(os.path.getctime(root + '/' + f))})

@@ -56,7 +56,10 @@ var compactaTodaPesquisa = function (objeto,ws)
             },
             success: function (data)
             {
-                status_celery_task(data);
+                setTimeout(function () {
+                     status_celery_task(data);
+                },1000);
+
                 fila();
                 console.log(data.id);
                 $.cookie("id_task",data.id);
@@ -71,11 +74,15 @@ var compactaTodaPesquisa = function (objeto,ws)
                 if(message.data == 'SUCCESS')
                 {
                     console.log('aqui');
+                    console.log(data.chave);
                     setTimeout(function () {
                             baixaPesquisa(data.chave);
                     },1000);
 
-                    status_celery_task(data);
+                     setTimeout(function () {
+                             status_celery_task(data);
+                    },2000);
+
                 }
                 ws.onclose = function ()
                 {
@@ -119,7 +126,10 @@ var cancelar_requisicao = function (objeto)
                         'id' : objeto.value,
                         'chave' : $.cookie("chave")
                     };
-                    status_celery_task(dados);
+                    setTimeout(function () {
+                        status_celery_task(dados);
+                    },1000);
+
                 },
                 error: function (xhr, ajaxOptions, thrownError) {
                     console.log(xhr.status);

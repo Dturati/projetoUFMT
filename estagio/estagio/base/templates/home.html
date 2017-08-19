@@ -135,7 +135,8 @@
             o processo pode demorar minutos ou até horas para ser concluído.</p>
       </div>
       <div style="height: 100px; width: 400px; padding-left: 20%">
-          <form action="{% url "home:requisicao_enviada" %}">
+          <form action="{% url "home:requisicao_enviada"%}">
+                <input type="hidden" name="quantidade" value="{{ quantidade }}">
                   <table class="table table-bordered">
                       <tr>
                           <th>Email</th>
