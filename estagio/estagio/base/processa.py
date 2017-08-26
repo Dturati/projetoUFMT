@@ -29,6 +29,7 @@ class ListaArquivos:
 class PesquisaArquivos:
     '''0000000030-35-seq-_13_0.4-1.csv'''
     def lista_aquivos(pesquisa):
+        print("lista arquivos")
         try:
             todosOsArquivos = pesquisa['todosOsArquivos']
         except:
@@ -46,6 +47,7 @@ class PesquisaArquivos:
 
             tipoFalha = pesquisa['tipoFalha']
             metodo = pesquisa['metodoUtilizado']
+            fala_conjunto = pesquisa['falha_conjunto']
             vetorFalha = []
             vetorFalha.append("(")
             porcentagemFalha = porcentagem_um
@@ -58,12 +60,24 @@ class PesquisaArquivos:
                 vetorFalha.append("|")
             for r in vetorFalha:
                 regex_falha = regex_falha+str(r)
-            m_regex = m_regex+"-"+regex_falha+"-"+tipoFalha+"-_13_[0-9][.][0-4]-"+metodo+"[.]csv"
+            regex_falha_conjunto = ""
 
+            if(int(fala_conjunto) < 4):
+                print(fala_conjunto)
+                regex_falha_conjunto = '(' +fala_conjunto+ ')' + '.' + '[0-9]'
+
+            if(int(fala_conjunto) >= 4):
+                print(fala_conjunto)
+                regex_falha_conjunto = '['+fala_conjunto+ '-9]'
+
+            m_regex = m_regex+"-"+regex_falha+"-"+tipoFalha+"-_13_+"+regex_falha_conjunto+"-"+metodo+"[.]csv"
+            # print(m_regex)
+            # print(re.search(m_regex,'0000014026-18-ale-_13_1-2.csv'))
         cliente = MongoClient('localhost', 27017)
         banco = cliente.test_database
         dados_db = banco.teste
         resultado = dados_db.find()
+
         for f in resultado:
             if(re.search(m_regex,f['arquivo'])):
                 arquivos.append({'arquivo':f['arquivo'],'criado':f['criado'],'modificado':f['modificado'],'diretorio':f['diretorio']})

@@ -79,6 +79,7 @@ def pesquisa(dados):
     meuDir = '/run/media/david/Dados3/projeto_estagio'
     resultadoPesquisa  = pesquisa_arquivos.lista_aquivos(dados)
     return resultadoPesquisa
+
 from django.http import HttpResponse
 #lista arquivos em forma de arvores
 def lista_em_arvore(request):
@@ -139,7 +140,6 @@ def view_compacta_toda_pesquisa(request):
 def baixar_pesquisa(request):
     dados = request.GET
     os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
-    print(os.getcwd())
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     nome_download = str(dados['chave'])+".zip"
     try:
@@ -149,7 +149,8 @@ def baixar_pesquisa(request):
     except:
         return render(request,"home.html",{})
     try:
-        send_email(request.session['email'])
+        # send_email(request.session['email'])
+        pass
     except:
         pass
     return response
@@ -222,21 +223,37 @@ def DownloadUpload(request,file):
 
 
 #Gerar exibe grafico gerado pelo R
+from .Gerar_grafico.Gerar_grafico import GeraArquivoParaGraficoEmR
 def gerarGrafico(request):
-    with open("plot.jpg", "rb") as plot:
+    os.chdir("/")
+    with open("arquivos/uploads/grafico/BoxplotVar/R2/metodo_R2.png", "rb") as plot:
         imagem = plot.read()
-    response = HttpResponse(imagem,content_type="image/jpg")
+    response = HttpResponse(imagem, content_type="image/jpg")
     return response
-    # return JsonResponse({'teste':'teste'})
+
+from rpy2.robjects.packages import importr
+from rpy2.robjects.packages import STAP,STF
+hydro = importr("hydroGOF")
+
 def exemplo(request):
-    pass
+
+    print("Exemplo")
+    os.chdir("/")
+    with open(os.getcwd() + "/arquivos/uploads/grafico.R", "r") as r:
+        string = r.read()
+    print(string)
+    try:
+     fun = STAP(string, "grafico")
+    except:
+        pass
+    return HttpResponse("Exemplo")
 
 #Um teste usando o Celery
 from .Teste.teste import teste
 def exemplo_assinc(request):
     valor = request.GET['valor']
     teste.delay(int(valor))
-    return render(request,"websocket.html")
+    return HttpResponse("Pronto")
 
 def get_resultado(request):
     dados = request.GET
@@ -268,9 +285,8 @@ def cancelar_requisicao(request):
     dado = dados_db_fila.update({'_id': str(dadosRequest['chave'])}, {"status": "cancelado"}, upsert=False)
     try:
         os.remove(dadosRequest['chave']+".zip")
-        pass
     except:
-        pass
+        print("Não é possível remover o arquivo solicitado")
     return JsonResponse({'status':'REVOKED'})
 
 from .sincroniza.sincroniza import Sincroniza
@@ -290,5 +306,4 @@ def status_requisicao_upload(request):
     url = "http://localhost:5555/api/task/result/" + str(idTask)
     resposta = requests.get(url)
     resultadoJson = json.loads(resposta.content)
-    print(resultadoJson)
     return JsonResponse({"status": "ok",'statusTask':resultadoJson})

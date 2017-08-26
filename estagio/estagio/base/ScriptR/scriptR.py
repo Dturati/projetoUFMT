@@ -6,8 +6,10 @@ import os
 import subprocess
 from celery import shared_task
 import zipfile
+
 from rpy2.robjects.packages import importr
 hydro = importr("hydroGOF")
+from ..Gerar_grafico.Gerar_grafico import GeraArquivoParaGraficoEmR
 import shutil
 @shared_task
 def executaScript(rash):
@@ -34,5 +36,15 @@ def executaScript(rash):
         except ValueError as e:
             print(e)
     zf.close()
+    GeraArquivoParaGraficoEmR(rash)
     shutil.rmtree("/arquivos/uploads/"+str(rash))
+
+    os.chdir("/")
+
+    with open(os.getcwd() + "arquivos/uploads/grafico.R", "r") as r:
+        string = r.read()
+    try:
+        fun = STAP(string, "processa")
+    except:
+        print("Erro ao executar algumas funcoes")
 

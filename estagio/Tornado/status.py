@@ -5,31 +5,54 @@ import tornado.ioloop
 from  tornado import web,websocket
 import json
 clients = []
+import requests
+import asyncio
+
 class WSHandler(tornado.websocket.WebSocketHandler):
 
     def check_origin(self, origin):
         return True
 
-    def verificaDownload(self,attr):
-        pass
+    def verificaUpload(self,attr):
+        self.id = attr
+        try:
+            url = "http://localhost:5555/api/task/result/" + str(attr)
+            resposta = requests.get(url)
+            resultadoJson = json.loads(resposta.content)
+
+            while(resultadoJson['state'] != 'SUCCESS'):
+                url = "http://localhost:5555/api/task/result/" + str(attr)
+                resposta = requests.get(url)
+                resultadoJson = json.loads(resposta.content)
+                print(resultadoJson)
+        except:
+            print("Erro ao verificar download")
+
+        return True
+
     def open(self):
         clients.append(self)
         print('connection opened')
 
     def on_close(self):
         clients.remove(self)
-        print('connection closed')
+        try:
+            url = "http://localhost:5555/api/task/revoke/" + str(self.id) + "?terminate=true"
+            resposta = requests.post(url)
+            print('connection closed')
+        except:
+            print("Erro ao cancelar task")
 
     def on_message(self, message):
         try:
             message = json.loads(message)
             if(message['upload'] == "iniciou"):
-                self.write_message("Echo: " + 'Terminou')
+                self.verificaUpload(message['id'])
+                self.write_message('Sucesso')
+                print("Iniciou upload")
         except:
-            pass
-        # self.write_message("Echo: " + message)
-        self.write_message("Echo: " + 'Sucesso')
-        # print('received:', message)
+            print("Erro na menssagem")
+        self.write_message('Sucesso')
 
 
 class MainHandler(tornado.web.RequestHandler):

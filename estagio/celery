@@ -2,7 +2,9 @@ sudo celery -A estagio  worker -l info -c 1
 sudo redis-server
 mostrar eventos sudo celery -A estagio events
 habilitar eventos sudo celery -A estagio control enable_events
-
+necessario a installção dos pacotes de futures
+pip install futures babel
+limpar tarefas celery -A proj purge
 modo grafico
 pip install flower
 celery flower -A estagio --address=127.0.0.1 --port=5555

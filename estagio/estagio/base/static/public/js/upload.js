@@ -1,24 +1,34 @@
 /**
  * Created by david on 08/08/17.
  */
-// ws = new WebSocket("ws://localhost:8081/ws");
-// var upload = function (ws)
-// {
-//
-//     ws.onopen = function () {
-//         console.log("Abriu uma conexão");
-//     }
-// };
-// upload(ws);
-//
-// var sendWebSocket = function () {
-//     console.log("Teste");
-//     ws.send(JSON.stringify({"upload":"iniciou"}));
-//
-//     ws.onmessage = function (message) {
-//         console.log(message.data);
-//     }
-// };
+
+ws = new WebSocket("ws://localhost:8081/ws");
+var upload = function ()
+{
+    ws.onopen = function () {
+        console.log("Abriu uma conexão de upload");
+    }
+};
+upload();
+
+var sendWebSocketEnviaIdTask = function () {
+    ws.send(JSON.stringify({"upload":"iniciou","id": $("#id_task_upload").text()}));
+    ws.onmessage = function (message) {
+        if(message.data == 'Sucesso')
+        {
+            $("#bntDownloadArquivos").removeAttr("disabled");
+            $("#uploadGrafico").removeAttr("disabled");
+        }
+    }
+};
+
+var sendWebSocket = function ()
+{
+    console.log("send upload");
+    setTimeout(function () {
+        sendWebSocketEnviaIdTask();
+    },3000);
+};
 
 var  cancelaRequisicaoUploadRefresh = function()
 {

@@ -6,11 +6,13 @@ from celery import shared_task
 import json
 import asyncio
 from pymongo import MongoClient
+import time
 
 @shared_task
 def compacta_toda_pesquisa_individual(request,chave):
     os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
     # #se a pesquisa for especifica
+
     arquivos = []
     request = json.loads(request)
     cliente = MongoClient('localhost', 27017)
@@ -41,10 +43,12 @@ def compacta_toda_pesquisa_individual(request,chave):
         print("arquivo deletado")
         # dados_db_fila.drop({"_id":str(chave['chave'])})
 
+
     return request
 
 @shared_task
 def compacta_toda_pesquisa_completa(request,chave):
+
     os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
     # #se forem todos os arquivos do sistema
     cliente = MongoClient('localhost', 27017)
@@ -80,6 +84,8 @@ def compacta_toda_pesquisa_completa(request,chave):
             print("arquivo ainda existe")
     except:
         print("aquivo deletado")
+
+
     return request
 
 # @shared_task

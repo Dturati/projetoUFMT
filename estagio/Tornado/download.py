@@ -8,8 +8,6 @@
 #     resultadoJson = json.loads(resposta.content)
 # return resultadoJson[num]['state']
 
-
-
 import tornado.ioloop
 import tornado.web
 from tornado import websocket,ioloop

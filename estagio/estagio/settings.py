@@ -29,8 +29,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-CELERY_BROKER_URL = 'redis://localhost:6379'
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+# CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_BROKER_URL = 'amqp://192.168.15.11:5672'
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'amqp://192.168.15.11:5672'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
@@ -132,30 +134,31 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'estagio','arquivos')
 MEDIA_URL = '/arquivos/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
     'base/static/',
 ]
 
 
-TORNADO = {
-    'port': 8080,
-    'handlers': [
-        (r'%s(.*)' % STATIC_URL, tornado.web.StaticFileHandler, {'path': STATICFILES_DIRS}),
-        tornado_websockets.django_app()
-    ],
-    'settings': {
-        'autoreload': True,
-        'debug': True
-    }
-}
+# TORNADO = {
+#     'port': 8080,
+#     'handlers': [
+#         (r'%s(.*)' % STATIC_URL, tornado.web.StaticFileHandler, {'path': STATICFILES_DIRS}),
+#         tornado_websockets.django_app()
+#     ],
+#     'settings': {
+#         'autoreload': True,
+#         'debug': True
+#     }
+# }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'davidturat@gmail.com'
 EMAIL_USE_TLS   =   True
 EMAIL_HOST  =   'smtp.gmail.com'
 EMAIL_HOST_USER =   'davidturati'
-EMAIL_HOST_PASSWORD =   ''
+EMAIL_HOST_PASSWORD =   'xbox3602010'
 EMAIL_PORT  =   587
 
 CONTACT_EMAIL = ''
