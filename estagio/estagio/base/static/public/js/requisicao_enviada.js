@@ -58,7 +58,7 @@ var compactaTodaPesquisa = function (objeto,ws)
             {
                 setTimeout(function () {
                      status_celery_task(data);
-                },1000);
+                },2000);
 
                 fila();
                 console.log(data.id);
@@ -128,7 +128,7 @@ var cancelar_requisicao = function (objeto)
                     };
                     setTimeout(function () {
                         status_celery_task(dados);
-                    },1000);
+                    },2000);
 
                 },
                 error: function (xhr, ajaxOptions, thrownError) {

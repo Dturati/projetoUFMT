@@ -1,8 +1,10 @@
-from celery import task
+from celery import task,Celery
 from celery.app import shared_task
+from ...celery import app
 
-@shared_task
+@app.task
 def teste(valor):
+    print("Vadia")
     for r in range(1,valor):
         pass
     return valor

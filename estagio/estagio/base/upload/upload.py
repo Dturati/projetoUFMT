@@ -3,9 +3,12 @@ import os
 from ..ScriptR.scriptR import executaScript
 import shutil
 import random
+from ...celery import app
+from celery import shared_task
+from celery import Task
 
+class Upload():
 
-class Upload:
     def upload(self,myfile):
         rashZip = str(random.getrandbits(32))
         os.chdir("/")
