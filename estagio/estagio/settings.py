@@ -29,8 +29,6 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
-
-
 CELERY_BROKER_URL = 'redis://localhost:6379'
 # CELERY_BROKER_URL = 'amqp://192.168.15.11:5672'
 # CELERY_BROKER_URL = 'amqp://david:123@192.168.15.11/amd'
