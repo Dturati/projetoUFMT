@@ -9,12 +9,14 @@ import requests
 import asyncio
 
 class WSHandler(tornado.websocket.WebSocketHandler):
-
+    # connections = set()
+    id = 0
     def check_origin(self, origin):
         return True
 
     def verificaUpload(self,attr):
-        self.id = attr
+        # self.id = attr
+        # print(self.id)
         try:
             url = "http://localhost:5555/api/task/result/" + str(attr)
             resposta = requests.get(url)
@@ -32,24 +34,38 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
     def open(self):
         clients.append(self)
+        # self.connections.add(self)
         print('connection opened')
 
     def on_close(self):
-        clients.remove(self)
+        print(self.id)
         try:
             url = "http://localhost:5555/api/task/revoke/" + str(self.id) + "?terminate=true"
             resposta = requests.post(url)
             print('connection closed')
         except:
             print("Erro ao cancelar task")
-
+        clients.remove(self)
+        # self.connections.remove(self)
     def on_message(self, message):
         try:
             message = json.loads(message)
+            self.id = message['id']
             if(message['upload'] == "iniciou"):
                 self.verificaUpload(message['id'])
                 self.write_message('Sucesso')
                 print("Iniciou upload")
+
+            if(message['upload'] == 'avisa_todos'):
+                print("avisa todos")
+                # [con.write_message for con in self.clients]
+                for client in clients:
+                    client.write_message('avisa_todos')
+                # [con.write_message('avisa_todos') for con in self.connections]
+            if(message['upload'] == 'mantem_id'):
+                self.id = message['id']
+                print(self.id)
+
         except:
             print("Erro na menssagem")
         self.write_message('Sucesso')

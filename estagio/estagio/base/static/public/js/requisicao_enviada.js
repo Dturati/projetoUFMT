@@ -21,21 +21,22 @@ var atualizaClientes = function () {
 
 var init = function () {
     var ws = new WebSocket('ws://localhost:8080/echo');
-    var wsd = new WebSocket('ws://localhost:8081/ws');
+     wsd = new WebSocket('ws://localhost:8081/ws');
     // var wsd = new WebSocket('ws://localhost:8081/update');
-    ws.onopen = function () {
+
+    ws.onopen = function ()
+    {
         console.log('Conexão aberta');
     };
 
     wsd.onopen = function () {
         console.log('Conexão aberta');
     };
-     wsd.onmessage = function () {
+     wsd.onmessage = function (message) {
+        console.log(message.data);
          setTimeout(function () {
              fila();
          },500);
-
-        console.log('Todo Mundo');
     };
 
 
@@ -83,12 +84,18 @@ var compactaTodaPesquisa = function (objeto,ws)
                              status_celery_task(data);
                     },2000);
 
+                    //Avisa todos os clientes que os dados mudaram
+                      wsd.send(JSON.stringify({"upload":"mantem_id","id": data.id}));
                 }
+
+
                 ws.onclose = function ()
                 {
                     ws.close();
                     console.log('close');
                 }
+
+
                 };
 
             },
@@ -102,6 +109,7 @@ var compactaTodaPesquisa = function (objeto,ws)
 
 var baixaPesquisa = function (chave) {
     window.open('baixar_pesquisa/?chave='+chave);
+    wsd.send(JSON.stringify({"upload":"avisa_todos","id": ''}));
     $.cookie("id_task","");
     $.cookie("chave","");
 };
@@ -193,6 +201,7 @@ var status_celery_task = function (dados) {
 };
 
 var fila = function () {
+
  $.ajax({
                 type: "GET",
                 url: 'ajax/fila_celery',

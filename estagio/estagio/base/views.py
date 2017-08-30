@@ -137,14 +137,24 @@ def view_compacta_toda_pesquisa(request):
     return JsonResponse({'status': 'ok','id':res.id,'chave':chave})
 
 #Baixa os arquivos compactados
+import mimetypes
+from django.http import StreamingHttpResponse
+# from django.core.servers.basehttp import FileWrapper
+from wsgiref.util import FileWrapper
 def baixar_pesquisa(request):
     dados = request.GET
     os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
+    filename = os.path.basename(nome_arquivo)
     nome_download = str(dados['chave'])+".zip"
     try:
-        response = HttpResponse(open(nome_arquivo,'rb').read(), content_type='x-zip-compressed')
-        response['Content-Disposition'] = "attachment; filename=%s" % nome_download
+        # response = HttpResponse(open(nome_arquivo,'rb').read(), content_type='x-zip-compressed')
+        # response['Content-Disposition'] = "attachment; filename=%s" % nome_download
+        chunk_size = 8192
+        response = StreamingHttpResponse(FileWrapper(open(nome_arquivo, 'rb'), chunk_size),
+                                         content_type=mimetypes.guess_type(nome_arquivo)[0])
+        response['Content-Length'] = os.path.getsize(nome_arquivo)
+        response['Content-Disposition'] = "attachment; filename=%s" % filename
         os.remove(nome_arquivo)
     except:
         return render(request,"home.html",{})
