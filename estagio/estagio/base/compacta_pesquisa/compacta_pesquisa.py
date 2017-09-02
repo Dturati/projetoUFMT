@@ -10,7 +10,8 @@ import time
 
 @shared_task
 def compacta_toda_pesquisa_individual(request,chave):
-    os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
+    # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
+    os.chdir("/arquivos")
     # #se a pesquisa for especifica
 
     arquivos = []
@@ -49,7 +50,8 @@ def compacta_toda_pesquisa_individual(request,chave):
 @shared_task
 def compacta_toda_pesquisa_completa(request,chave):
 
-    os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
+    # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
+    os.chdir("/arquivos")
     # #se forem todos os arquivos do sistema
     cliente = MongoClient('localhost', 27017)
     banco = cliente.test_database

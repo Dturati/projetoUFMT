@@ -3,16 +3,19 @@
  */
 
 ws = new WebSocket("ws://localhost:8081/ws");
+
 var upload = function ()
 {
     ws.onopen = function () {
         console.log("Abriu uma conexão de upload");
     }
+
 };
 upload();
 
 var sendWebSocketEnviaIdTask = function () {
     ws.send(JSON.stringify({"upload":"iniciou","id": $("#id_task_upload").text()}));
+    ws.send(JSON.stringify({'id_tarefa':$("#id_task_upload").text()}));
     ws.onmessage = function (message) {
         if(message.data == 'Sucesso')
         {

@@ -34,23 +34,24 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
     def open(self):
         clients.append(self)
-        # self.connections.add(self)
-        print('connection opened')
+        print('Conexão aberta')
 
     def on_close(self):
-        print(self.id)
         try:
             url = "http://localhost:5555/api/task/revoke/" + str(self.id) + "?terminate=true"
             resposta = requests.post(url)
-            print('connection closed')
+            print('conexão fechada')
         except:
             print("Erro ao cancelar task")
+        print("on_close")
+        print(self.id)
         clients.remove(self)
-        # self.connections.remove(self)
+
     def on_message(self, message):
+
         try:
             message = json.loads(message)
-            self.id = message['id']
+            self.id = message['id_tarefa']
             if(message['upload'] == "iniciou"):
                 self.verificaUpload(message['id'])
                 self.write_message('Sucesso')
@@ -58,17 +59,14 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
             if(message['upload'] == 'avisa_todos'):
                 print("avisa todos")
-                # [con.write_message for con in self.clients]
                 for client in clients:
                     client.write_message('avisa_todos')
-                # [con.write_message('avisa_todos') for con in self.connections]
-            if(message['upload'] == 'mantem_id'):
-                self.id = message['id']
-                print(self.id)
 
         except:
             print("Erro na menssagem")
         self.write_message('Sucesso')
+
+        print(self.id)
 
 
 class MainHandler(tornado.web.RequestHandler):

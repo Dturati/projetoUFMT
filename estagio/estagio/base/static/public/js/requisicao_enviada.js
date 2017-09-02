@@ -21,7 +21,7 @@ var atualizaClientes = function () {
 
 var init = function () {
     var ws = new WebSocket('ws://localhost:8080/echo');
-     wsd = new WebSocket('ws://localhost:8081/ws');
+    wsd = new WebSocket('ws://localhost:8081/ws');
     // var wsd = new WebSocket('ws://localhost:8081/update');
 
     ws.onopen = function ()
@@ -68,6 +68,7 @@ var compactaTodaPesquisa = function (objeto,ws)
                 console.log(data);
                 setTimeout(function () {
                      ws.send(JSON.stringify({chave:data.chave,id:data.id}));
+                    wsd.send(JSON.stringify({'id_tarefa':data.id}));
                 },500);
 
                 ws.onmessage = function (message) {

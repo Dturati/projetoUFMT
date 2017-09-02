@@ -45,11 +45,14 @@ class EchoWebSocket(websocket.WebSocketHandler):
 
     @gen.coroutine
     def on_message(self, message):
-        message = json.loads(message)
-        self.chave = message["chave"]
-        self.id    = message["id"]
-        res = yield self.divide(message["chave"])
-        self.write_message(res)
+        try:
+            message = json.loads(message)
+            self.chave = message["chave"]
+            self.id    = message["id"]
+            res = yield self.divide(message["chave"])
+            self.write_message(res)
+        except:
+            print("erro ao receber ")
 
     def on_close(self):
         print(self.id)

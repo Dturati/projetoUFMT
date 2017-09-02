@@ -143,7 +143,8 @@ from django.http import StreamingHttpResponse
 from wsgiref.util import FileWrapper
 def baixar_pesquisa(request):
     dados = request.GET
-    os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
+    # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
+    os.chdir("/arquivos")
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     filename = os.path.basename(nome_arquivo)
     nome_download = str(dados['chave'])+".zip"
@@ -209,7 +210,7 @@ def upload(request):
                     'idTask' :idTask,
             }
             return render(request, 'upload.html',context)
-    print("atualizacao")
+
     return render(request,"upload.html",{'status':'erro'})
 
 from .upload.upload import Upload
@@ -229,7 +230,6 @@ def DownloadUpload(request,file):
     except:
         return HttpResponseRedirect("/home/")
     return response
-
 
 
 #Gerar exibe grafico gerado pelo R
@@ -286,6 +286,7 @@ def fila_celery(request):
     return JsonResponse({'total_tasks':resultadoJson})
 
 def cancelar_requisicao(request):
+    os.chdir("/arquivos")
     dadosRequest = request.GET
     url = "http://localhost:5555/api/task/revoke/"+str(dadosRequest['id'])+"?terminate=true"
     resposta = requests.post(url)
