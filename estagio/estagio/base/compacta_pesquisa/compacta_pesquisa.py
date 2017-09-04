@@ -7,8 +7,9 @@ import json
 import asyncio
 from pymongo import MongoClient
 import time
+from estagio.celery import app
 
-@shared_task
+@app.task
 def compacta_toda_pesquisa_individual(request,chave):
     # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
     os.chdir("/arquivos")
@@ -47,7 +48,7 @@ def compacta_toda_pesquisa_individual(request,chave):
 
     return request
 
-@shared_task
+@app.task
 def compacta_toda_pesquisa_completa(request,chave):
 
     # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
@@ -107,7 +108,7 @@ def compacta_pesquisa_selecionada(request,chave):
     request = json.dumps(request)
     return request
 
-@shared_task
+@app.task
 def fila_de_dowload(chave):
     try:
         arq = os.getcwd() + "/" + str(chave['chave']) + ".zip"

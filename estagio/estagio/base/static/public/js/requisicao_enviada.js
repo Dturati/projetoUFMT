@@ -5,7 +5,7 @@ $("#status_task").text = "-";
 var atualizaClientes = function () {
  $.ajax({
                 type: "GET",
-                url: 'http://localhost:8081/update',
+                url: 'http://192.168.15.16:8081/update',
                 dataType : 'html',
                 crossDomain: true,
                 success: function (data)
@@ -20,8 +20,8 @@ var atualizaClientes = function () {
 };
 
 var init = function () {
-    var ws = new WebSocket('ws://localhost:8080/echo');
-    wsd = new WebSocket('ws://localhost:8081/ws');
+    var ws = new WebSocket('ws://192.168.15.16:8080/echo');
+    wsd = new WebSocket('ws://192.168.15.16:8081/ws');
     // var wsd = new WebSocket('ws://localhost:8081/update');
 
     ws.onopen = function ()

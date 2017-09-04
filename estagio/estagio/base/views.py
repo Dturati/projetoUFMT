@@ -13,7 +13,7 @@ import json
 import hashlib
 from random import choice
 # from .task import add,report_progress
-from estagio.celery import app
+from estagio.celery import app as meu_celery
 from .Email.email import send_email
 import requests
 import random
@@ -22,6 +22,8 @@ from pymongo import MongoClient
 lista_arquivos = ListaArquivos
 resutadopesquisaPaginado = []
 from .MongoDB.MongoCennect import MongoConnect
+
+from estagio.celery import app
 
 def home(request):
     form = Pesquisa(request.POST)
@@ -133,7 +135,6 @@ def view_compacta_toda_pesquisa(request):
 
         dados = dados_db_fila.insert_one(value).inserted_id
         res = compacta_toda_pesquisa_individual.delay(dadosRequest,chaveJ)
-        # fila_de_dowload.delay(chaveJ)
     return JsonResponse({'status': 'ok','id':res.id,'chave':chave})
 
 #Baixa os arquivos compactados
@@ -185,7 +186,6 @@ def requisicao_enviada(request):
     return render(request,"requisicao_enviada.html",{"qtdArquivos":quantidade_arquivos})
 
 #sistema de upload
-# from .verifica_upload.VerificaUpload import VerificaUpload
 from .upload.upload import Upload
 def upload(request):
     # verifica = VerificaUpload()
@@ -246,8 +246,6 @@ from rpy2.robjects.packages import STAP,STF
 hydro = importr("hydroGOF")
 
 def exemplo(request):
-
-    print("Exemplo")
     os.chdir("/")
     with open(os.getcwd() + "/arquivos/uploads/grafico.R", "r") as r:
         string = r.read()
@@ -285,6 +283,7 @@ def fila_celery(request):
     resultadoJson = json.loads(resposta.content)
     return JsonResponse({'total_tasks':resultadoJson})
 
+# from celery import app
 def cancelar_requisicao(request):
     os.chdir("/arquivos")
     dadosRequest = request.GET

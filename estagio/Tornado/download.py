@@ -72,7 +72,7 @@ app = tornado.web.Application([
 if __name__ == '__main__':
     server = tornado.httpserver.HTTPServer(app)
     server.bind(8080)
-    server.start(0)  # autodetect number of cores and fork a process for each
+    server.start(0)
     tornado.ioloop.IOLoop.instance().start()
 
 

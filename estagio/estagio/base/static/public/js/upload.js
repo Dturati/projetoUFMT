@@ -2,7 +2,7 @@
  * Created by david on 08/08/17.
  */
 
-ws = new WebSocket("ws://localhost:8081/ws");
+ws = new WebSocket("ws://192.168.15.16:8081/ws");
 
 var upload = function ()
 {

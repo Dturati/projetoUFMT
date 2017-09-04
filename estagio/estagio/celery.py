@@ -8,6 +8,7 @@ from django.conf import settings
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'estagio.settings')
 
 # app = Celery('tasks',backend='amqp',broker = 'amqp://david:123@192.168.15.11/amd')
+
 app = Celery('estagio')
 
 app.config_from_object('django.conf:settings',namespace='CELERY')
