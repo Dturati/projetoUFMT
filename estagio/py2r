@@ -1,3 +1,7 @@
+pip3 install rpy2
+dnf install python3-devel
+dnf install readline-devel
+
 intalação da bilioteca hydroGof
 abra o console iterativo do python
 execute os comandos

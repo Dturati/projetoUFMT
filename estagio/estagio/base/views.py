@@ -150,13 +150,14 @@ def baixar_pesquisa(request):
     filename = os.path.basename(nome_arquivo)
     nome_download = str(dados['chave'])+".zip"
     try:
-        # response = HttpResponse(open(nome_arquivo,'rb').read(), content_type='x-zip-compressed')
-        # response['Content-Disposition'] = "attachment; filename=%s" % nome_download
-        chunk_size = 8192
-        response = StreamingHttpResponse(FileWrapper(open(nome_arquivo, 'rb'), chunk_size),
-                                         content_type=mimetypes.guess_type(nome_arquivo)[0])
-        response['Content-Length'] = os.path.getsize(nome_arquivo)
+        response = HttpResponse(open(nome_arquivo,'rb').read(), content_type='x-zip-compressed')
+        response['Content-Disposition'] = "attachment; filename=%s" % nome_download
+        # chunk_size = 8192
+        # response = StreamingHttpResponse(FileWrapper(open(nome_arquivo, 'rb'), chunk_size),
+        #                                  content_type=mimetypes.guess_type(nome_arquivo)[0])
+        # response['Content-Length'] = os.path.getsize(nome_arquivo)
         response['Content-Disposition'] = "attachment; filename=%s" % filename
+        # response['Content-Disposition'] = "attachment; filename=" % filename
         os.remove(nome_arquivo)
     except:
         return render(request,"home.html",{})

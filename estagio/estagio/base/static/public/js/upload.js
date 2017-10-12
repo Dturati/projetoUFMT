@@ -1,8 +1,8 @@
 /**
  * Created by david on 08/08/17.
  */
-
-ws = new WebSocket("ws://192.168.15.16:8081/ws");
+var host = window.location.hostname;
+ws = new WebSocket("ws://"+host+":8081/ws");
 
 var upload = function ()
 {
