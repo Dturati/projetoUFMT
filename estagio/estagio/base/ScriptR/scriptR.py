@@ -14,17 +14,17 @@ import shutil
 @shared_task
 def executaScript(rash):
     os.chdir("/")
-    with open(os.getcwd()+"arquivos/uploads/analise.R", "r") as r:
+    with open(os.getcwd()+"/arquivos/arquivos/uploads/analise.R", "r") as r:
         string = r.read()
     fun = STAP(string, "processa")
     arquivos = []
 
 
-    for root, dirs, files in os.walk("/arquivos/uploads/resultados/"):
+    for root, dirs, files in os.walk("/arquivos/arquivos/uploads/resultados/"):
         for value in files:
             arquivo = str(root)+str(value)
             arquivos.append(arquivo)
-    os.chdir("/arquivos/uploads/")
+    os.chdir("/arquivos/arquivos/uploads/")
     zf = zipfile.ZipFile(rash + ".zip", "w")
 
     for value in arquivos:
@@ -37,11 +37,11 @@ def executaScript(rash):
             print(e)
     zf.close()
     GeraArquivoParaGraficoEmR(rash)
-    shutil.rmtree("/arquivos/uploads/"+str(rash))
+    # shutil.rmtree("/arquivos/arquivos/uploads/"+str(rash))
 
     os.chdir("/")
 
-    with open(os.getcwd() + "arquivos/uploads/grafico.R", "r") as r:
+    with open(os.getcwd() + "/arquivos/arquivos/uploads/grafico.R", "r") as r:
         string = r.read()
     try:
         fun = STAP(string, "processa")

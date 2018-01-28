@@ -9,14 +9,11 @@ import requests
 import asyncio
 
 class WSHandler(tornado.websocket.WebSocketHandler):
-    # connections = set()
     id = 0
     def check_origin(self, origin):
         return True
 
     def verificaUpload(self,attr):
-        # self.id = attr
-        # print(self.id)
         try:
             url = "http://localhost:5555/api/task/result/" + str(attr)
             resposta = requests.get(url)
@@ -43,8 +40,7 @@ class WSHandler(tornado.websocket.WebSocketHandler):
             print('conexão fechada')
         except:
             print("Erro ao cancelar task")
-        print("on_close")
-        print(self.id)
+
         clients.remove(self)
 
     def on_message(self, message):

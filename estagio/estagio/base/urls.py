@@ -1,8 +1,24 @@
 from django.conf.urls import url,include
-from estagio.base.views import home,contatos,lista_em_arvore,\
-    download,view_compacta_pesquisa_selecionada,\
-    baixar_pesquisa,exemplo,view_compacta_toda_pesquisa,exemplo_assinc,get_resultado,define_sessao,requisicao_enviada,\
-    status_stak_celery,cancelar_requisicao,fila_celery,upload,gerarGrafico,sincroniza_dados,DownloadUpload,cancela_requisicao_upload,\
+from estagio.base.views import home,\
+    contatos,\
+    lista_em_arvore,\
+    download,\
+    view_compacta_pesquisa_selecionada,\
+    baixar_pesquisa,\
+    exemplo,\
+    view_compacta_toda_pesquisa,\
+    exemplo_assinc,\
+    get_resultado,\
+    define_sessao,\
+    requisicao_enviada,\
+    status_stak_celery,\
+    cancelar_requisicao,\
+    fila_celery,\
+    upload,\
+    gerarGrafico,\
+    sincroniza_dados,\
+    DownloadUpload,\
+    cancela_requisicao_upload,\
     status_requisicao_upload
 
 urlpatterns = [

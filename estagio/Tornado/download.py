@@ -1,13 +1,3 @@
-    #def divide(self, num):
-# url = "http://localhost:5555/api/tasks"
-# resposta = requests.get(url)
-# resultadoJson = json.loads(resposta.content)
-# while(resultadoJson[num]['state'] != "SUCCESS" and resultadoJson[num]['state'] != "REVOKED"):
-#     url = "http://localhost:5555/api/tasks"
-#     resposta = requests.get(url)
-#     resultadoJson = json.loads(resposta.content)
-# return resultadoJson[num]['state']
-
 import tornado.ioloop
 import tornado.web
 from tornado import websocket,ioloop

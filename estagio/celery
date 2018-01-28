@@ -7,4 +7,4 @@ pip install futures babel
 limpar tarefas celery -A proj purge
 modo grafico
 pip install flower
-celery flower -A estagio --address=127.0.0.1 --port=5555
+celery flower -A estagio --addr ess=127.0.0.1 --port=5555

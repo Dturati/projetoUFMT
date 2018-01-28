@@ -2,7 +2,7 @@ import os
 import csv
 def GeraArquivoParaGraficoEmR(nomeArquivo):
     os.chdir("/")
-    with open('/arquivos/uploads/'+str(nomeArquivo)+'.csv', 'w') as datafile:
+    with open('/arquivos/arquivos/uploads/'+str(nomeArquivo)+'.csv', 'w') as datafile:
         datafile.write(str('Tipo' + ','
                            + 'Porcentagem' + ','
                            + 'Metodo' + ','
@@ -15,10 +15,10 @@ def GeraArquivoParaGraficoEmR(nomeArquivo):
                            + 'Tempo' + '\n'
                            )
                        )
-        for root, dirs, files in os.walk(os.getcwd()+"/arquivos/uploads/resultados/"):
+        for root, dirs, files in os.walk(os.getcwd()+"/arquivos/arquivos/uploads/resultados/"):
             for arqcsv in files:
 
-                    with open(str(os.getcwd() + "arquivos/uploads/resultados/" + str(arqcsv))) as arq:
+                    with open(str(os.getcwd() + "/arquivos/arquivos/uploads/resultados/" + str(arqcsv))) as arq:
                         reader = csv.DictReader(arq)
                         for row in reader:
                             datafile.write(str(

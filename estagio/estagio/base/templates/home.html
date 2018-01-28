@@ -80,8 +80,8 @@
                                         <tr>
                                             <td>{{forloop.counter }}</td>
                                             <td>{{arquivos.arquivo}}</td>
-                                            <td>{{ arquivos.modificado }}</td>
-                                            <td>{{ arquivos.criado }}</td>
+                                            <td>{{arquivos.modificado}}</td>
+                                            <td>{{arquivos.criado}}</td>
                                             <td style="padding-left: 200px" ><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ arquivos.diretorio|add:"/"|add:arquivos.arquivo }}"></td>
                                         </tr>
                                      {% endfor %}

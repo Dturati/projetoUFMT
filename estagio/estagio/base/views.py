@@ -29,11 +29,12 @@ def home(request):
     form = Pesquisa(request.POST)
     try:
         if(not request.session['tipo_requisicao']):
-            request.session['tipo_requisicao'] = 'todos_os_arquivos'
+            request.session['tipo_requisicao_'] = 'todos_os_arquivos'
     except:
         request.session['tipo_requisicao'] = 'todos_os_arquivos'
 
     num = int(request.GET.get('page', 1))
+
     resultadoPesquisa = []
     if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
         # Verifica se é uma paginação ou submição de formulario
@@ -41,7 +42,6 @@ def home(request):
         banco = con.connect("test_database")
         dados_db = banco.teste
         consulta = dados_db.find()
-
         try:
             P = Paginator(list(consulta),8)
             pagina = P.page(num)
@@ -59,9 +59,16 @@ def home(request):
     if (request.session['tipo_requisicao'] == 'pesquisa_individual'):
         if(request.POST):
             resultadoPesquisa = pesquisa(form.data)
-            request.session['resultado'] = resultadoPesquisa
+            request.session['form'] = form.data
+            # print(resultadoPesquisa[0]['diretorio'])
+        else:
+            try:
+                resultadoPesquisa = pesquisa(request.session['form'])
+            except:
+                pass
+
         try:
-            P = Paginator(request.session['resultado'],8)
+            P = Paginator(resultadoPesquisa,8)
             pagina = P.page(num)
         except:
             pagina = P.page(1)
@@ -73,12 +80,13 @@ def home(request):
                     }
         return render(request, "home.html", contexto)
 
+
 def contatos(request):
     return render(request,"contatos.html",{"teste":"teste"})
 
 def pesquisa(dados):
     pesquisa_arquivos = PesquisaArquivos
-    meuDir = '/run/media/david/Dados3/projeto_estagio'
+    meuDir = '/arquivos/arquivos/'
     resultadoPesquisa  = pesquisa_arquivos.lista_aquivos(dados)
     return resultadoPesquisa
 
@@ -122,7 +130,8 @@ def view_compacta_toda_pesquisa(request):
 
 
     if (request.session['tipo_requisicao'] == 'pesquisa_individual'):
-        dadosRequest = json.dumps(request.session['resultado'])
+        resultadoPesquisa = pesquisa(request.session['form'])
+        dadosRequest = json.dumps(resultadoPesquisa)
         chave = str(random.getrandbits(128))
         chaveJ = {'chave':chave}
         con = MongoConnect()
@@ -145,7 +154,7 @@ from wsgiref.util import FileWrapper
 def baixar_pesquisa(request):
     dados = request.GET
     # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
-    os.chdir("/arquivos")
+    os.chdir("/arquivos/arquivos")
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     filename = os.path.basename(nome_arquivo)
     nome_download = str(dados['chave'])+".zip"
@@ -218,11 +227,10 @@ from .upload.upload import Upload
 from django.http import HttpResponseRedirect
 def DownloadUpload(request,file):
     if(file==""):
-        print("aquii")
         return HttpResponseRedirect("/home/")
     dados = request.GET
     os.chdir("/")
-    nome_arquivo = "arquivos/uploads/"+str(file)+".zip"
+    nome_arquivo = "arquivos/arquivos/uploads/"+str(file)+".zip"
     nome_download = str(file)+".zip"
     try:
         response = HttpResponse(open(nome_arquivo, 'rb').read(), content_type='x-zip-compressed')
@@ -237,7 +245,7 @@ def DownloadUpload(request,file):
 from .Gerar_grafico.Gerar_grafico import GeraArquivoParaGraficoEmR
 def gerarGrafico(request):
     os.chdir("/")
-    with open("arquivos/uploads/grafico/BoxplotVar/R2/metodo_R2.png", "rb") as plot:
+    with open("arquivos/arquivos/uploads/grafico/BoxplotVar/R2/metodo_R2.png", "rb") as plot:
         imagem = plot.read()
     response = HttpResponse(imagem, content_type="image/jpg")
     return response

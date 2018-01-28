@@ -2,6 +2,10 @@ pip3 install rpy2
 dnf install python3-devel
 dnf install readline-devel
 
+#Caso seja necessário instale
+sudo apt-get install r-cran-rgl
+
+
 intalação da bilioteca hydroGof
 abra o console iterativo do python
 execute os comandos
