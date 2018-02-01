@@ -1,0 +1,33 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nx01
+    ports:
+      - "8001:8081"
+    volumes:
+      - ./estagio:/src
+      - ./arquivos:/arquivos
+      - ./estagio/estagio/base/static:/static
+      - ./config/nginx:/etc/nginx/conf.d
+    depends_on:
+      - web
+  web:
+    build: .
+    container_name: dg01
+    command: gunicorn estagio.wsgi 0.0.0.0:8000
+
+  redis:
+    image: redis:latest
+    container_name: rd01
+    ports:
+     - '6379:6379'
+
+  celery:
+    build: .
+    container_name: cl01
+    command: celery -A estagio  worker -l info -c 1
+    volumes:
+      - ./estagio:/src
+    links:
+      - redis
