@@ -29,7 +29,7 @@ class ListaArquivos:
 class PesquisaArquivos:
     '''0000000030-35-seq-_13_0.4-1.csv'''
     def lista_aquivos(pesquisa):
-        print("lista arquivos")
+        # print("lista arquivos")
         try:
             todosOsArquivos = pesquisa['todosOsArquivos']
         except:
@@ -63,11 +63,11 @@ class PesquisaArquivos:
             regex_falha_conjunto = ""
 
             if(int(fala_conjunto) < 4):
-                print(fala_conjunto)
+                # print(fala_conjunto)
                 regex_falha_conjunto = '(' +fala_conjunto+ ')' + '.' + '[0-9]'
 
             if(int(fala_conjunto) >= 4):
-                print(fala_conjunto)
+                # print(fala_conjunto)
                 regex_falha_conjunto = '['+fala_conjunto+ '-9]'
 
             m_regex = m_regex+"-"+regex_falha+"-"+tipoFalha+"-_13_+"+regex_falha_conjunto+"-"+metodo+"[.]csv"

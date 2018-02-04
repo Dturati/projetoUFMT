@@ -34,7 +34,8 @@ def executaScript(rash):
             zip_path = os.path.join(zip_subdir, value)
             zf.write(value, zip_path)
         except ValueError as e:
-            print(e)
+            pass
+            # print(e)
     zf.close()
     GeraArquivoParaGraficoEmR(rash)
     # shutil.rmtree("/arquivos/arquivos/uploads/"+str(rash))
@@ -46,5 +47,6 @@ def executaScript(rash):
     try:
         fun = STAP(string, "processa")
     except:
-        print("Erro ao executar algumas funcoes")
+        pass
+        # print("Erro ao executar algumas funcoes")
 

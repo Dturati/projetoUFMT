@@ -23,9 +23,10 @@ class WSHandler(tornado.websocket.WebSocketHandler):
                 url = "http://localhost:5555/api/task/result/" + str(attr)
                 resposta = requests.get(url)
                 resultadoJson = json.loads(resposta.content)
-                print(resultadoJson)
+                # print(resultadoJson)
         except:
-            print("Erro ao verificar download")
+            pass
+            # print("Erro ao verificar download")
 
         return True
 
@@ -39,7 +40,8 @@ class WSHandler(tornado.websocket.WebSocketHandler):
             resposta = requests.post(url)
             # print('conexão fechada')
         except:
-            print("Erro ao cancelar task")
+            pass
+            # print("Erro ao cancelar task")
 
         clients.remove(self)
 
@@ -51,18 +53,19 @@ class WSHandler(tornado.websocket.WebSocketHandler):
             if(message['upload'] == "iniciou"):
                 self.verificaUpload(message['id'])
                 self.write_message('Sucesso')
-                print("Iniciou upload")
+                # print("Iniciou upload")
 
             if(message['upload'] == 'avisa_todos'):
-                print("avisa todos")
+                # print("avisa todos")
                 for client in clients:
                     client.write_message('avisa_todos')
 
         except:
-            print("Erro na menssagem")
+            pass
+            # print("Erro na menssagem")
         self.write_message('Sucesso')
 
-        print(self.id)
+        # print(self.id)
 
 
 class MainHandler(tornado.web.RequestHandler):

@@ -25,7 +25,8 @@ class Upload():
             zip_ref.extractall(str(os.getcwd()) + "arquivos/arquivos/uploads/"+str(rashZip))
             zip_ref.close()
         except:
-            print("erro")
+            pass
+            # print("erro")
 
         os.remove(str(os.getcwd()) + "arquivos/arquivos/uploads/" + str(myfile.name))
         res = executaScript.delay(rashZip)

@@ -15,7 +15,8 @@ class EchoWebSocket(websocket.WebSocketHandler):
     chave    = ""
     id       = ""
     def open(self):
-        print("WebSocket opened")
+        pass
+        # print("WebSocket opened")
 
     @gen.coroutine
     def divide(self, num):
@@ -42,14 +43,17 @@ class EchoWebSocket(websocket.WebSocketHandler):
             res = yield self.divide(message["chave"])
             self.write_message(res)
         except:
-            print("erro ao receber ")
+            pass
+            # print("erro ao receber ")
 
     def on_close(self):
-        print(self.id)
-        print("WebSocket closed")
+        pass
+        # print(self.id)
+        # print("WebSocket closed")
 
     def close(self, code=None, reason=None):
-        print("close")
+        pass
+        # print("close")
 
 
     def check_origin(self, origin):

@@ -4,7 +4,7 @@ from ...celery import app
 
 @app.task
 def teste(valor):
-    print("Vadia")
+    # print("Vadia")
     for r in range(1,valor):
         pass
     return valor

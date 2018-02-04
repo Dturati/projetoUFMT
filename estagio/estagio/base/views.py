@@ -142,7 +142,8 @@ def view_compacta_toda_pesquisa(request):
             con = MongoConnect()
             banco = con.connect("fila_download")
         except:
-            print('Erro ao conectar')
+            pass
+            # print('Erro ao conectar')
 
         dados_db_fila = banco.fila
         value = {
@@ -266,7 +267,7 @@ def exemplo(request):
     os.chdir("/")
     with open(os.getcwd() + "/arquivos/uploads/grafico.R", "r") as r:
         string = r.read()
-    print(string)
+    # print(string)
     try:
      fun = STAP(string, "grafico")
     except:

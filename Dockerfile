@@ -1,7 +1,8 @@
-
 #Teste docker
 FROM debian
+
 MAINTAINER David Turati <davidturati@gmail.com>
+
 RUN  apt-get update
 RUN  apt install -y python3-pip
 RUN  apt install -y python-pip
@@ -37,3 +38,6 @@ EXPOSE 5555
 
 VOLUME /home/david/Documentos/projeto_estagio_django
 VOLUME /arquivos:/arquivos
+
+WORKDIR /home/projeto_estagio_django/estagio
+
