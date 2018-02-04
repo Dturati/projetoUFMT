@@ -31,13 +31,13 @@ class WSHandler(tornado.websocket.WebSocketHandler):
 
     def open(self):
         clients.append(self)
-        print('Conexão aberta')
+        # print('Conexão aberta')
 
     def on_close(self):
         try:
             url = "http://localhost:5555/api/task/revoke/" + str(self.id) + "?terminate=true"
             resposta = requests.post(url)
-            print('conexão fechada')
+            # print('conexão fechada')
         except:
             print("Erro ao cancelar task")
 

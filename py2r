@@ -7,6 +7,8 @@ sudo apt-get install r-cran-rgl
 
 
 intalação da bilioteca hydroGof
+
+install.packages("hydroGOF")
 abra o console iterativo do python
 execute os comandos
 from rpy2.robjects.packages import importr

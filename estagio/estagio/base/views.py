@@ -25,6 +25,9 @@ from .MongoDB.MongoCennect import MongoConnect
 
 from estagio.celery import app
 
+import sys
+
+
 def home(request):
     form = Pesquisa(request.POST)
     try:
@@ -114,6 +117,7 @@ def view_compacta_pesquisa_selecionada(request):
 def view_compacta_toda_pesquisa(request):
     dados = {}
     chave = str(random.getrandbits(128))
+
     if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
         chaveJ = {'chave': chave}
         con = MongoConnect()
@@ -134,8 +138,12 @@ def view_compacta_toda_pesquisa(request):
         dadosRequest = json.dumps(resultadoPesquisa)
         chave = str(random.getrandbits(128))
         chaveJ = {'chave':chave}
-        con = MongoConnect()
-        banco = con.connect("fila_download")
+        try:
+            con = MongoConnect()
+            banco = con.connect("fila_download")
+        except:
+            print('Erro ao conectar')
+
         dados_db_fila = banco.fila
         value = {
             "_id": str(chave),
@@ -282,14 +290,14 @@ def status_stak_celery(request):
     dados = request.GET
     url = "http://localhost:5555/api/tasks"
     resposta = requests.get(url)
-    resultadoJson = json.loads(resposta.content)
+    resultadoJson = json.loads(resposta.content.decode('utf-8'))
     return JsonResponse({'id':dados['id'],'tasks':resultadoJson[dados['id']],'total_tasks':resultadoJson})
 
 #retorna o status completo da fila
 def fila_celery(request):
     url = "http://localhost:5555/api/tasks"
     resposta = requests.get(url)
-    resultadoJson = json.loads(resposta.content)
+    resultadoJson = json.loads(resposta.content.decode('utf-8'))
     return JsonResponse({'total_tasks':resultadoJson})
 
 # from celery import app
@@ -305,7 +313,8 @@ def cancelar_requisicao(request):
     try:
         os.remove(dadosRequest['chave']+".zip")
     except:
-        print("Não é possível remover o arquivo solicitado")
+        pass
+        # print("Não é possível remover o arquivo solicitado")
     return JsonResponse({'status':'REVOKED'})
 
 from .sincroniza.sincroniza import Sincroniza
@@ -324,5 +333,5 @@ def status_requisicao_upload(request):
     idTask = request.GET['id']
     url = "http://localhost:5555/api/task/result/" + str(idTask)
     resposta = requests.get(url)
-    resultadoJson = json.loads(resposta.content)
+    resultadoJson = json.loads(resposta.content.decode('utf-8'))
     return JsonResponse({"status": "ok",'statusTask':resultadoJson})

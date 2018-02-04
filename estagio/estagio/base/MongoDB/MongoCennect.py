@@ -1,7 +1,8 @@
 from pymongo import MongoClient
 class MongoConnect:
     def __init__(self):
-        print("Inicia conexão")
+        pass
+        # print("Inicia conexão")
 
     def connect(self,nomeBanco):
         self.nomeBanco = nomeBanco
