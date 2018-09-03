@@ -2,6 +2,7 @@
 $("#id_task").text = "-";
 $("#status_task").text = "-";
 var host = window.location.hostname;
+console.log(host);
 var atualizaClientes = function () {
  $.ajax({
                 type: "GET",

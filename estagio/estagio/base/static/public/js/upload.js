@@ -3,7 +3,7 @@
  */
 var host = window.location.hostname;
 ws = new WebSocket("ws://"+host+":8081/ws");
-
+console.log(ws);
 var upload = function ()
 {
     ws.onopen = function () {

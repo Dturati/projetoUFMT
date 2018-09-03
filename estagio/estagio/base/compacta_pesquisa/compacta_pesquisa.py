@@ -93,7 +93,7 @@ def compacta_toda_pesquisa_completa(request,chave):
 
 # @shared_task
 def compacta_pesquisa_selecionada(request,chave):
-    os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
+    os.chdir("/arquivos/arquivos")
     arquivos = []
     request = json.loads(request)
     for value in request:

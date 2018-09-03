@@ -2,17 +2,15 @@ version: '3'
 services:
   pyimg1:
       build: .
-      container_name: dj1
-      ports:
-        - "8001:8000"
-        - "8081:8081"
-        - "8082:8082"
-        - "5555:5555"
-        - "6379:6379"
       volumes:
-        - ./arquivos:/arquivos
-
-
+        -  ./arquivos:/arquivos
+        -  ./home/david/Documentos/projeto_estagio_django:/home
+      expose:
+        - "8000"
+      ports:
+        - "8000:8000"
+      image: projeto_ufmt/server
+      container_name: projeto1
 
 
 

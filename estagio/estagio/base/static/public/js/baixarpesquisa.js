@@ -67,7 +67,7 @@ var criaBotaoDownload = function ()
     if(teste)
      {
         var html = '' +
-            '<a class=" btn btn-info" style="cursor:pointer" data-dir="/arquivos" onclick="compactaPesquisa(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">Baixar</a>';
+            '<a class=" btn btn-info" style="cursor:pointer" data-dir="/arquivos/arquivos" onclick="compactaPesquisa(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">Baixar</a>';
         $("#idBaixarPesquisa").html(html);
 
      }

@@ -1,553 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="75b1283c-b1be-4794-888e-ab93c7bdce21" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/Dockerfile" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/celery" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/django_nginx.conf" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/docker-compose.yml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/docker-entrypoint.sh" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/logs/gunicorn_supervisor.log" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change beforePath="$PROJECT_DIR$/env/bin/activate" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/activate.csh" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/activate.fish" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/activate_this.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/easy_install" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/easy_install-3.5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/gunicorn" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/gunicorn_paster" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/pip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/pip3" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/pip3.5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/python" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/python-config" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/python3" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/python3.5" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/bin/wheel" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/include/python3.5m" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/__future__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/_bootlocale.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/_collections_abc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/_dummy_thread.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/_weakrefset.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/abc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/base64.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/bisect.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/codecs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/collections" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/config-3.5m" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/copy.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/copyreg.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/distutils/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/distutils/distutils.cfg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/encodings" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/fnmatch.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/functools.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/genericpath.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/hashlib.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/heapq.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/hmac.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/imp.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/importlib" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/io.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/keyword.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/lib-dynload" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/linecache.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/locale.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/no-global-site-packages.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/ntpath.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/operator.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/orig-prefix.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/os.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/plat-linux" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/posixpath.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/random.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/re.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/reprlib.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/rlcompleter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/shutil.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/appdirs-1.4.3.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/appdirs-1.4.3.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/appdirs-1.4.3.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/appdirs-1.4.3.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/appdirs-1.4.3.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/appdirs-1.4.3.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/appdirs-1.4.3.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/appdirs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/easy_install.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/LICENSE.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/entry_points.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn-19.7.1.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/_compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/app/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/app/base.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/app/pasterapp.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/app/wsgiapp.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/arbiter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/argparse_compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/config.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/debug.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/errors.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/glogging.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/http/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/http/_sendfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/http/body.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/http/errors.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/http/message.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/http/parser.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/http/unreader.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/http/wsgi.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/instrument/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/instrument/statsd.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/pidfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/reloader.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/selectors.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/six.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/sock.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/systemd.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/util.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/_gaiohttp.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/async.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/base.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/gaiohttp.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/geventlet.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/ggevent.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/gthread.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/gtornado.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/sync.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/gunicorn/workers/workertmp.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging-16.8.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging-16.8.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging-16.8.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging-16.8.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging-16.8.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging-16.8.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging-16.8.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/__about__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/_compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/_structures.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/markers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/requirements.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/specifiers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/utils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/packaging/version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip-9.0.1.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip-9.0.1.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip-9.0.1.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip-9.0.1.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip-9.0.1.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip-9.0.1.dist-info/entry_points.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip-9.0.1.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip-9.0.1.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/__main__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/appdirs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/_cmd.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/adapter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/cache.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/caches/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/caches/file_cache.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/caches/redis_cache.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/controller.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/filewrapper.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/heuristics.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/serialize.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/cachecontrol/wrapper.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/colorama/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/colorama/ansi.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/colorama/ansitowin32.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/colorama/initialise.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/colorama/win32.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/colorama/winterm.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/_backport/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/_backport/misc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/_backport/shutil.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/_backport/sysconfig.cfg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/_backport/sysconfig.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/_backport/tarfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/database.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/index.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/locators.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/manifest.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/markers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/metadata.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/resources.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/scripts.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/t32.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/t64.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/util.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/w32.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/w64.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distlib/wheel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/distro.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/_ihatexml.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/_inputstream.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/_tokenizer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/_trie/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/_trie/_base.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/_trie/datrie.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/_trie/py.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/_utils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/constants.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/filters/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/filters/alphabeticalattributes.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/filters/base.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/filters/inject_meta_charset.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/filters/lint.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/filters/optionaltags.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/filters/sanitizer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/filters/whitespace.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/html5parser.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/serializer.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treeadapters/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treeadapters/genshi.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treeadapters/sax.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treebuilders/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treebuilders/base.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treebuilders/dom.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treebuilders/etree.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treebuilders/etree_lxml.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treewalkers/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treewalkers/base.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treewalkers/dom.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treewalkers/etree.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treewalkers/etree_lxml.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/html5lib/treewalkers/genshi.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/ipaddress.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/lockfile/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/lockfile/linklockfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/lockfile/mkdirlockfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/lockfile/pidlockfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/lockfile/sqlitelockfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/lockfile/symlinklockfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/ordereddict.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/__about__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/_compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/_structures.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/markers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/requirements.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/specifiers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/utils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/packaging/version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/pkg_resources/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/progress/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/progress/bar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/progress/counter.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/progress/helpers.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/progress/spinner.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/pyparsing.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/re-vendor.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/adapters.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/api.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/auth.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/cacert.pem" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/certs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/cookies.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/exceptions.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/hooks.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/models.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/big5freq.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/big5prober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/chardetect.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/chardistribution.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/charsetgroupprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/charsetprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/codingstatemachine.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/constants.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/cp949prober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/escprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/escsm.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/eucjpprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/euckrfreq.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/euckrprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/euctwfreq.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/euctwprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/gb2312freq.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/gb2312prober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/hebrewprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/jisfreq.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/jpcntx.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/langbulgarianmodel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/langcyrillicmodel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/langgreekmodel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/langhebrewmodel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/langhungarianmodel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/langthaimodel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/latin1prober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/mbcharsetprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/mbcsgroupprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/mbcssm.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/sbcharsetprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/sbcsgroupprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/sjisprober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/universaldetector.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/chardet/utf8prober.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/_collections.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/connection.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/connectionpool.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/contrib/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/contrib/appengine.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/contrib/ntlmpool.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/contrib/pyopenssl.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/contrib/socks.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/exceptions.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/fields.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/filepost.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/packages/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/packages/ordered_dict.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/packages/six.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/packages/ssl_match_hostname/_implementation.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/poolmanager.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/request.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/response.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/util/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/util/connection.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/util/request.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/util/response.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/util/retry.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/util/ssl_.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/util/timeout.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/packages/urllib3/util/url.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/sessions.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/status_codes.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/structures.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/requests/utils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/retrying.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/six.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/webencodings/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/webencodings/labels.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/webencodings/mklabels.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/webencodings/tests.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/_vendor/webencodings/x_user_defined.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/basecommand.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/baseparser.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/cmdoptions.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/check.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/completion.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/download.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/freeze.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/hash.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/help.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/install.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/list.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/search.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/show.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/uninstall.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/commands/wheel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/compat/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/compat/dictconfig.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/download.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/exceptions.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/index.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/locations.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/models/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/models/index.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/operations/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/operations/check.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/operations/freeze.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/pep425tags.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/req/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/req/req_file.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/req/req_install.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/req/req_set.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/req/req_uninstall.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/status_codes.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/appdirs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/build.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/deprecation.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/encoding.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/filesystem.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/glibc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/hashes.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/logging.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/outdated.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/packaging.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/setuptools_build.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/utils/ui.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/vcs/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/vcs/bazaar.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/vcs/git.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/vcs/mercurial.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/vcs/subversion.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pip/wheel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pkg_resources/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pyparsing-2.2.0.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pyparsing-2.2.0.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pyparsing-2.2.0.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pyparsing-2.2.0.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pyparsing-2.2.0.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pyparsing-2.2.0.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pyparsing-2.2.0.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/pyparsing.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/dependency_links.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/entry_points.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools-35.0.2.dist-info/zip-safe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/archive_util.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/cli-32.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/cli-64.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/cli.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/alias.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/bdist_egg.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/bdist_rpm.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/bdist_wininst.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/build_clib.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/build_ext.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/build_py.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/develop.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/easy_install.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/egg_info.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/install.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/install_egg_info.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/install_lib.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/install_scripts.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/launcher manifest.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/py36compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/register.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/rotate.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/saveopts.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/sdist.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/setopt.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/test.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/upload.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/command/upload_docs.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/config.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/dep_util.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/depends.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/dist.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/extension.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/glob.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/gui-32.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/gui-64.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/gui.exe" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/launch.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/lib2to3_ex.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/monkey.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/msvc.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/namespaces.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/package_index.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/py26compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/py27compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/py31compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/py33compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/py36compat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/sandbox.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/script (dev).tmpl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/script.tmpl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/site-patch.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/ssl_support.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/unicode_utils.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/version.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/setuptools/windows_support.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/six-1.10.0.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/six-1.10.0.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/six-1.10.0.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/six-1.10.0.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/six-1.10.0.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/six-1.10.0.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/six-1.10.0.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/six.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/DESCRIPTION.rst" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/INSTALLER" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/LICENSE.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/METADATA" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/RECORD" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/WHEEL" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/entry_points.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/metadata.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel-0.29.0.dist-info/top_level.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/__main__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/archive.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/bdist_wheel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/decorator.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/egg2wheel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/eggnames.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/install.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/metadata.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/paths.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/pep425tags.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/pkginfo.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/signatures/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/signatures/djbec.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/signatures/ed25519py.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/signatures/keys.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/complex-dist/complexdist/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/complex-dist/setup.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/headers.dist/header.h" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/headers.dist/headersdist.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/headers.dist/setup.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/pydist-schema.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/simple.dist/setup.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/simple.dist/simpledist/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test-1.0-py2.py3-none-win32.whl" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_basic.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_install.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_keys.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_paths.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_ranking.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_signatures.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_tagopt.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_tool.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/test/test_wheelfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/tool/__init__.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/util.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site-packages/wheel/wininst2wheel.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/site.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/sre_compile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/sre_constants.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/sre_parse.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/stat.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/struct.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/tarfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/tempfile.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/token.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/tokenize.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/types.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/warnings.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib/python3.5/weakref.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/lib64" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/env/pip-selfcheck.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/estagio/estagio/urls.py" afterPath="$PROJECT_DIR$/estagio/estagio/urls.py" />
-      <change beforePath="$PROJECT_DIR$/gunicorn_start.sh" afterPath="$PROJECT_DIR$/gunicorn_start.sh" />
+    <list default="true" id="75b1283c-b1be-4794-888e-ab93c7bdce21" name="Default" comment="Docker">
+      <change afterPath="$PROJECT_DIR$/teste.ex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/projeto_estagio.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projeto_estagio.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estagio/estagio/base/compacta_pesquisa/compacta_pesquisa.py" beforeDir="false" afterPath="$PROJECT_DIR$/estagio/estagio/base/compacta_pesquisa/compacta_pesquisa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estagio/estagio/base/lista_arvore/lista_arvore.py" beforeDir="false" afterPath="$PROJECT_DIR$/estagio/estagio/base/lista_arvore/lista_arvore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estagio/estagio/base/static/public/js/baixarpesquisa.js" beforeDir="false" afterPath="$PROJECT_DIR$/estagio/estagio/base/static/public/js/baixarpesquisa.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estagio/estagio/base/static/public/js/requisicao_enviada.js" beforeDir="false" afterPath="$PROJECT_DIR$/estagio/estagio/base/static/public/js/requisicao_enviada.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estagio/estagio/base/static/public/js/upload.js" beforeDir="false" afterPath="$PROJECT_DIR$/estagio/estagio/base/static/public/js/upload.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/estagio/estagio/base/templates/ngix" beforeDir="false" afterPath="$PROJECT_DIR$/ngix" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/gunicorn_supervisor.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/gunicorn_supervisor.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py2r" beforeDir="false" afterPath="$PROJECT_DIR$/py2r" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -561,22 +28,77 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <file leaf-file-name="py2r" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/py2r">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-              <folding />
+            <state relative-caret-position="180">
+              <caret line="12" column="21" selection-start-line="12" selection-end-line="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/estagio/estagio/base/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="18" />
-              <folding />
+            <state relative-caret-position="165">
+              <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="celery" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/celery">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compacta_pesquisa.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/estagio/estagio/base/compacta_pesquisa/compacta_pesquisa.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/upload.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baixarpesquisa.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/baixarpesquisa.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requisicao_enviada.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/requisicao_enviada.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -585,30 +107,45 @@
         <entry file="file://$PROJECT_DIR$/docker-entrypoint.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-              <folding />
+              <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="django_nginx.conf" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_nginx.conf">
+      <file leaf-file-name="Dockerfile" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Dockerfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-              <folding />
+            <state relative-caret-position="270">
+              <caret line="34" selection-start-line="34" selection-end-line="39" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Elixir Module" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>arquivo ainda</find>
       <find>fila.txt</find>
       <find>celery</find>
+      <find>pdf</find>
+      <find>compacta_toda_pesquisa</find>
+      <find>json.loads</find>
+      <find>pri</find>
+      <find>print</find>
+      <find>baixar</find>
+      <find>compacta_pesquisa_selecionada</find>
     </findStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -616,30 +153,41 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/estagio/Tornado/status.py" />
         <option value="$PROJECT_DIR$/estagio/estagio/settings.py" />
         <option value="$PROJECT_DIR$/estagio/py2r" />
         <option value="$PROJECT_DIR$/Montando Ambiente/ambiente" />
         <option value="$PROJECT_DIR$/estagio/estagio/base/sincroniza/sincroniza.py" />
         <option value="$PROJECT_DIR$/estagio/celery" />
-        <option value="$PROJECT_DIR$/estagio/Tornado/download.py" />
         <option value="$PROJECT_DIR$/estagio/estagio/base/templates/ngix" />
-        <option value="$PROJECT_DIR$/estagio/estagio/base/templates/home.html" />
-        <option value="$PROJECT_DIR$/estagio/estagio/base/compacta_pesquisa/compacta_pesquisa.py" />
-        <option value="$PROJECT_DIR$/estagio/estagio/base/ScriptR/scriptR.py" />
         <option value="$PROJECT_DIR$/estagio/estagio/base/urls.py" />
-        <option value="$PROJECT_DIR$/estagio/estagio/base/views.py" />
         <option value="$PROJECT_DIR$/estagio/estagio/base/Gerar_grafico/Gerar_grafico.py" />
-        <option value="$PROJECT_DIR$/estagio/estagio/base/upload/upload.py" />
         <option value="$PROJECT_DIR$/gunicorn_start.sh" />
-        <option value="$PROJECT_DIR$/estagio/estagio/celery.py" />
-        <option value="$PROJECT_DIR$/estagio/estagio/__init__.py" />
         <option value="$PROJECT_DIR$/estagio/estagio/urls.py" />
-        <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/django_nginx.conf" />
         <option value="$PROJECT_DIR$/entrypoint.sh" />
         <option value="$PROJECT_DIR$/requirements.txt" />
+        <option value="$PROJECT_DIR$/estagio/estagio/__init__.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/celery.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/MongoDB/MongoCennect.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/processa.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/views.py" />
+        <option value="$PROJECT_DIR$/estagio/Tornado/download.py" />
+        <option value="$PROJECT_DIR$/estagio/Tornado/status.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/upload/upload.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/Teste/teste.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/ScriptR/scriptR.py" />
+        <option value="$PROJECT_DIR$/estagio/redisTeste.py" />
+        <option value="$PROJECT_DIR$/celery" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/lista_arvore/lista_arvore.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/templates/home.html" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/static/public/js/baixarpesquisa.js" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/compacta_pesquisa/compacta_pesquisa.py" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/static/public/js/requisicao_enviada.js" />
+        <option value="$PROJECT_DIR$/estagio/estagio/base/static/public/js/upload.js" />
+        <option value="$PROJECT_DIR$/teste.ex" />
+        <option value="$PROJECT_DIR$/py2r" />
+        <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/Dockerfile" />
       </list>
     </option>
@@ -653,23 +201,22 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/estagio/estagio/base/static/node_modules" />
   </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/estagio/estagio/base/static/bootstrap/package.json" />
+      <path value="$PROJECT_DIR$/estagio/estagio/base/static/jcookie/package.json" />
+      <path value="$PROJECT_DIR$/estagio/estagio/base/static/jquery/package.json" />
+      <path value="$PROJECT_DIR$/estagio/estagio/base/static/node_modules/normalize.css/package.json" />
+    </packageJsonPaths>
+  </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1366" />
-    <option name="width" value="1600" />
-    <option name="height" value="900" />
+    <option name="x" value="150" />
+    <option name="y" value="59" />
+    <option name="width" value="1024" />
+    <option name="height" value="576" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
@@ -680,11 +227,63 @@
               <item name="projeto_estagio_django" type="b2602c69:ProjectViewProjectNode" />
               <item name="projeto_estagio_django" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="projeto_estagio_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_estagio_django" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projeto_estagio_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_estagio_django" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projeto_estagio_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_estagio_django" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projeto_estagio_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_estagio_django" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="compacta_pesquisa" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projeto_estagio_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_estagio_django" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projeto_estagio_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_estagio_django" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="projeto_estagio_django" type="b2602c69:ProjectViewProjectNode" />
+              <item name="projeto_estagio_django" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="estagio" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -695,6 +294,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -709,9 +311,6 @@
         </RuleState>
       </list>
     </option>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -731,33 +330,56 @@
       <option name="project" value="LOCAL" />
       <updated>1517162030441</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Docker">
+      <created>1517485325101</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1517485325101</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Dockerfile">
+      <created>1517718564199</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1517718564199</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Docker">
+      <created>1517765290697</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1517765290697</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1366" y="0" width="1565" height="873" extended-state="6" />
+    <frame x="0" y="27" width="1366" height="708" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32988358" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14696486" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988358" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5022364" side_tool="true" weight="0.32988358" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Python Console" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="7" sideWeight="0.49776357" visible="true" weight="0.23255815" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2057101" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32971245" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Data View" order="3" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32988358" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -771,298 +393,170 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Mudança na paginação" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mudança na paginação" />
+    <MESSAGE value="Dockerfile" />
+    <MESSAGE value="Docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="Docker" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="3" />
     </breakpoint-manager>
-    <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/Email/__init__.py">
+    <entry file="file://$PROJECT_DIR$/py2r">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/redisTeste.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/remote.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/nginx-access.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/nginx-error.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/python.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mongoDB/instalar">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="true" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/py2r">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/ScriptR/teste.r">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/Tornado/watercooler.py" />
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/compacta_pesquisa/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/templates/ngix">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="1" lean-forward="false" selection-start-line="32" selection-start-column="1" selection-end-line="32" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1515">
-          <caret line="109" column="60" lean-forward="false" selection-start-line="109" selection-start-column="60" selection-end-line="109" selection-end-column="60" />
+        <state relative-caret-position="180">
+          <caret line="12" column="21" selection-start-line="12" selection-end-line="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/estagio/estagio/base/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="18" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="18" />
+        <state relative-caret-position="480">
+          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/celery">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/baixarpesquisa.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/requisicao_enviada.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Dockerfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/estagio/estagio/base/compacta_pesquisa/compacta_pesquisa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="13" column="71" lean-forward="false" selection-start-line="13" selection-start-column="71" selection-end-line="13" selection-end-column="71" />
+        <state relative-caret-position="315">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/ScriptR/__init__.py">
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="44" selection-start-line="44" selection-end-line="44" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/sincroniza/sincroniza.py">
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="39" lean-forward="false" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
+        <state relative-caret-position="30">
+          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/Gerar_grafico/Gerar_grafico.py">
+    <entry file="file://$PROJECT_DIR$/mongoDB/instalar">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="50" lean-forward="false" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/Tornado/download.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="23" column="37" lean-forward="false" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/Tornado/status.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-83">
-          <caret line="42" column="0" lean-forward="true" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/processa.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/verifica_upload/VerificaUpload.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/MongoDB/MongoCennect.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="20" lean-forward="true" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/ScriptR/scriptR.r">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="39" lean-forward="true" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/ScriptR/grafico.R">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-360">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="133" column="51" lean-forward="false" selection-start-line="133" selection-start-column="51" selection-end-line="133" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/ScriptR/scriptR.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/upload/upload.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="37" lean-forward="false" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/estagio/celery">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" column="41" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="57" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" selection-end-column="57" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Montando Ambiente/ambiente">
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/processa.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="599">
-          <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="23" />
+        <state relative-caret-position="-311">
+          <caret line="65" column="23" selection-start-line="65" selection-start-column="18" selection-end-line="65" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logs/gunicorn_supervisor.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/__init__.py">
+    <entry file="file://$PROJECT_DIR$/estagio/Tornado/status.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="38" lean-forward="false" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+        <state relative-caret-position="-536">
+          <caret line="26" column="15" lean-forward="true" selection-start-line="26" selection-start-column="15" selection-end-line="26" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/wsgi.py">
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/upload/upload.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        <state relative-caret-position="330">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/celery.py">
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/Teste/teste.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="20" lean-forward="true" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        <state relative-caret-position="105">
+          <caret line="7" column="20" lean-forward="true" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/admin.py">
+    <entry file="file://$PROJECT_DIR$/estagio/Tornado/download.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="214">
+          <caret line="55" column="15" selection-start-line="55" selection-start-column="10" selection-end-line="55" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/form.py">
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/sincroniza/sincroniza.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="15">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/urls.py">
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/ScriptR/scriptR.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="15" lean-forward="false" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        <state relative-caret-position="405">
+          <caret line="36" column="16" selection-start-line="36" selection-start-column="16" selection-end-line="36" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/manage.py">
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/MongoDB/MongoCennect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state relative-caret-position="60">
+          <caret line="4" column="33" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/Gerar_grafico/Gerar_grafico.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1073,70 +567,194 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/celery">
+    <entry file="file://$PROJECT_DIR$/estagio/redisTeste.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="6" lean-forward="true" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
+        <state relative-caret-position="30">
+          <caret line="2" column="12" lean-forward="true" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/celery.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="48" lean-forward="true" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="31" column="43" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/lista_arvore/lista_arvore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12">
+          <caret line="13" column="62" selection-start-line="13" selection-start-column="62" selection-end-line="13" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/templates/requisicao_enviada.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-225" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="69" column="83" selection-start-line="69" selection-start-column="83" selection-end-line="69" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="10" column="65" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/requisicao_enviada.old.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Montando Ambiente/ambiente">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-56">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_nginx.conf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="16" lean-forward="true" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gunicorn_start.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
-          <caret line="31" column="28" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
+          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/estagio/estagio/settings.py">
+    <entry file="file://$PROJECT_DIR$/ngix">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+        <state relative-caret-position="378">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_nginx.conf">
+    <entry file="file://$PROJECT_DIR$/estagio/download.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="-90" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teste.ex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/status.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="32" column="9" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/py2r">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="21" selection-start-line="12" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/celery">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="56" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/compacta_pesquisa/compacta_pesquisa.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="21" column="30" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/upload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="5" column="16" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/baixarpesquisa.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="68" column="23" selection-start-line="68" selection-start-column="23" selection-end-line="68" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/estagio/estagio/base/static/public/js/requisicao_enviada.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="44" column="0" lean-forward="false" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="18" />
-          <folding />
+        <state relative-caret-position="120">
+          <caret line="8" column="15" selection-start-line="8" selection-start-column="15" selection-end-line="8" selection-end-column="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docker-entrypoint.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="18" column="24" lean-forward="false" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
-          <folding />
+          <caret line="18" column="24" selection-start-line="18" selection-start-column="24" selection-end-line="18" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Dockerfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="270">
+          <caret line="34" selection-start-line="34" selection-end-line="39" selection-end-column="11" />
         </state>
       </provider>
     </entry>

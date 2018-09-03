@@ -21,6 +21,8 @@ RUN  pip3 install requests
 RUN  echo "deb http://repo.mongodb.org/apt/debian jessie/mongodb-org/3.6 main"
 RUN  apt-get update -y
 RUN  apt-get install -y mongodb mongodb-server
+RUN apt-get install r-base -y
+
 
 
 RUN echo "deb http://cran.rstudio.com/bin/linux/ubuntu xenial/"
@@ -35,9 +37,9 @@ EXPOSE 8081
 EXPOSE 8082
 EXPOSE 8080
 EXPOSE 5555
+EXPOSE 6379
 
-VOLUME /home/david/Documentos/projeto_estagio_django
-VOLUME /arquivos:/arquivos
+VOLUME /home
+VOLUME /arquivos
 
-WORKDIR /home/projeto_estagio_django/estagio
 

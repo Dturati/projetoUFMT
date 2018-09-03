@@ -2,15 +2,18 @@ pip3 install rpy2
 dnf install python3-devel
 dnf install readline-devel
 
+apt-get install r-base
+
 #Caso seja necessário instale
 sudo apt-get install r-cran-rgl
 
 
 intalação da bilioteca hydroGof
-
+entre o terminal do R
 install.packages("hydroGOF")
 abra o console iterativo do python
 execute os comandos
 from rpy2.robjects.packages import importr
 utils = importr('utils')
+utils.install_packages('rgl')
 utils.install_packages('DirichletReg')
