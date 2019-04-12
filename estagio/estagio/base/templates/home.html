@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
+{% load i18n %}
 
 {% block content %}
     <div class="container">
@@ -16,7 +17,7 @@
              </a>
          </div>
         <div class="place banner">
-            <h4 class="textoBanner">Análise de Falhas</h4>
+            <h4 class="textoBanner">{% trans "gaps_analize" %}</h4>
         </div>
          <div class="tudo">
                 <div class="place" id="pesquisa">
@@ -26,14 +27,14 @@
                                 <table  class="table" id="tabelaPesquisa">
                                 <thead>
                                 <tr>
-                                    <th style="font-size: 10px;text-align: inherit;">Porcentagem Falhas</th>
-                                    <th style="font-size: 10px;text-align: inherit;">Porcentagem Falhas</th>
-                                    <th style="font-size: 10px;text-align: inherit;">Tipo de Falha</th>
-                                    <th style="font-size: 10px;text-align: inherit;">Falha Conjunto</th>
-{#                                    <th style="font-size: 10px;text-align: inherit;">Variavel Falhada</th>#}
-                                    <th style="font-size: 10px;text-align: inherit;">Metodo</th>
-                                    <th style="font-size: 10px;text-align: inherit;">Todos</th>
-                                    <th style="font-size: 10px;text-align: inherit;">Pesquisar</th>
+                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_percent' %}</th>
+                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_percent' %}</th>
+                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_type' %}</th>
+                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_set' %}</th>
+{#                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_variable' %}</th>#}
+                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'method' %}</th>
+                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'all' %}</th>
+                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'search' %}</th>
                                 </tr>
                                 </thead>
                                     <tbody>
@@ -42,7 +43,7 @@
                                                 <td style="width: 10px">{{ f }}</td>
                                             {% endfor %}
                                        <td><input name="todosOsArquivos" id="todosOsArquivos" type="checkbox" data-status="desativado"  onclick="pesquiarTodosOsArquivos(this)" value="desativado"></td>
-                                        <td><button class="glyphicon glyphicon-search"  name="pesquisa" type="submit" value="Pesquisar"></button></td>
+                                        <td><button class="glyphicon glyphicon-search"  name="pesquisa" type="submit" value="{% trans 'search' %}"></button></td>
                                        </tr>
                                     </tbody>
                                   </table>
@@ -52,7 +53,7 @@
 
                 <div class="place resultado">
                      <div>
-                        <a class="glyphicon glyphicon-folder-open" style="cursor:pointer" data-dir="/arquivos" onclick="chamaArquivosAjax(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">/Arquivos</a>
+                        <a class="glyphicon glyphicon-folder-open" style="cursor:pointer" data-dir="/arquivos" onclick="chamaArquivosAjax(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">/{% trans 'files' %}</a>
                      </div>
 
                     <div id="volta_dir"></div>
@@ -64,10 +65,10 @@
                                 <thead style="display: block">
                                     <tr>
                                         <th>#</th>
-                                        <th style="padding-left: 10px">Diretorio/arquivo</th>
-                                        <th style="padding-left: 90px">Data Modificação</th>
-                                        <th style="padding-left: 50px">Data Criação</th>
-                                        <th style="padding-left: 230px">Baixar</th>
+                                        <th style="padding-left: 10px">{% trans 'directory_file' %}</th>
+                                        <th style="padding-left: 90px">{% trans 'modification_date' %}</th>
+                                        <th style="padding-left: 50px">{% trans 'creation_date' %}</th>
+                                        <th style="padding-left: 230px">{% trans 'download' %}</th>
                                     </tr>
                                 </thead>
                                 <tbody id="tabela" style="
@@ -91,26 +92,25 @@
 
                         </div>
                       <div>
-                          <a type="button" class="btn btn-info btn-group-sm" data-toggle="modal" data-target="#myModal">Baixar Pesquisa</a>
-                          <a type="button" class="btn btn-info btn-group-sm" href="{% url "home:upload" %}">Upload</a>
+                          <a type="button" class="btn btn-info btn-group-sm" data-toggle="modal" data-target="#myModal">{% trans 'download_search' %}</a>
                       </div>
                        <div id="paginacao" class="pagination">
                             <span class="step-links">
                                 {% if paginado.has_previous %}
-                                    <a href="?page={{ paginado.previous_page_number }}">Anterior</a>
+                                    <a href="?page={{ paginado.previous_page_number }}">{% trans 'before' %}</a>
                                 {% endif %}
 
                                 <span class="current">
-                                    Paginas {{ paginado.number }} de {{ paginado.paginator.num_pages }}.
+                                    {% trans 'pages' %} {{ paginado.number }} {% trans 'of' %} {{ paginado.paginator.num_pages }}.
                                 </span>
 
                                 {% if paginado.has_next %}
-                                    <a href="?page={{ paginado.next_page_number}}">Próxima</a>
+                                    <a href="?page={{ paginado.next_page_number}}">{% trans 'next' %}</a>
                                 {% endif %}
-                            <p>Total arquivos encontrados</p>
+                            <p>{% trans 'count_found_files' %}</p>
 
                             {% load mathfilters %}
-                            <p>Arquivos Encontrados: {{ paginado.paginator.num_pages |mul:8 }}</p>
+                            <p>{% trans 'found_files' %} {{ paginado.paginator.num_pages |mul:8 }}</p>
                             </span>
 
                       </div>
@@ -126,13 +126,12 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Baixar pesquisa</h4>
+        <h4 class="modal-title">{% trans 'download_search' %}</h4>
       </div>
 
       <div class="modal-body">
-        <p style="color: red">Ao inserir seu email você será avisado quando o download estiver pronto.</p>
-        <p>Os arquivos serão compactados em formato zip, dependendo da quantidade de arquivos solicitados
-            o processo pode demorar minutos ou até horas para ser concluído.</p>
+        <p style="color: red">{% trans 'email_text' %}</p>
+        <p>{% trans 'files_format_text' %}</p>
       </div>
       <div style="height: 100px; width: 400px; padding-left: 20%">
           <form action="{% url "home:requisicao_enviada"%}">
@@ -140,14 +139,14 @@
                   <table class="table table-bordered">
                       <tr>
                           <th>Email</th>
-                          <th>Ação</th>
+                          <th>{% trans 'action' %}</th>
                       </tr>
                         <td style="text-align: left; font-size: 20px"><input name="email" id="email" type="email"></td>
-                        <td style="text-align: left"><button class="btn btn-info">Continuar</button></td>
+                        <td style="text-align: left"><button class="btn btn-info">{% trans 'continued' %}</button></td>
                       </tr>
 {#                      <label>Email</label>#}
 {#                      <input name="email" id="email" type="email">#}
-{#                      <button   class="btn btn-default">Enviar</button>#}
+{#                      <button class="btn btn-default">{% trans 'send_email' %}</button>#}
                   </table>
           </form>
       </div>

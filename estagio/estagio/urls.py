@@ -16,6 +16,9 @@ Including another URLconf
 #Url dos django
 from django.conf.urls import url,include
 from django.contrib import admin
+
+app_name = 'thegaps'
+
 #namespace não deixa dar conflito com outras urls de outros modulos
 urlpatterns = [
     url(r'^', include("estagio.base.urls",namespace='home')),

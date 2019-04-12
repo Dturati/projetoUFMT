@@ -21,7 +21,10 @@ from estagio.base.views import home,\
     cancela_requisicao_upload,\
     status_requisicao_upload
 
+app_name = 'thegaps'
+
 urlpatterns = [
+	url(r'^',home, name='home'),
     url(r'^home/$',home, name='home'), #Caminho da view home
     url(r'^ajax/lista_diretorios/$',lista_em_arvore, name='lista_diretorios'), #Caminho da view home
     url(r'^contatos/$',contatos, name='contatos'), #Caminho da view home
