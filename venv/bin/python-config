@@ -1,4 +1,4 @@
-#!/home/david/Documentos/projeto_estagio_django/venv/bin/python
+#!/home/raphael/Codigo/git/thegaps/venv/bin/python
 
 import sys
 import getopt

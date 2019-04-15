@@ -32,8 +32,6 @@
                                     <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_type' %}</th>
                                     <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_set' %}</th>
 {#                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_variable' %}</th>#}
-                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'method' %}</th>
-                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'all' %}</th>
                                     <th style="font-size: 10px;text-align: inherit;">{% trans 'search' %}</th>
                                 </tr>
                                 </thead>
@@ -42,8 +40,7 @@
                                             {% for f in form %}
                                                 <td style="width: 10px">{{ f }}</td>
                                             {% endfor %}
-                                       <td><input name="todosOsArquivos" id="todosOsArquivos" type="checkbox" data-status="desativado"  onclick="pesquiarTodosOsArquivos(this)" value="desativado"></td>
-                                        <td><button class="glyphicon glyphicon-search"  name="pesquisa" type="submit" value="{% trans 'search' %}"></button></td>
+                                       <td><button class="glyphicon glyphicon-search"  name="pesquisa" type="submit" value="{% trans 'search' %}"></button></td>
                                        </tr>
                                     </tbody>
                                   </table>

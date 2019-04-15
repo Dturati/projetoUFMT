@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-12 17:05-0400\n"
+"POT-Creation-Date: 2019-04-15 17:34-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,97 +17,102 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/home.html:19
+#: estagio/base/form.py:6
+msgid "Select"
+msgstr "-- Select --"
+
+#: estagio/base/templates/home.html:20
 msgid "gaps_analize"
 msgstr "Gaps Analise"
 
-#: templates/home.html:29 templates/home.html:30
+#: estagio/base/templates/home.html:30 estagio/base/templates/home.html:31
 msgid "gaps_percent"
 msgstr "Gaps Percent"
 
-#: templates/home.html:31
+#: estagio/base/templates/home.html:32
 msgid "gaps_type"
 msgstr "Type"
 
-#: templates/home.html:32
+#: estagio/base/templates/home.html:33
 msgid "gaps_set"
 msgstr "Set"
 
-#: templates/home.html:34
+#: estagio/base/templates/home.html:35
 msgid "method"
 msgstr "Method"
 
-#: templates/home.html:35
+#: estagio/base/templates/home.html:36
 msgid "all"
 msgstr "All"
 
-#: templates/home.html:36 templates/home.html:45
+#: estagio/base/templates/home.html:37 estagio/base/templates/home.html:46
 msgid "search"
 msgstr "Search"
 
-#: templates/home.html:55
+#: estagio/base/templates/home.html:56
 msgid "files"
 msgstr "Files"
 
-#: templates/home.html:67
+#: estagio/base/templates/home.html:68
 msgid "directory_file"
 msgstr "Directory/Files"
 
-#: templates/home.html:68
+#: estagio/base/templates/home.html:69
 msgid "modification_date"
 msgstr "Modification Date"
 
-#: templates/home.html:69
+#: estagio/base/templates/home.html:70
 msgid "creation_date"
 msgstr "Creation Date"
 
-#: templates/home.html:70
+#: estagio/base/templates/home.html:71
 msgid "download"
 msgstr "Download"
 
-#: templates/home.html:94 templates/home.html:128
+#: estagio/base/templates/home.html:95 estagio/base/templates/home.html:129
 msgid "download_search"
 msgstr "Download Search"
 
-#: templates/home.html:99
+#: estagio/base/templates/home.html:100
 msgid "before"
 msgstr "Before"
 
-#: templates/home.html:103
+#: estagio/base/templates/home.html:104
 msgid "pages"
 msgstr "Pages"
 
-#: templates/home.html:103
+#: estagio/base/templates/home.html:104
 msgid "of"
 msgstr "of"
 
-#: templates/home.html:107
+#: estagio/base/templates/home.html:108
 msgid "next"
 msgstr "Next"
 
-#: templates/home.html:109
+#: estagio/base/templates/home.html:110
 msgid "count_found_files"
 msgstr "Count founded files"
 
-#: templates/home.html:112
+#: estagio/base/templates/home.html:113
 msgid "found_files"
 msgstr "Founded Files:"
 
-#: templates/home.html:132
+#: estagio/base/templates/home.html:133
 msgid "email_text"
-msgstr "Ao inserir seu email você será avisado quando o download estiver pronto."
+msgstr ""
+"Ao inserir seu email você será avisado quando o download estiver pronto."
 
-#: templates/home.html:133
+#: estagio/base/templates/home.html:134
 msgid "files_format_text"
 msgstr ""
 "Os arquivos serão compactados em formato zip, dependendo da quantidade de "
 "arquivos solicitados o processo pode demorar minutos ou até horas para ser "
 "concluído."
 
-#: templates/home.html:142
+#: estagio/base/templates/home.html:142
 msgid "action"
 msgstr "Action"
 
-#: templates/home.html:145
+#: estagio/base/templates/home.html:145
 msgid "continued"
 msgstr "Continued"

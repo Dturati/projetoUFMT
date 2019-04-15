@@ -1,5 +1,4 @@
-#!/home/david/Documentos/projeto_estagio_django/venv/bin/python3.6
-
+#!/home/raphael/Codigo/git/thegaps/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys
