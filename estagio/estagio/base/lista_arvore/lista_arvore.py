@@ -1,17 +1,18 @@
 from django.http import JsonResponse
 from ...base.processa import ListaArquivos
 import os
+from django.conf import settings
 
 lista_arquivos = ListaArquivos
 
 def lista_arvore(request):
     caminho = request.GET.get('caminho', None)
     if(caminho == '/'):
-        caminho = "/arquivos"
+        caminho = settings.MEDIA_URL
     meuDir = caminho
     diretorio, arquivos,detalheArquivosModificado,\
     detalheArquivosCriados,detalhePastaModificadas,\
-    detalhePastaCriadas = lista_arquivos.list_files("/arquivos" + meuDir)
+    detalhePastaCriadas = lista_arquivos.list_files(meuDir)
 
     #Remove / duplicado em caminhos de diretorios
     teste = list(caminho[::-1].split()[0])

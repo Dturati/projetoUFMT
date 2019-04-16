@@ -24,7 +24,6 @@ from estagio.base.views import home,\
 app_name = 'thegaps'
 
 urlpatterns = [
-	url(r'^',home, name='home'),
     url(r'^home/$',home, name='home'), #Caminho da view home
     url(r'^ajax/lista_diretorios/$',lista_em_arvore, name='lista_diretorios'), #Caminho da view home
     url(r'^contatos/$',contatos, name='contatos'), #Caminho da view home
@@ -48,5 +47,6 @@ urlpatterns = [
     url(r'^download_upload/(?P<file>.*)/$',DownloadUpload,name='download_upload'),
     url(r'^ajax/cancela_requisicao_upload/$',cancela_requisicao_upload,name='cancela_requisicao_upload'),
     url(r'^ajax/status_requisicao_upload/$',status_requisicao_upload,name='status_requisicao_upload'),
+    url(r'^$',home, name='home'),
 
 ]

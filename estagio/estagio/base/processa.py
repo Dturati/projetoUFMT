@@ -6,6 +6,7 @@ import mimetypes
 import zipfile
 from io import StringIO
 from pymongo import MongoClient
+from django.conf import settings
 
 
 class ListaArquivos:
@@ -38,7 +39,7 @@ class PesquisaArquivos:
         m_regex = "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
         arquivos = []
         if(todosOsArquivos == ""):
-            meuDir = '/arquivos'
+            meuDir = settings.MEDIA_URL
             arquivos = []
             m_regex             = "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]"
             regex_falha = ''

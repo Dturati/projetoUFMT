@@ -1,4 +1,5 @@
 from django.core.serializers import json
+from django.conf import settings
 from django.http import JsonResponse
 from .processa import ListaArquivos,PesquisaArquivos
 import os,time
@@ -23,6 +24,7 @@ lista_arquivos = ListaArquivos
 resutadopesquisaPaginado = []
 from .MongoDB.MongoCennect import MongoConnect
 
+
 from estagio.celery import app
 
 import sys
@@ -39,27 +41,28 @@ def home(request):
     num = int(request.GET.get('page', 1))
 
     resultadoPesquisa = []
-    if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
-        # Verifica se é uma paginação ou submição de formulario
-        con = MongoConnect()
-        banco = con.connect("test_database")
-        dados_db = banco.teste
-        consulta = dados_db.find()
-        try:
-            P = Paginator(list(consulta),8)
-            pagina = P.page(num)
-        except:
-            pagina = P.page(1)
+    #if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
+    # Verifica se é uma paginação ou submição de formulario
+    con = MongoConnect()
+    banco = con.connect("test_database")
+    dados_db = banco.teste
+    consulta = dados_db.find()
+    print(consulta)
+    try:
+        P = Paginator(list(consulta),8)
+        pagina = P.page(num)
+    except:
+        pagina = P.page(1)
 
-        contexto = {
-            'form': form,
-            'resultadoPesquisa': resultadoPesquisa,
-            'quantidade': pagina.paginator.num_pages * 8,
-            'paginado': pagina,
-        }
-        return render(request, "home.html", contexto)
+    contexto = {
+        'form': form,
+        'resultadoPesquisa': resultadoPesquisa,
+        'quantidade': pagina.paginator.num_pages * 8,
+        'paginado': pagina,
+    }
+    return render(request, "home.html", contexto)
 
-    if (request.session['tipo_requisicao'] == 'pesquisa_individual'):
+    '''if (request.session['tipo_requisicao'] == 'pesquisa_individual'):
         if(request.POST):
             resultadoPesquisa = pesquisa(form.data)
             request.session['form'] = form.data
@@ -82,14 +85,14 @@ def home(request):
                         'paginado': pagina,
                     }
         return render(request, "home.html", contexto)
-
+	'''
 
 def contatos(request):
     return render(request,"contatos.html",{"teste":"teste"})
 
 def pesquisa(dados):
     pesquisa_arquivos = PesquisaArquivos
-    meuDir = '/arquivos/arquivos/'
+    meuDir = settings.MEDIA_URL + '/arquivos'
     resultadoPesquisa  = pesquisa_arquivos.lista_aquivos(dados)
     return resultadoPesquisa
 
@@ -163,7 +166,7 @@ from wsgiref.util import FileWrapper
 def baixar_pesquisa(request):
     dados = request.GET
     # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
-    os.chdir("/arquivos/arquivos")
+    os.chdir(settings.MEDIA_URL + "/arquivos")
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     filename = os.path.basename(nome_arquivo)
     nome_download = str(dados['chave'])+".zip"
@@ -239,7 +242,7 @@ def DownloadUpload(request,file):
         return HttpResponseRedirect("/home/")
     dados = request.GET
     os.chdir("/")
-    nome_arquivo = "arquivos/arquivos/uploads/"+str(file)+".zip"
+    nome_arquivo = settings.MEDIA_URL + "/arquivos/uploads/"+str(file)+".zip"
     nome_download = str(file)+".zip"
     try:
         response = HttpResponse(open(nome_arquivo, 'rb').read(), content_type='x-zip-compressed')
@@ -303,7 +306,7 @@ def fila_celery(request):
 
 # from celery import app
 def cancelar_requisicao(request):
-    os.chdir("/arquivos")
+    os.chdir(settings.MEDIA_URL)
     dadosRequest = request.GET
     url = "http://localhost:5555/api/task/revoke/"+str(dadosRequest['id'])+"?terminate=true"
     resposta = requests.post(url)
@@ -320,6 +323,7 @@ def cancelar_requisicao(request):
 
 from .sincroniza.sincroniza import Sincroniza
 def sincroniza_dados(request):
+    print('chegou')
     sinc = Sincroniza()
     sinc.inicia()
     return HttpResponse("Pronto")

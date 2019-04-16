@@ -8,11 +8,12 @@ import asyncio
 from pymongo import MongoClient
 import time
 from estagio.celery import app
+from django.conf import settings
 
 @app.task
 def compacta_toda_pesquisa_individual(request,chave):
     # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
-    os.chdir("/arquivos/arquivos")
+    os.chdir(settings.MEDIA_URL + "/arquivos")
     # #se a pesquisa for especifica
 
     arquivos = []
@@ -93,7 +94,7 @@ def compacta_toda_pesquisa_completa(request,chave):
 
 # @shared_task
 def compacta_pesquisa_selecionada(request,chave):
-    os.chdir("/arquivos/arquivos")
+    os.chdir(settings.MEDIA_URL + "/arquivos")
     arquivos = []
     request = json.loads(request)
     for value in request:
