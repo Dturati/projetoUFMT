@@ -6,17 +6,17 @@
 {% block content %}
     <div class="container">
 
-         <div id="lateral">
-             <a href="{% url 'home:home' %}">
-                <img  height="90px" style="
-                        margin-left: auto;
-                        margin-right: auto;
-                        display: block;"
-                        width="90px"
-                        src="{% static 'img/ufmt_logo.png' %}"/>
-             </a>
-         </div>
         <div class="place banner">
+                <div id="lateral">
+                        <a href="{% url 'home:home' %}">
+                           <img  height="90px" style="
+                                   margin-left: auto;
+                                   margin-right: auto;
+                                   display: block;"
+                                   width="90px"
+                                   src="{% static 'img/ufmt_logo.png' %}"/>
+                        </a>
+                    </div>
             <h4 class="textoBanner">{% trans "gaps_analize" %}</h4>
         </div>
          <div class="tudo">
@@ -27,12 +27,12 @@
                                 <table  class="table" id="tabelaPesquisa">
                                 <thead>
                                 <tr>
-                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_percent' %}</th>
-                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_percent' %}</th>
-                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_type' %}</th>
-                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_set' %}</th>
-{#                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'gaps_variable' %}</th>#}
-                                    <th style="font-size: 10px;text-align: inherit;">{% trans 'search' %}</th>
+                                    <th>{% trans 'min_gaps_percent' %}</th>
+                                    <th>{% trans 'max_gaps_percent' %}</th>
+                                    <th>{% trans 'gaps_type' %}</th>
+                                    <th>{% trans 'gaps_set' %}</th>
+{#                                    <th>{% trans 'gaps_variable' %}</th>#}
+                                    <th>{% trans 'search' %}</th>
                                 </tr>
                                 </thead>
                                     <tbody>
@@ -83,28 +83,49 @@
 
                         </div>
                       <div>
-                          <a type="button" class="btn btn-info btn-group-sm" data-toggle="modal" data-target="#myModal">{% trans 'download_search' %}</a>
+                            <a type="button" class="btn btn-info btn-group-sm" data-toggle="modal" data-target="#myModal">{% trans 'download_selected' %}</a>
+                            <a type="button" class="btn btn-info btn-group-sm" data-toggle="modal" data-target="#myModal">{% trans 'download_all' %}</a>
                       </div>
-                       <div id="paginacao" class="pagination">
-                            <span class="step-links">
-                                <span class="current">
-                                    {% trans 'pages' %} {{ paginado.number }} {% trans 'of' %} {{ paginado.paginator.num_pages }}.
-                                </span>
-                                
-                                {% if paginado.has_previous %}
-                                    <a href="?page={{ paginado.previous_page_number }}">{% trans 'before' %}</a>
-                                {% endif %}
-
-                                {% if paginado.has_next %}
-                                    <a href="?page={{ paginado.next_page_number}}">{% trans 'next' %}</a>
-                                {% endif %}
+                       
+                      <div id="paginacao" class="pagination">
+                            {% if paginado.has_other_pages %}
+                                <ul class="pagination">
+                                    {% if paginado.has_previous %}
+                                        <li><a href="?page=1{% for key, value in items %}{% if key != 'page' and key != 'csrfmiddlewaretoken' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo;&laquo;</a></li>
+                                    {% else %}
+                                        <li class="disabled"><span>&laquo;&laquo;</span></li>
+                                    {% endif %}
+                                    {% if paginado.has_previous %}
+                                        <li><a href="?page={{ paginado.previous_page_number }}{% for key, value in items %}{% if key != 'page' and key != 'csrfmiddlewaretoken' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&laquo;</a></li>
+                                    {% else %}
+                                        <li class="disabled"><span>&laquo;</span></li>
+                                    {% endif %}
+                                    {% for i in limite_paginas %}
+                                        {% if paginado.number == i %}
+                                            <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                        {% else %}
+                                            <li><a href="?page={{ i }}{% for key, value in items %}{% if key != 'page' and key != 'csrfmiddlewaretoken' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">{{ i }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                    {% if paginado.has_next %}
+                                        <li><a href="?page={{ paginado.next_page_number }}{% for key, value in items %}{% if key != 'page' and key != 'csrfmiddlewaretoken' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;</a></li>
+                                    {% else %}
+                                        <li class="disabled"><span>&raquo;</span></li>
+                                    {% endif %}
+                                    {% if paginado.has_next %}
+                                        <li><a href="?page={{ paginado.paginator.num_pages }}{% for key, value in items %}{% if key != 'page' and key != 'csrfmiddlewaretoken' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">&raquo;&raquo;</a></li>
+                                    {% else %}
+                                        <li class="disabled"><span>&raquo;&raquo;</span></li>
+                                    {% endif %}
+                                </ul>
+                            {% endif %}
+                            <br/>
+                            {% load mathfilters %}
+                            <ul class="pagination" style="margin:0px">
+                                <li><span>{% trans 'pages' %} {{ paginado.number }} {% trans 'of' %} {{ paginado.paginator.num_pages }}.</span></li>
+                                <li><span>{% trans 'found_files' %} {{ paginado.paginator.count}}.</span></li>
+                            </ul>
                             
-								<p>{% trans 'count_found_files' %}</p>
-
-								{% load mathfilters %}
-								<p>{% trans 'found_files' %} {{ paginado.paginator.num_pages |mul:8 }}</p>
-                            </span>
-
                       </div>
                     </form>
                 </div>

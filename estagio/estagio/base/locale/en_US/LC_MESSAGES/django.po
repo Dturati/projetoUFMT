@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-15 17:34-0400\n"
+"POT-Creation-Date: 2019-04-23 16:40-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,98 +21,122 @@ msgstr ""
 msgid "Select"
 msgstr "-- Select --"
 
+#: estagio/base/form.py:9
+msgid "random"
+msgstr "Random"
+
+#: estagio/base/form.py:9
+msgid "sequential"
+msgstr "Sequential"
+
 #: estagio/base/templates/home.html:20
 msgid "gaps_analize"
-msgstr "Gaps Analise"
+msgstr "Gaps Dataset"
 
-#: estagio/base/templates/home.html:30 estagio/base/templates/home.html:31
-msgid "gaps_percent"
-msgstr "Gaps Percent"
+#: estagio/base/templates/home.html:30
+#, fuzzy
+#| msgid "gaps_percent"
+msgid "min_gaps_percent"
+msgstr "Min. Gaps (%)"
 
-#: estagio/base/templates/home.html:32
+#: estagio/base/templates/home.html:31
+#, fuzzy
+#| msgid "gaps_percent"
+msgid "max_gaps_percent"
+msgstr "Max. Gaps (%)"
+
+#: estagio/base/templates/home.html:32 estagio/base/templates/home.html:64
 msgid "gaps_type"
 msgstr "Type"
 
-#: estagio/base/templates/home.html:33
+#: estagio/base/templates/home.html:33 estagio/base/templates/home.html:65
 msgid "gaps_set"
-msgstr "Set"
+msgstr "Variables"
 
-#: estagio/base/templates/home.html:35
-msgid "method"
-msgstr "Method"
-
-#: estagio/base/templates/home.html:36
-msgid "all"
-msgstr "All"
-
-#: estagio/base/templates/home.html:37 estagio/base/templates/home.html:46
+#: estagio/base/templates/home.html:35 estagio/base/templates/home.html:43
 msgid "search"
 msgstr "Search"
 
-#: estagio/base/templates/home.html:56
-msgid "files"
-msgstr "Files"
-
-#: estagio/base/templates/home.html:68
+#: estagio/base/templates/home.html:62
 msgid "directory_file"
 msgstr "Directory/Files"
 
-#: estagio/base/templates/home.html:69
-msgid "modification_date"
-msgstr "Modification Date"
+#: estagio/base/templates/home.html:63
+msgid "gaps_percent"
+msgstr "Gaps (%)"
 
-#: estagio/base/templates/home.html:70
-msgid "creation_date"
-msgstr "Creation Date"
-
-#: estagio/base/templates/home.html:71
+#: estagio/base/templates/home.html:66
 msgid "download"
 msgstr "Download"
 
-#: estagio/base/templates/home.html:95 estagio/base/templates/home.html:129
-msgid "download_search"
-msgstr "Download Search"
+#: estagio/base/templates/home.html:86
+#, fuzzy
+#| msgid "download_search"
+msgid "download_selected"
+msgstr "Download Selected"
 
-#: estagio/base/templates/home.html:100
-msgid "before"
-msgstr "Before"
+#: estagio/base/templates/home.html:87
+#, fuzzy
+#| msgid "download"
+msgid "download_all"
+msgstr "Download All"
 
-#: estagio/base/templates/home.html:104
+#: estagio/base/templates/home.html:125
 msgid "pages"
 msgstr "Pages"
 
-#: estagio/base/templates/home.html:104
+#: estagio/base/templates/home.html:125
 msgid "of"
 msgstr "of"
 
-#: estagio/base/templates/home.html:108
-msgid "next"
-msgstr "Next"
-
-#: estagio/base/templates/home.html:110
-msgid "count_found_files"
-msgstr "Count founded files"
-
-#: estagio/base/templates/home.html:113
+#: estagio/base/templates/home.html:126
 msgid "found_files"
-msgstr "Founded Files:"
+msgstr "Files:"
 
-#: estagio/base/templates/home.html:133
+#: estagio/base/templates/home.html:142
+msgid "download_search"
+msgstr "Download Search"
+
+#: estagio/base/templates/home.html:146
 msgid "email_text"
 msgstr ""
 "Ao inserir seu email você será avisado quando o download estiver pronto."
 
-#: estagio/base/templates/home.html:134
+#: estagio/base/templates/home.html:147
 msgid "files_format_text"
 msgstr ""
 "Os arquivos serão compactados em formato zip, dependendo da quantidade de "
 "arquivos solicitados o processo pode demorar minutos ou até horas para ser "
 "concluído."
 
-#: estagio/base/templates/home.html:142
+#: estagio/base/templates/home.html:155
 msgid "action"
 msgstr "Action"
 
-#: estagio/base/templates/home.html:145
+#: estagio/base/templates/home.html:158
 msgid "continued"
 msgstr "Continued"
+
+#~ msgid "method"
+#~ msgstr "Method"
+
+#~ msgid "all"
+#~ msgstr "All"
+
+#~ msgid "files"
+#~ msgstr "Files"
+
+#~ msgid "modification_date"
+#~ msgstr "Modification Date"
+
+#~ msgid "creation_date"
+#~ msgstr "Creation Date"
+
+#~ msgid "before"
+#~ msgstr "Before"
+
+#~ msgid "next"
+#~ msgstr "Next"
+
+#~ msgid "count_found_files"
+#~ msgstr "Count founded files"

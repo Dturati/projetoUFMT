@@ -4,9 +4,9 @@ from django.utils.translation import ugettext as _
 class Pesquisa(forms.Form):
 
 	SELECT = _("Select")
-	PORCENTAGEM_FALHA_UM = tuple([('',SELECT)]+[(r, r) for r in list(range(1, 50))])
-	PORCENTAGEM_FALHA_DOIS = tuple([('',SELECT)]+[(r, r) for r in list(range(1, 50))])
-	FALHA = (('',SELECT),("ale", "Aleatorio"), ("seq", "Sequencial"))
+	PORCENTAGEM_FALHA_UM = tuple([('',SELECT)]+[(r, r) for r in list(range(1, 51))])
+	PORCENTAGEM_FALHA_DOIS = tuple([('',SELECT)]+[(r, r) for r in list(range(1, 51))])
+	FALHA = (('',SELECT),("ale", _("random")), ("seq", _("sequential")))
 	
 	FALHA_CONJUNTO =(('',SELECT),('0','NET GLOBALI GLOBALR PARI E PAR')
 				  ,('1','TODA A LINHA FALHADA'),('2','T e UR')

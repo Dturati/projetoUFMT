@@ -31,14 +31,19 @@ import sys
 
 
 def home(request):
-    form = Pesquisa(request.POST)
+
+    data = request.POST
+    if(not data):
+        data = request.GET
+
+    form = Pesquisa(data)
     try:
         if(not request.session['tipo_requisicao']):
             request.session['tipo_requisicao_'] = 'todos_os_arquivos'
     except:
         request.session['tipo_requisicao'] = 'todos_os_arquivos'
 
-    num = int(request.GET.get('page', 1))
+    num = int(data.get('page', 1))
 
     resultadoPesquisa = []
     #if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
@@ -46,46 +51,54 @@ def home(request):
     con = MongoConnect()
     banco = con.connect("test_database")
     dados_db = banco.teste
-    consulta = dados_db.find()
-    print(consulta)
+    
+    filtro = {}
+    percent = {}
+    if(data.get('porcentagem_um','') != ""):
+        percent['$gte'] = int(data.get('porcentagem_um'))
+    
+    if(data.get('porcentagem_dois','') != ""):
+        percent['$lte'] = int(data.get('porcentagem_dois'))
+
+    if(percent):
+        filtro['percent'] = percent
+
+    if(data.get('tipoFalha','') != ""):
+        filtro['type'] = data.get('tipoFalha','')
+
+    if(data.get('falha_conjunto','') != ""):
+        conjunto = int(data.get('falha_conjunto'))
+        if(conjunto>=4):
+            filtro['column'] = {'$gte':conjunto}
+        else:
+            filtro['column'] = conjunto
+
+    
+    consulta = dados_db.find(filtro)
     try:
         P = Paginator(list(consulta),8)
         pagina = P.page(num)
     except:
         pagina = P.page(1)
 
+    inferior = 4
+    if(pagina.number <= 5):
+        inferior = pagina.number - 1
+    
+    superior = 5
+    if(pagina.number + superior > pagina.paginator.num_pages):
+        superior = pagina.paginator.num_pages - pagina.number + 1
+
+
     contexto = {
         'form': form,
         'resultadoPesquisa': resultadoPesquisa,
         'quantidade': pagina.paginator.num_pages * 8,
         'paginado': pagina,
+        'items' : data.items,
+        'limite_paginas': range(pagina.number-inferior,pagina.number+superior)
     }
     return render(request, "home.html", contexto)
-
-    '''if (request.session['tipo_requisicao'] == 'pesquisa_individual'):
-        if(request.POST):
-            resultadoPesquisa = pesquisa(form.data)
-            request.session['form'] = form.data
-            # print(resultadoPesquisa[0]['diretorio'])
-        else:
-            try:
-                resultadoPesquisa = pesquisa(request.session['form'])
-            except:
-                pass
-
-        try:
-            P = Paginator(resultadoPesquisa,8)
-            pagina = P.page(num)
-        except:
-            pagina = P.page(1)
-        contexto = {
-                        'form': form,
-                        'resultadoPesquisa': resultadoPesquisa,
-                        'quantidade': pagina.paginator.num_pages * 8,
-                        'paginado': pagina,
-                    }
-        return render(request, "home.html", contexto)
-	'''
 
 def contatos(request):
     return render(request,"contatos.html",{"teste":"teste"})

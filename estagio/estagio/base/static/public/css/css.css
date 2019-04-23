@@ -1,26 +1,20 @@
 .container{
     display: table;
-    margin: 0px 0px 0px 0px;
-    width: 960px;
-    float: left;
-    margin-left: -15px;
+    width: 100%;
 }
 
 .banner{
     background-color: #f9f9f9;
-    height: 50px;
-    width: 800px;
-    margin-left: 152px;
+    height: 100px;
     margin-top: 1px;
 }
 
 .textoBanner{
     text-align: center;
+    font-size: 40px;
 }
 #lateral{
-    background-color: #3B5699;
-    height: 1280px;
-    width: 180px;
+    width: 90px;
     float: left;
 }
 
@@ -50,23 +44,12 @@ input,text,select{
 
 #pesquisa{
     display: table;
-}
-#tabelaGeralPesquisa{
-    float: right;
-    margin-left: 50px;
+    margin: auto;
 }
 
 .tudo{
-    float: left;
-    width: 400px;
     margin-left: 5px;
 }
-
-.resultado{
-    width: 800px;
-
-}
-
 
 
 
