@@ -56,28 +56,25 @@
                     <div id="idBaixarPesquisa" style="padding-left: 94%"></div>
                         <div>
                             <table class="table table-striped" style="width: 100%">
-                                <thead style="display: block">
+                                <thead >
                                     <tr>
                                         <th>#</th>
-                                        <th style="padding-left: 10px">{% trans 'directory_file' %}</th>
-                                        <th style="padding-left: 90px">{% trans 'modification_date' %}</th>
-                                        <th style="padding-left: 50px">{% trans 'creation_date' %}</th>
-                                        <th style="padding-left: 230px">{% trans 'download' %}</th>
+                                        <th>{% trans 'directory_file' %}</th>
+                                        <th>{% trans 'gaps_percent' %}</th>
+                                        <th>{% trans 'gaps_type' %}</th>
+                                        <th>{% trans 'gaps_set' %}</th>
+                                        <th>{% trans 'download' %}</th>
                                     </tr>
                                 </thead>
-                                <tbody id="tabela" style="
-                                            height:300px;
-                                            width: 800px;
-                                            overflow-y: auto;
-                                            display: block;
-                                ">
+                                <tbody id="tabela" >
                                     {% for arquivos in paginado %}
                                         <tr>
                                             <td>{{forloop.counter }}</td>
                                             <td>{{arquivos.arquivo}}</td>
-                                            <td>{{arquivos.modificado}}</td>
-                                            <td>{{arquivos.criado}}</td>
-                                            <td style="padding-left: 200px" ><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ arquivos.diretorio|add:"/"|add:arquivos.arquivo }}"></td>
+                                            <td>{{arquivos.percent}}</td>
+                                            <td>{{arquivos.type_name}}</td>
+                                            <td>{{arquivos.column_name}}</td>
+                                            <td><input name="PESQUISA" id="{{ forloop.counter }}" type="checkbox" data-status="desativado"  onclick="seleciona(this)" value="{{ arquivos.diretorio|add:"/"|add:arquivos.arquivo }}"></td>
                                         </tr>
                                      {% endfor %}
                                 </tbody>
@@ -90,21 +87,22 @@
                       </div>
                        <div id="paginacao" class="pagination">
                             <span class="step-links">
+                                <span class="current">
+                                    {% trans 'pages' %} {{ paginado.number }} {% trans 'of' %} {{ paginado.paginator.num_pages }}.
+                                </span>
+                                
                                 {% if paginado.has_previous %}
                                     <a href="?page={{ paginado.previous_page_number }}">{% trans 'before' %}</a>
                                 {% endif %}
 
-                                <span class="current">
-                                    {% trans 'pages' %} {{ paginado.number }} {% trans 'of' %} {{ paginado.paginator.num_pages }}.
-                                </span>
-
                                 {% if paginado.has_next %}
                                     <a href="?page={{ paginado.next_page_number}}">{% trans 'next' %}</a>
                                 {% endif %}
-                            <p>{% trans 'count_found_files' %}</p>
+                            
+								<p>{% trans 'count_found_files' %}</p>
 
-                            {% load mathfilters %}
-                            <p>{% trans 'found_files' %} {{ paginado.paginator.num_pages |mul:8 }}</p>
+								{% load mathfilters %}
+								<p>{% trans 'found_files' %} {{ paginado.paginator.num_pages |mul:8 }}</p>
                             </span>
 
                       </div>
