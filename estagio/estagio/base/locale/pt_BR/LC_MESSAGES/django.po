@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-23 16:40-0400\n"
+"POT-Creation-Date: 2019-04-24 07:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,27 +24,27 @@ msgstr "-- Selecione --"
 
 #: estagio/base/form.py:9
 msgid "random"
-msgstr ""
+msgstr "Aleatório"
 
 #: estagio/base/form.py:9
 msgid "sequential"
-msgstr ""
+msgstr "Sequencial"
+
+#: estagio/base/form.py:12
+msgid "all_line"
+msgstr "Toda a linha Falhada"
 
 #: estagio/base/templates/home.html:20
 msgid "gaps_analize"
 msgstr "Análise de Falhas"
 
 #: estagio/base/templates/home.html:30
-#, fuzzy
-#| msgid "gaps_percent"
 msgid "min_gaps_percent"
-msgstr "Porcentagem de Falhas"
+msgstr "Mín. Falhas (%)"
 
 #: estagio/base/templates/home.html:31
-#, fuzzy
-#| msgid "gaps_percent"
 msgid "max_gaps_percent"
-msgstr "Porcentagem de Falhas"
+msgstr "Máx. Falhas (%)"
 
 #: estagio/base/templates/home.html:32 estagio/base/templates/home.html:64
 msgid "gaps_type"
@@ -64,23 +64,19 @@ msgstr "Diretorio/arquivo"
 
 #: estagio/base/templates/home.html:63
 msgid "gaps_percent"
-msgstr "Porcentagem de Falhas"
+msgstr "Falhas (%)"
 
 #: estagio/base/templates/home.html:66
 msgid "download"
 msgstr "Baixar"
 
 #: estagio/base/templates/home.html:86
-#, fuzzy
-#| msgid "download_search"
 msgid "download_selected"
 msgstr "Baixar Pesquisa"
 
 #: estagio/base/templates/home.html:87
-#, fuzzy
-#| msgid "download"
 msgid "download_all"
-msgstr "Baixar"
+msgstr "Baixar Tudo"
 
 #: estagio/base/templates/home.html:125
 msgid "pages"
@@ -92,7 +88,7 @@ msgstr "de"
 
 #: estagio/base/templates/home.html:126
 msgid "found_files"
-msgstr "rquivos Encontrados:"
+msgstr "Arquivos Encontrados:"
 
 #: estagio/base/templates/home.html:142
 msgid "download_search"

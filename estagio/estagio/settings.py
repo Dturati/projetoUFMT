@@ -151,7 +151,9 @@ LOCALE_PATHS = (
 #
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'estagio','arquivos')
-MEDIA_URL = '/media/raphael/DISK/Thiago/testes/'
+BASE_MEDIA_URL = '/media/raphael/DISK/Thiago/'
+MEDIA_URL = os.path.join(BASE_MEDIA_URL,'testes/')
+COMPACTA_URL = os.path.join(BASE_MEDIA_URL,'arquivos/')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),

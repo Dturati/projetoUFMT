@@ -8,8 +8,7 @@ from .processa import Download
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from estagio.base.lista_arvore.lista_arvore import lista_arvore
-from estagio.base.compacta_pesquisa.compacta_pesquisa import compacta_toda_pesquisa_individual,\
-    compacta_toda_pesquisa_completa,compacta_pesquisa_selecionada
+from estagio.base.compacta_pesquisa.compacta_pesquisa import compacta_toda_pesquisa, compacta_pesquisa_selecionada
 import json
 import hashlib
 from random import choice
@@ -73,7 +72,6 @@ def home(request):
         else:
             filtro['column'] = conjunto
 
-    
     consulta = dados_db.find(filtro)
     try:
         P = Paginator(list(consulta),8)
@@ -105,8 +103,8 @@ def contatos(request):
 
 def pesquisa(dados):
     pesquisa_arquivos = PesquisaArquivos
-    meuDir = settings.MEDIA_URL + '/arquivos'
-    resultadoPesquisa  = pesquisa_arquivos.lista_aquivos(dados)
+    meuDir = settings.COMPACTA_URL
+    resultadoPesquisa  = pesquisa_arquivos.lista_arquivos(dados)
     return resultadoPesquisa
 
 from django.http import HttpResponse
@@ -134,41 +132,25 @@ def view_compacta_toda_pesquisa(request):
     dados = {}
     chave = str(random.getrandbits(128))
 
-    if(request.session['tipo_requisicao'] == 'todos_os_arquivos'):
-        chaveJ = {'chave': chave}
+    resultadoPesquisa = pesquisa(request.session['form'])
+    dadosRequest = json.dumps(resultadoPesquisa)
+    chave = str(random.getrandbits(128))
+    chaveJ = {'chave':chave}
+    try:
         con = MongoConnect()
         banco = con.connect("fila_download")
-        dados_db_fila = banco.fila
+    except:
+        pass
+        # print('Erro ao conectar')
 
-        value = {
-            "_id": chave,
-            "status": "compactando"
-        }
-        dados = dados_db_fila.insert_one(value).inserted_id
-        res = compacta_toda_pesquisa_completa.delay(1,chaveJ)
-        # fila_de_dowload.delay(chaveJ)
+    dados_db_fila = banco.fila
+    value = {
+        "_id": str(chave),
+        "status": "compactando"
+    }
 
-
-    if (request.session['tipo_requisicao'] == 'pesquisa_individual'):
-        resultadoPesquisa = pesquisa(request.session['form'])
-        dadosRequest = json.dumps(resultadoPesquisa)
-        chave = str(random.getrandbits(128))
-        chaveJ = {'chave':chave}
-        try:
-            con = MongoConnect()
-            banco = con.connect("fila_download")
-        except:
-            pass
-            # print('Erro ao conectar')
-
-        dados_db_fila = banco.fila
-        value = {
-            "_id": str(chave),
-            "status": "compactando"
-        }
-
-        dados = dados_db_fila.insert_one(value).inserted_id
-        res = compacta_toda_pesquisa_individual.delay(dadosRequest,chaveJ)
+    dados = dados_db_fila.insert_one(value).inserted_id
+    res = compacta_toda_pesquisa.delay(dadosRequest,chaveJ)
     return JsonResponse({'status': 'ok','id':res.id,'chave':chave})
 
 #Baixa os arquivos compactados
@@ -179,7 +161,7 @@ from wsgiref.util import FileWrapper
 def baixar_pesquisa(request):
     dados = request.GET
     # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
-    os.chdir(settings.MEDIA_URL + "/arquivos")
+    os.chdir(settings.COMPACTA_URL)
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     filename = os.path.basename(nome_arquivo)
     nome_download = str(dados['chave'])+".zip"
@@ -319,7 +301,7 @@ def fila_celery(request):
 
 # from celery import app
 def cancelar_requisicao(request):
-    os.chdir(settings.MEDIA_URL)
+    os.chdir(settings.COMPACTA_URL)
     dadosRequest = request.GET
     url = "http://localhost:5555/api/task/revoke/"+str(dadosRequest['id'])+"?terminate=true"
     resposta = requests.post(url)

@@ -11,9 +11,8 @@ from estagio.celery import app
 from django.conf import settings
 
 @app.task
-def compacta_toda_pesquisa_individual(request,chave):
-    # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
-    os.chdir(settings.MEDIA_URL + "/arquivos")
+def compacta_toda_pesquisa(request,chave):
+    os.chdir(settings.COMPACTA_URL)
     # #se a pesquisa for especifica
 
     arquivos = []
@@ -21,13 +20,11 @@ def compacta_toda_pesquisa_individual(request,chave):
     cliente = MongoClient('localhost', 27017)
     banco = cliente.fila_download
     dados_db_fila = banco.fila
-
-    for value in request:
-        arquivos.append(str(value['diretorio'] + '/' +value['arquivo']))
     zf = zipfile.ZipFile(str(chave['chave'])+".zip", "w")
 
-    for value in arquivos:
-        fdir, fname = os.path.split(value)
+    for valor in request:
+        value = str(valor['diretorio'] + '/' +valor['arquivo'])
+        fdir, fname = os.path.split(value.replace(settings.MEDIA_URL,''))
         zip_subdir = str(fdir)
         zip_path = os.path.join(zip_subdir, value)
         zf.write(value, zip_path)
@@ -49,59 +46,16 @@ def compacta_toda_pesquisa_individual(request,chave):
 
     return request
 
-@app.task
-def compacta_toda_pesquisa_completa(request,chave):
-
-    # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
-    os.chdir("arquivos/arquivos")
-    # #se forem todos os arquivos do sistema
-    cliente = MongoClient('localhost', 27017)
-    banco = cliente.test_database
-    dados_db = banco.teste
-    resultado = dados_db.find()
-
-    banco = cliente.fila_download
-    dados_db_fila = banco.fila
-
-    arquivos = []
-    for value in resultado:
-        arquivos.append(str(value['diretorio'] + '/' +value['arquivo']))
-    zf = zipfile.ZipFile(str(chave['chave'])+".zip", "w")
-    for value in arquivos:
-        fdir, fname = os.path.split(value)
-        zip_subdir = str(fdir)
-        zip_path = os.path.join(zip_subdir, value)
-        zf.write(value, zip_path)
-    zf.close()
-
-    #manter flag no banco indicando o arquivo foi posto para Download
-    dados_db_fila.update({'_id': str(chave['chave'])}, {"status": "download"}, upsert=False)
-    resultado = dados_db_fila.find({'_id': str(chave['chave'])})
-    res = [r for r in resultado]
-    request = json.dumps(request)
-    try:
-        arq = os.getcwd() + "/" + str(chave['chave']) + ".zip"
-        file = open(arq, 'r')
-        #Manter usuário na fila enquanto o Download não terminar e o arquivo não for apagado
-        while (file):
-            file = open(arq, 'r')
-            print("arquivo ainda existe")
-    except:
-        print("aquivo deletado")
-
-
-    return request
-
 # @shared_task
 def compacta_pesquisa_selecionada(request,chave):
-    os.chdir(settings.MEDIA_URL + "/arquivos")
+    os.chdir(settings.COMPACTA_URL)
     arquivos = []
     request = json.loads(request)
     for value in request:
         arquivos.append(value)
     zf = zipfile.ZipFile(chave['chave']+".zip", "w")
     for value in arquivos:
-        fdir, fname = os.path.split(value)
+        fdir, fname = os.path.split(value.replace(settings.MEDIA_URL,''))
         zip_subdir = str(fdir)
         zip_path = os.path.join(zip_subdir, fname)
         zf.write(value, zip_path)
