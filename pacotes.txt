@@ -1,1 +1,1 @@
-pip install Django pymongo tornado celery requests rpy2 django-celery-beat django-mathfilters
+pip install Django pymongo tornado celery requests rpy2 django-celery-beat django-mathfilters django_celery_results
