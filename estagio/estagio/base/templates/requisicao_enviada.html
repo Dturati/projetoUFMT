@@ -1,9 +1,10 @@
 {% load static  %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>-- Sua requicisão foi enviada - aguarde</title>
+    <title>{% trans 'title_request' %}</title>
         <link rel="stylesheet" href="{% static 'bootstrap/dist/css/bootstrap.css' %}">
     <script src="{% static 'jquery/dist/jquery.js' %}"></script>
     <script src="{% static 'jcookie/jquery.cookie.js' %}"></script>
@@ -18,43 +19,43 @@
 
 <div align="center">
     <div style="width: 60%;">
-        <h4>Andamento de sua requisição</h4>
+        <h4>{% trans 'progress_request' %}</h4>
         <table class="table table-bordered">
             <tr>
-                <th>Solicitação Número</th>
-                <th>Status</th>
-                <th>Arquivos</th>
-                <th>Ação</th>
+                <th>{% trans 'num_request' %}</th>
+                <th>{% trans 'status_request' %}</th>
+                <th>{% trans 'files_request' %}</th>
+                <th>{% trans 'action_request' %}</th>
             </tr>
             <tr>
                 <td id="id_task">-</td>
                 <td id="status_task">-</td>
                 <td>{{ qtdArquivos }}</td>
                 <td>
-                    <button class="btn btn-xs   btn-danger" onclick="cancelar_requisicao(this)"  id="idCancelar" name="btnCancelar" value="">Cancelar</button>
-                    <button id="btnIniciar" class="btn btn-xs  btn-info"  onclick="compactaTodaPesquisa(this,ws)">Inciciar</button>
-                    <a href="{% url "home:home" %}" id="btnVoltar" class="btn btn-xs   btn-info" >Voltar</a>
-                    <a type="button" class="btn btn-info btn-xs" href="{% url "home:upload" %}">Upload</a>
-{#                <button id="btnIniciar" class="btn btn-xs  btn-info"  onclick="status_celery_task(this)">Atualizar</button>#}
+                    <button class="btn btn-xs   btn-danger" onclick="cancelar_requisicao(this)"  id="idCancelar" name="btnCancelar" value="">{% trans 'cancel' %}</button>
+                    <button id="btnIniciar" class="btn btn-xs  btn-info"  onclick="compactaTodaPesquisa(this,ws)">{% trans 'start' %}</button>
+                    <a href="{% url "home:home" %}" id="btnVoltar" class="btn btn-xs   btn-info" >{% trans 'comeback' %}</a>
+                    <a type="button" class="btn btn-info btn-xs" href="{% url "home:upload" %}">{% trans 'upload' %}</a>
+{#                <button id="btnIniciar" class="btn btn-xs  btn-info"  onclick="status_celery_task(this)">{% trans 'update' %}</button>#}
                 </td>
             </tr>
         </table>
     </div>
     <div style="width: 60%;">
-        <h4>Fila de requisições</h4>
+        <h4>{% trans 'queue_request' %}</h4>
         <table class="table table-bordered" style="background-color: lightgrey">
             <thead>
             <tr>
                 <th>#</th>
-                <th>Número</th>
-                <th>Status</th>
+                <th>{% trans 'number' %}</th>
+                <th>{% trans 'status_request' %}</th>
             </tr>
             </thead>
             <tbody id="fila">
 
             </tbody>
         </table>
-        <button class="btn btn-xs btn-info" onclick="fila()">Atualizar</button>
+        <button class="btn btn-xs btn-info" onclick="fila()">{% trans 'update' %}</button>
     </div>
 </div>
 </body>

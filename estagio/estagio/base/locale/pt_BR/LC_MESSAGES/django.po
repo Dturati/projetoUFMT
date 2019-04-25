@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-24 07:43-0400\n"
+"POT-Creation-Date: 2019-04-25 13:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -113,6 +113,59 @@ msgstr "Ação"
 #: estagio/base/templates/home.html:158
 msgid "continued"
 msgstr "Continuar"
+
+#: estagio/base/templates/requisicao_enviada.html:6
+msgid "title_request"
+msgstr "-- Sua requicisão foi enviada - aguarde"
+
+#: estagio/base/templates/requisicao_enviada.html:21
+msgid "progress_request"
+msgstr "Andamento de sua requisição"
+
+#: estagio/base/templates/requisicao_enviada.html:24
+msgid "num_request"
+msgstr "Solicitação Número"
+
+#: estagio/base/templates/requisicao_enviada.html:25
+#: estagio/base/templates/requisicao_enviada.html:50
+msgid "status_request"
+msgstr "Status"
+
+#: estagio/base/templates/requisicao_enviada.html:26
+msgid "files_request"
+msgstr "Arquivos"
+
+#: estagio/base/templates/requisicao_enviada.html:27
+msgid "action_request"
+msgstr "Ação"
+
+#: estagio/base/templates/requisicao_enviada.html:34
+msgid "cancel"
+msgstr "Cancelar"
+
+#: estagio/base/templates/requisicao_enviada.html:35
+msgid "start"
+msgstr "Iniciar"
+
+#: estagio/base/templates/requisicao_enviada.html:36
+msgid "comeback"
+msgstr "Voltar"
+
+#: estagio/base/templates/requisicao_enviada.html:37
+msgid "upload"
+msgstr "Upload"
+
+#: estagio/base/templates/requisicao_enviada.html:44
+msgid "queue_request"
+msgstr "Fila de requisições"
+
+#: estagio/base/templates/requisicao_enviada.html:49
+msgid "number"
+msgstr "Número"
+
+#: estagio/base/templates/requisicao_enviada.html:57
+msgid "update"
+msgstr "Atualizar"
 
 #~ msgid "method"
 #~ msgstr "Método"
