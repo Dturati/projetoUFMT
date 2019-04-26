@@ -8,3 +8,4 @@ estagio/.idea/workspace.xml
 /venv
 lib
 *.pyc
+**/__pycache__
