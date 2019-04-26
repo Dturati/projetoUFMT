@@ -22,7 +22,7 @@
          <div class="tudo">
                 <div class="place" id="pesquisa">
                     <div id="tabelaGeralPesquisa">
-                            <form  method="post">
+                            <form  method="post" id="searchFields">
                                 {% csrf_token %}
                                 <table  class="table" id="tabelaPesquisa">
                                 <thead>
@@ -147,20 +147,16 @@
         <p>{% trans 'files_format_text' %}</p>
       </div>
       <div style="height: 100px; width: 400px; padding-left: 20%">
-          <form action="{% url "home:requisicao_enviada"%}">
-                <input type="hidden" name="quantidade" value="{{ quantidade }}">
-                  <table class="table table-bordered">
-                      <tr>
-                          <th>Email</th>
-                          <th>{% trans 'action' %}</th>
-                      </tr>
-                        <td style="text-align: left; font-size: 20px"><input name="email" id="email" type="email"></td>
-                        <td style="text-align: left"><button class="btn btn-info">{% trans 'continued' %}</button></td>
-                      </tr>
-{#                      <label>Email</label>#}
-{#                      <input name="email" id="email" type="email">#}
-{#                      <button class="btn btn-default">{% trans 'send_email' %}</button>#}
-                  </table>
+          <form action="{% url 'home:requisicao_enviada' %}" id="requestForm">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Email</th>
+                    <th>{% trans 'action' %}</th>
+                </tr>
+                <td style="text-align: left; font-size: 20px"><input name="email" id="email" type="email"></td>
+                <td style="text-align: left"><button type="button" onclick="enviar(this,'searchFields')" class="btn btn-info">{% trans 'continued' %}</button></td>
+                </tr>
+            </table>
           </form>
       </div>
     </div>

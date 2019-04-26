@@ -16,6 +16,22 @@ $('#id_numeroSequencial').on('keyup', function ()
     }
 });
 
+var enviar = function(objeto, formId){
+
+    var $inputs = $('#' + formId + ' :input');
+
+    $inputs.each(function() {
+        $('<input>').attr({
+            type: 'hidden',
+            id: this.id,
+            name: this.name,
+            value: $(this).val()
+        }).appendTo("#requestForm");
+    });
+
+    $("#requestForm").submit();
+    
+}
 
 
 var chamaAjax = function (elem)

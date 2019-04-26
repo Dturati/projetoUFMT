@@ -22,6 +22,7 @@ from pymongo import MongoClient
 lista_arquivos = ListaArquivos
 resutadopesquisaPaginado = []
 from .MongoDB.MongoCennect import MongoConnect
+from django.utils.translation import ugettext as _
 
 
 from estagio.celery import app
@@ -131,7 +132,7 @@ def view_compacta_pesquisa_selecionada(request):
 def view_compacta_toda_pesquisa(request):
     dados = {}
     chave = str(random.getrandbits(128))
-
+    print(request.session['form'])
     resultadoPesquisa = pesquisa(request.session['form'])
     dadosRequest = json.dumps(resultadoPesquisa)
     chave = str(random.getrandbits(128))
@@ -195,12 +196,26 @@ def define_sessao(request):
 
 
 def requisicao_enviada(request):
-    quantidade_arquivos = request.GET['quantidade']
+    dados = {}
+    for k in request.GET:
+        dados[k]= request.GET[k]
+
+    if(dados['tipoFalha'] != ''):
+        if(dados['tipoFalha'] == 'ale'):
+            dados['tipoFalha_name'] = _("random")
+        else:
+            dados['tipoFalha_name'] = _("sequential")
+
+    if(dados['falha_conjunto'] != ''):
+        nome = 'NET_GLOBALI_GLOBALR_PARI_PAR;all_line;T_UR;Tsolo_URsolo;net;globali;globalr;pari;parr;tsoil;ppt;t;rh;u;rhsoil'
+        colunas = nome.split(';')
+        dados['falha_conjunto_name'] = colunas[int(dados['falha_conjunto'])]
     try:
         request.session['email'] = request.GET['email']
+        request.session['form'] = dados
     except:
         pass
-    return render(request,"requisicao_enviada.html",{"qtdArquivos":quantidade_arquivos})
+    return render(request,"requisicao_enviada.html", dados)
 
 #sistema de upload
 from .upload.upload import Upload

@@ -60,7 +60,7 @@ class PesquisaArquivos:
             else:
                 filtro['column'] = conjunto
 
-        resultado = dados_db.find(filtro)
+        resultado = list(dados_db.find(filtro))
 
         return resultado
 

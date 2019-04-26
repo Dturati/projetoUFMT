@@ -44,6 +44,7 @@ var init = function () {
     return ws;
 };
 
+
 var compactaTodaPesquisa = function (objeto,ws)
 {
     atualizaClientes();
