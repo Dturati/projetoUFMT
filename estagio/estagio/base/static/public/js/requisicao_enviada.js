@@ -2,55 +2,12 @@
 $("#id_task").text = "-";
 $("#status_task").text = "-";
 var host = window.location.hostname;
-console.log(host);
-var atualizaClientes = function () {
- $.ajax({
-                type: "GET",
-                url: 'http://'+host+':8081/update',
-                dataType : 'html',
-                crossDomain: true,
-                success: function (data)
-                {
 
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status);
-                    console.log(thrownError);
-                }
-          });
-};
-
-var init = function () {
-    var ws = new WebSocket('ws://'+host+':8080/echo');
-    wsd = new WebSocket('ws://'+host+':8081/ws');
-    // var wsd = new WebSocket('ws://localhost:8081/update');
-
-    ws.onopen = function ()
-    {
-        console.log('Conexão aberta');
-    };
-
-    wsd.onopen = function () {
-        console.log('Conexão aberta');
-    };
-     wsd.onmessage = function (message) {
-        console.log(message.data);
-         setTimeout(function () {
-             fila();
-         },500);
-    };
-
-
-    return ws;
-};
-
-
-var compactaTodaPesquisa = function (objeto,ws)
+var compactaTodaPesquisa = function (objeto)
 {
-    atualizaClientes();
+    console.log('dentro')
 
     $("#btnIniciar").attr("disabled","disabled");
-    $("#idCancelar").removeAttr("disabled");    
       $.ajax({
             type: "GET",
             url: '/ajax/compacta_toda_pesquisa/',
@@ -59,47 +16,12 @@ var compactaTodaPesquisa = function (objeto,ws)
             },
             success: function (data)
             {
-                setTimeout(function () {
-                     status_celery_task(data);
-                },2000);
-
+                
                 fila();
                 console.log(data.id);
-                $.cookie("id_task",data.id);
-                $.cookie("chave",data.chave);
+                $("#id_task").text(data.id);
                 console.log(data);
-                setTimeout(function () {
-                     ws.send(JSON.stringify({chave:data.chave,id:data.id}));
-                    wsd.send(JSON.stringify({'id_tarefa':data.id}));
-                },500);
-
-                ws.onmessage = function (message) {
-                console.log('New message:' + message.data);
-                if(message.data == 'SUCCESS')
-                {
-                    console.log('aqui');
-                    console.log(data.chave);
-                    setTimeout(function () {
-                            baixaPesquisa(data.chave);
-                    },1000);
-
-                     setTimeout(function () {
-                             status_celery_task(data);
-                    },2000);
-
-                    //Avisa todos os clientes que os dados mudaram
-                      wsd.send(JSON.stringify({"upload":"mantem_id","id": data.id}));
-                }
-
-
-                ws.onclose = function ()
-                {
-                    ws.close();
-                    console.log('close');
-                }
-
-
-                };
+                
 
             },
             error: function (xhr, ajaxOptions, thrownError) {
@@ -112,96 +34,8 @@ var compactaTodaPesquisa = function (objeto,ws)
 
 var baixaPesquisa = function (chave) {
     window.open('baixar_pesquisa/?chave='+chave);
-    wsd.send(JSON.stringify({"upload":"avisa_todos","id": ''}));
-    $.cookie("id_task","");
-    $.cookie("chave","");
 };
 
-
-var cancelar_requisicao = function (objeto)
-{
-
-    $("#btnIniciar").attr("disabled","disabled");
-    $("#idCancelar").attr("disabled","disabled");
-
-     $.ajax({
-                type: "GET",
-                url: '/ajax/cancelar_requisicao',
-                data : {
-                    'id': $.cookie("id_task"),
-                    'chave':$.cookie("chave")
-                },
-                success: function (data)
-                {
-                    dados = {
-                        'id' : objeto.value,
-                        'chave' : $.cookie("chave")
-                    };
-                    setTimeout(function () {
-                        status_celery_task(dados);
-                    },2000);
-
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status);
-                    console.log(thrownError);
-                }
-          });
-
-      atualizaClientes();
-      $.cookie("id_task","");
-      $.cookie("chave","");
-};
-
-var status_celery_task = function (dados) {
-     $.ajax({
-                type: "GET",
-                url: 'ajax/status_stak_celery/',
-                data : {
-                    'id': dados['id']
-                },
-                success: function (data)
-                {
-                    $("#id_task").text(data['id']);
-                    $("#idCancelar").val(data['id']);
-
-                    if(data.tasks['state'] == 'SUCCESS')
-                    {
-                         $("#status_task").text("Sua requisição foi processada");
-                         $("#id_task").text("");
-                         $("#idCancelar").val("");
-                    }
-
-                    if(data.tasks['state'] == 'PENDING')
-                    {
-                        $("#status_task").text("Sua requisição foi agendada e está na fila de processamento");
-                    }
-
-                    if(data.tasks['state'] == 'RECEIVED')
-                    {
-                        $("#status_task").text("Na fila de processamento");
-                    }
-
-                    if(data.tasks['state'] == 'STARTED')
-                    {
-                        $("#status_task").text("Sua requisição está sendo processada");
-                    }
-                    if(data.tasks['state'] == 'REVOKED')
-                    {
-                        $("#status_task").text("Sua requisição foi cancelada");
-                        $("#id_task").text("-");
-                        $("#idCancelar").val("-");
-                    }
-                    var objeto = data['total_tasks'];
-                },
-                error: function (xhr, ajaxOptions, thrownError) {
-                    console.log(xhr.status);
-                    console.log(thrownError);
-                }
-
-          });
-        fila();
-};
 
 var fila = function () {
 
@@ -211,7 +45,9 @@ var fila = function () {
                 data : {},
                 success: function (data)
                 {
+                    console.log('fila celery')
                     var objeto = data['total_tasks'];
+                    console.log(objeto);
                     var html = "";
                     var cont = 1;
                     var status = "";
@@ -260,18 +96,3 @@ var fila = function () {
                 }
           });
 };
-
-if(
-    $.cookie("id_task") != ""
-    && $.cookie("id_task") != undefined
-    && $.cookie("chave") != ""
-    && $.cookie("chave") != undefined)
-{
-    var dados = [];
-    dados['value'] = $.cookie("id_task");
-    dados['chave'] = $.cookie("chave");
-    cancelar_requisicao(dados);
-}
-
-$.cookie("id_task","");
-$.cookie("chave","");

@@ -151,7 +151,7 @@ def view_compacta_toda_pesquisa(request):
     }
 
     dados = dados_db_fila.insert_one(value).inserted_id
-    res = compacta_toda_pesquisa.delay(dadosRequest,chaveJ)
+    res = compacta_toda_pesquisa.delay(dadosRequest,chaveJ,request.session['form']['email'])
     return JsonResponse({'status': 'ok','id':res.id,'chave':chave})
 
 #Baixa os arquivos compactados

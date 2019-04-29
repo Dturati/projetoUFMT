@@ -9,19 +9,20 @@ from pymongo import MongoClient
 import time
 from estagio.celery import app
 from django.conf import settings
+import time
+from estagio.base.Email.email import send_email
 
 @app.task
-def compacta_toda_pesquisa(request,chave):
+def compacta_toda_pesquisa(request,chave,email):
     os.chdir(settings.COMPACTA_URL)
     # #se a pesquisa for especifica
-
     arquivos = []
     request = json.loads(request)
     cliente = MongoClient('localhost', 27017)
     banco = cliente.fila_download
     dados_db_fila = banco.fila
     zf = zipfile.ZipFile(str(chave['chave'])+".zip", "w")
-
+    print('Compactando: ' + str(chave['chave']))
     for valor in request:
         value = str(valor['diretorio'] + '/' +valor['arquivo'])
         fdir, fname = os.path.split(value.replace(settings.MEDIA_URL,''))
@@ -29,21 +30,10 @@ def compacta_toda_pesquisa(request,chave):
         zip_path = os.path.join(zip_subdir, value)
         zf.write(value, zip_path)
     zf.close()
+    print('Compactado: ' + str(chave['chave']))
     request = json.dumps(request)
     dados_db_fila.update({'_id': str(chave['chave'])}, {"status": "download"}, upsert=False)
-    resultado = dados_db_fila.find({'_id': str(chave['chave'])})
-    res = [r for r in resultado]
-    try:
-        arq = os.getcwd() + "/" + str(chave['chave']) + ".zip"
-        file = open(arq, 'r')
-        while (file):
-            file = open(arq, 'r')
-            print("arquivo ainda existe")
-    except:
-        print("arquivo deletado")
-        # dados_db_fila.drop({"_id":str(chave['chave'])})
-
-
+    send_email(email, chave)
     return request
 
 # @shared_task
