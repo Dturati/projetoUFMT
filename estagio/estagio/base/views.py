@@ -161,28 +161,23 @@ from django.http import StreamingHttpResponse
 from wsgiref.util import FileWrapper
 def baixar_pesquisa(request):
     dados = request.GET
-    # os.chdir("/home/david/Documentos/projeto_estagio_django/estagio")
     os.chdir(settings.COMPACTA_URL)
     nome_arquivo = os.getcwd() + "/" + str(dados['chave'])+".zip"
     filename = os.path.basename(nome_arquivo)
     nome_download = str(dados['chave'])+".zip"
     try:
-        response = HttpResponse(open(nome_arquivo,'rb').read(), content_type='x-zip-compressed')
-        response['Content-Disposition'] = "attachment; filename=%s" % nome_download
-        # chunk_size = 8192
-        # response = StreamingHttpResponse(FileWrapper(open(nome_arquivo, 'rb'), chunk_size),
-        #                                  content_type=mimetypes.guess_type(nome_arquivo)[0])
-        # response['Content-Length'] = os.path.getsize(nome_arquivo)
+        chunk_size = 8192
+        response = StreamingHttpResponse(FileWrapper(open(nome_arquivo, 'rb'), chunk_size),
+                                          content_type=mimetypes.guess_type(nome_arquivo)[0])
+        response['Content-Length'] = os.path.getsize(nome_arquivo)
         response['Content-Disposition'] = "attachment; filename=%s" % filename
-        # response['Content-Disposition'] = "attachment; filename=" % filename
-        os.remove(nome_arquivo)
-    except:
+    except Exception as e:
+        print('Erro')
+        print(e)
+        print(type(e))
+        print(dir(e))
         return render(request,"home.html",{})
-    try:
-        # send_email(request.session['email'])
-        pass
-    except:
-        pass
+
     return response
 
 

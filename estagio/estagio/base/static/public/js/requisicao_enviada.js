@@ -5,8 +5,7 @@ var host = window.location.hostname;
 
 var compactaTodaPesquisa = function (objeto)
 {
-    console.log('dentro')
-
+  
     $("#btnIniciar").attr("disabled","disabled");
       $.ajax({
             type: "GET",

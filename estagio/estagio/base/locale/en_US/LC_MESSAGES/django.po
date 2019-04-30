@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-25 13:54-0400\n"
+"POT-Creation-Date: 2019-04-30 11:28-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: estagio/base/Email/email.py:10
+msgid "subject"
+msgstr "Your files are ready"
+
+#: estagio/base/Email/email.py:11
+msgid "text_email"
+msgstr "Your files are ready to be downloaded"
+
+#: estagio/base/Email/email.py:12
+msgid "click_email"
+msgstr "Click here"
+
 #: estagio/base/form.py:6
 msgid "Select"
 msgstr "-- Select --"
 
-#: estagio/base/form.py:9
+#: estagio/base/form.py:9 estagio/base/views.py:200
 msgid "random"
 msgstr "Random"
 
-#: estagio/base/form.py:9
+#: estagio/base/form.py:9 estagio/base/views.py:202
 msgid "sequential"
 msgstr "Sequential"
 
@@ -35,21 +47,25 @@ msgstr "Gaps all line"
 
 #: estagio/base/templates/home.html:20
 msgid "gaps_analize"
-msgstr "Gaps Dataset"
+msgstr "TheGaps: Gaps Dataset"
 
 #: estagio/base/templates/home.html:30
+#: estagio/base/templates/requisicao_enviada.html:30
 msgid "min_gaps_percent"
 msgstr "Min. Gaps (%)"
 
 #: estagio/base/templates/home.html:31
+#: estagio/base/templates/requisicao_enviada.html:31
 msgid "max_gaps_percent"
 msgstr "Max. Gaps (%)"
 
 #: estagio/base/templates/home.html:32 estagio/base/templates/home.html:64
+#: estagio/base/templates/requisicao_enviada.html:32
 msgid "gaps_type"
 msgstr "Type"
 
 #: estagio/base/templates/home.html:33 estagio/base/templates/home.html:65
+#: estagio/base/templates/requisicao_enviada.html:33
 msgid "gaps_set"
 msgstr "Variables"
 
@@ -104,66 +120,69 @@ msgstr ""
 "The files will be compressed in zip format, depending on the amount of files "
 "requested the process can take minutes or even hours to complete."
 
-#: estagio/base/templates/home.html:155
+#: estagio/base/templates/home.html:154
 msgid "action"
 msgstr "Action"
 
-#: estagio/base/templates/home.html:158
+#: estagio/base/templates/home.html:157
 msgid "continued"
 msgstr "Continued"
 
-#: estagio/base/templates/requisicao_enviada.html:6
+#: estagio/base/templates/requisicao_enviada.html:7
 msgid "title_request"
 msgstr "-- Your request has been sended - wait"
 
-#: estagio/base/templates/requisicao_enviada.html:21
+#: estagio/base/templates/requisicao_enviada.html:27
 msgid "progress_request"
 msgstr "Request processing"
 
-#: estagio/base/templates/requisicao_enviada.html:24
-msgid "num_request"
-msgstr "Request Number"
+#: estagio/base/templates/requisicao_enviada.html:34
+#, fuzzy
+#| msgid "email_text"
+msgid "email"
+msgstr ""
+"By entering your email you will be notified when the download is ready."
 
-#: estagio/base/templates/requisicao_enviada.html:25
-#: estagio/base/templates/requisicao_enviada.html:50
-msgid "status_request"
-msgstr "Status"
-
-#: estagio/base/templates/requisicao_enviada.html:26
-msgid "files_request"
-msgstr "Files"
-
-#: estagio/base/templates/requisicao_enviada.html:27
+#: estagio/base/templates/requisicao_enviada.html:35
 msgid "action_request"
 msgstr "Action"
 
-#: estagio/base/templates/requisicao_enviada.html:34
-msgid "cancel"
-msgstr "Cancel"
-
-#: estagio/base/templates/requisicao_enviada.html:35
+#: estagio/base/templates/requisicao_enviada.html:44
 msgid "start"
 msgstr "Start"
 
-#: estagio/base/templates/requisicao_enviada.html:36
+#: estagio/base/templates/requisicao_enviada.html:45
 msgid "comeback"
 msgstr "Comeback"
 
-#: estagio/base/templates/requisicao_enviada.html:37
-msgid "upload"
-msgstr "Upload"
+#: estagio/base/templates/requisicao_enviada.html:52
+msgid "num_request"
+msgstr "Request Number"
 
-#: estagio/base/templates/requisicao_enviada.html:44
+#: estagio/base/templates/requisicao_enviada.html:58
 msgid "queue_request"
 msgstr "Queue request"
 
-#: estagio/base/templates/requisicao_enviada.html:49
+#: estagio/base/templates/requisicao_enviada.html:59
+msgid "update"
+msgstr "Update"
+
+#: estagio/base/templates/requisicao_enviada.html:66
 msgid "number"
 msgstr "Number"
 
-#: estagio/base/templates/requisicao_enviada.html:57
-msgid "update"
-msgstr "Update"
+#: estagio/base/templates/requisicao_enviada.html:67
+msgid "status_request"
+msgstr "Status"
+
+#~ msgid "files_request"
+#~ msgstr "Files"
+
+#~ msgid "cancel"
+#~ msgstr "Cancel"
+
+#~ msgid "upload"
+#~ msgstr "Upload"
 
 #~ msgid "method"
 #~ msgstr "Method"

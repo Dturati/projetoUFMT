@@ -174,11 +174,11 @@ STATICFILES_DIRS = [
 # }
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'davidturat@gmail.com'
+DEFAULT_FROM_EMAIL = 'no-reply@nuti.ic.ufmt.br'
 EMAIL_USE_TLS   =   True
 EMAIL_HOST  =   'smtp.gmail.com'
-EMAIL_HOST_USER =   'davidturati'
-EMAIL_HOST_PASSWORD =   'xbox3602010'
+EMAIL_HOST_USER =   'no-reply@nuti.ic.ufmt.br'
+EMAIL_HOST_PASSWORD =   '84a8188e3172807ff42d8803e41df927'
 EMAIL_PORT  =   587
 
 CONTACT_EMAIL = ''
