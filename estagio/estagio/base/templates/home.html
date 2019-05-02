@@ -9,7 +9,7 @@
         <div class="place banner">
                 <div id="lateral">
                         <a href="{% url 'home:home' %}">
-                           <img  height="90px" style="
+                           <img  style="
                                    margin-left: auto;
                                    margin-right: auto;
                                    display: block;"
@@ -82,12 +82,12 @@
                             </table>
 
                         </div>
-                      <div>
+                      <div class="centro">
                             <a type="button" class="btn btn-info btn-group-sm" onclick="compactaPesquisa(this)" data-toggle="collapse" id="abreUm" data-target="#abre1">{% trans 'download_selected' %}</a>
                             <a type="button" class="btn btn-info btn-group-sm" data-toggle="modal" data-target="#myModal">{% trans 'download_all' %}</a>
                       </div>
                        
-                      <div id="paginacao" class="pagination">
+                      <div id="paginacao" class="pagination centro">
                             {% if paginado.has_other_pages %}
                                 <ul class="pagination">
                                     {% if paginado.has_previous %}

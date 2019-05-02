@@ -3,6 +3,11 @@
     width: 100%;
 }
 
+.centro{
+    display: table;
+    margin:auto;
+}
+
 .banner{
     background-color: #f9f9f9;
     height: 100px;
