@@ -17,8 +17,8 @@ var compactaTodaPesquisa = function (objeto)
             {
                 
                 fila();
-                console.log(data.id);
-                $("#id_task").text(data.id);
+                console.log(data.chave);
+                $("#id_task").text(data.chave);
                 console.log(data);
                 
 

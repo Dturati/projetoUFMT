@@ -23,8 +23,13 @@ def compacta_toda_pesquisa(request,chave,email):
     dados_db_fila = banco.fila
     zf = zipfile.ZipFile(str(chave['chave'])+".zip", "w")
     print('Compactando: ' + str(chave['chave']))
+    imprime = 0
     for valor in request:
         value = str(valor['diretorio'] + '/' +valor['arquivo'])
+        if(imprime < 10):
+            print(value,';', settings.MEDIA_URL,';',value.replace(settings.MEDIA_URL,''))
+            imprime = imprime + 1
+
         fdir, fname = os.path.split(value.replace(settings.MEDIA_URL,''))
         zip_subdir = str(fdir)
         zip_path = os.path.join(zip_subdir, value)
