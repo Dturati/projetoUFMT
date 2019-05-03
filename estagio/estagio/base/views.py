@@ -23,6 +23,7 @@ lista_arquivos = ListaArquivos
 resutadopesquisaPaginado = []
 from .MongoDB.MongoCennect import MongoConnect
 from django.utils.translation import ugettext as _
+from celery import uuid
 
 
 from estagio.celery import app
@@ -131,11 +132,11 @@ def view_compacta_pesquisa_selecionada(request):
 #compacta toda pesquisas
 def view_compacta_toda_pesquisa(request):
     dados = {}
-    chave = str(random.getrandbits(128))
     print(request.session['form'])
     resultadoPesquisa = pesquisa(request.session['form'])
     dadosRequest = json.dumps(resultadoPesquisa)
-    chave = str(random.getrandbits(128))
+    task_id = uuid()
+    chave = str(task_id)
     chaveJ = {'chave':chave}
     try:
         con = MongoConnect()
@@ -151,7 +152,8 @@ def view_compacta_toda_pesquisa(request):
     }
 
     dados = dados_db_fila.insert_one(value).inserted_id
-    res = compacta_toda_pesquisa.delay(dadosRequest,chaveJ,request.session['form']['email'])
+    
+    res = compacta_toda_pesquisa.apply_async((dadosRequest,chaveJ,request.session['form']['email']), task_id = task_id)
     return JsonResponse({'status': 'ok','id':res.id,'chave':chave})
 
 #Baixa os arquivos compactados

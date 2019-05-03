@@ -9,7 +9,7 @@ def send_email(email, chave):
     try:
         subject = _('subject')
         mensagem = _('text_email') + """<br/>
-        <a href="http://thegaps.ic.ufmt.br/baixar_pesquisa/?chave="""+chave['chave']+""">"""+_('click_email')+"""</a>"""
+        <a href="http://thegaps.ic.ufmt.br/baixar_pesquisa/?chave="""+chave['chave']+"""\">"""+_('click_email')+"""</a>"""
 
         text_body = strip_tags(mensagem,)
         html_body = mensagem
