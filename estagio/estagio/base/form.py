@@ -6,7 +6,7 @@ class Pesquisa(forms.Form):
 	SELECT = _("Select")
 	PORCENTAGEM_FALHA_UM = tuple([('',SELECT)]+[(r, r) for r in list(range(1, 51))])
 	PORCENTAGEM_FALHA_DOIS = tuple([('',SELECT)]+[(r, r) for r in list(range(1, 51))])
-	FALHA = (('',SELECT),("ale", _("random")), ("seq", _("sequential")))
+	FALHA = (('',SELECT),("ran", _("random")), ("seq", _("sequential")))
 	
 	FALHA_CONJUNTO =(('',SELECT),('0','NET, GLOBALI, GLOBALR, PARI, PAR')
 					,('1',_('all_line'))

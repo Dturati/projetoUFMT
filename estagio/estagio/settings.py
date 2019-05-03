@@ -172,6 +172,8 @@ STATICFILES_DIRS = [
 #         'debug': True
 #     }
 # }
+#renomear arquivos para ingles
+#find . -iname "*ale*" -exec rename 's/ale/ran/' '{}' \;
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'no-reply@nuti.ic.ufmt.br'
