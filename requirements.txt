@@ -31,7 +31,7 @@ ipaddress==1.0.16
 IPy==0.81
 isort==4.2.15
 itsdangerous==0.24
-Jinja2==2.7.2
+Jinja2==2.11.3
 jsonschema==2.3.0
 kitchen==1.2.4
 kombu==3.0.37
