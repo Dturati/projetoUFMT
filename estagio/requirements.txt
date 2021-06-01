@@ -76,7 +76,7 @@ SSSDConfig==1.15.2
 tornado==4.5.1
 uniconvertor==2.0
 urlgrabber==3.10.1
-urllib3==1.20
+urllib3==1.26.5
 vine==1.1.4
 Werkzeug==0.9.4
 wrapt==1.10.10
