@@ -24,7 +24,7 @@ Flask==0.10.1
 Flask-DebugToolbar==0.9.0
 Flask-SQLAlchemy==1.0
 Flask-Triangle==0.5.4
-html5lib==0.999
+html5lib==0.99999999
 idna==2.5
 iniparse==0.4
 ipaddress==1.0.16
